@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="food-delivery-system" />
+        <module name="Project1_Food_Delivery" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Project1_Food_Delivery" options="-endorseddirs &quot;D:\MIT AOE\SY\Super 30\Project1_Food_Delivery\target/endorsed&quot;" />
+      <module name="food-delivery-system" options="-endorseddirs &quot;D:\MIT AOE\SY\Super 30\food-delivery-system\target/endorsed&quot;" />
+    </option>
+  </component>
+</project>
