@@ -1,159 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Foodex:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a93bda67-3b14-4139-bb97-441de64275ad" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/.idea/webContexts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/nb-configuration.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/java/com/pack/DeleteController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/java/com/pack/HomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/java/com/pack/PasswordController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/java/com/pack/RegisterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/java/com/pack/mainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/META-INF/context.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/CreateNew.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/Delete.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/DeletedFinally.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/DisplayProfile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/Forgot.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/Forward.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/Forward1.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/Home.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/Login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/LoginSuccess.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/Registration.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/SetFinally.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/errorLogin.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/jsp/main.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/redirect.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/css/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/css/register.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/combo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/dosa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/doubbur.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/hotdog.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/logo-exp-light.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/logo-exp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/main-page-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/momos.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/moodles.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/paasta.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/pav.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/pizza.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/register-carousel1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/register-carousel2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/register-carousel3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/register-carousel4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/register-carousel5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/img/vegsand.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/src/main/webapp/resources/assets/js/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/META-INF/context.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/.netbeans_automatic_build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/DeleteController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/PasswordController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/RegisterController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/mainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/CreateNew.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Delete.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/DeletedFinally.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/DisplayProfile.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Forgot.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Forward.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Forward1.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Home.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/LoginSuccess.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Registration.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/SetFinally.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/errorLogin.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/main.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/aspectjweaver-1.8.9.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/javax.servlet.jsp.jstl-1.2.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/javax.servlet.jsp.jstl-api-1.2.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/jsp-api-2.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/jstl-api-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/mysql-connector-j-8.0.31.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/protobuf-java-3.19.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/servlet-api-2.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-aop-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-aspects-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-beans-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-context-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-context-support-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-core-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-expression-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-instrument-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-instrument-tomcat-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-jdbc-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-jms-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-messaging-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-orm-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-oxm-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-test-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-tx-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-web-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-portlet-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/lib/spring-websocket-4.3.29.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/redirect.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/register.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/combo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/dosa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/doubbur.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/hotdog.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/logo-exp-light.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/logo-exp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/main-page-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/momos.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/moodles.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/paasta.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/pav.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/pizza.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/register-carousel1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/register-carousel2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/register-carousel3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/register-carousel4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/register-carousel5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/img/vegsand.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/js/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/classes/com/pack/DeleteController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/classes/com/pack/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/classes/com/pack/PasswordController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/classes/com/pack/RegisterController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/classes/com/pack/mainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/endorsed/javaee-endorsed-api-7.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-system-master/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/mainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/mainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/mainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/mainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pack/mainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pack/mainController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,6 +32,16 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -187,9 +64,13 @@
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/MIT AOE/SY/Super 30/food-delivery-system-master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/MIT AOE/SY/Super 30/Foodex&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;8e6617c238b0038f7f12cf7c58aad182&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;326e9efcb3ee7b6984b98823789ac8b1&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -199,9 +80,9 @@
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
-        <artifact name="foodex:war exploded">
+        <artifact name="Foodex:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/foodex_war_exploded" />
+            <option name="CONTEXT_PATH" value="/Foodex_war_exploded" />
           </settings>
         </artifact>
       </deployment>
@@ -280,7 +161,7 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="foodex:war exploded" />
+          <artifact name="Foodex:war exploded" />
         </option>
       </method>
     </configuration>
@@ -296,6 +177,8 @@
       <workItem from="1674975242839" duration="206000" />
       <workItem from="1674975503461" duration="58000" />
       <workItem from="1674992180726" duration="427000" />
+      <workItem from="1674995107327" duration="1331000" />
+      <workItem from="1674996840816" duration="791000" />
     </task>
     <servers />
   </component>

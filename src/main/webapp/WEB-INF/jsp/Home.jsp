@@ -54,7 +54,7 @@
                         <a class="nav-link" href="#">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact and Support</a>
+                        <a class="nav-link" href="contact">Contact and Support</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
