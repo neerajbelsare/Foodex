@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>Response received, Thank You For Contacting FOODEX ;)</h1>
-<form action="Home" method="get">
+<form action="home" method="get">
   <br>
   <br>
   <input type="submit" value="Return to main">
