@@ -11,6 +11,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <%-- Google Sign In   --%>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="285255148443-fs5dnhuab11qobgk1771p0ook03d2be0.apps.googleusercontent.com">
+
     <style>
         #carousel-div{
             background-image: url("<c:url value="/resources/img/register-carousel1.jpg" />");
@@ -47,9 +52,12 @@
                     <button class="input-register1 button-continue" id="continue-button" type="button" onclick="onContClick()">Continue</button><br>
                     <input type="submit" value="Register" class="register-submit" id="register-submit" onclick="onRegClick()" disabled /><br>
                     <p style="color: #bbbbbb; width: 100%; text-align: center; margin-top: 20px; font-size: 1.1em;">Or</p>
-                    <button type="button"></button>
-                    285255148443-fs5dnhuab11qobgk1771p0ook03d2be0.apps.googleusercontent.com
-                    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
+                    <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>
+                    <img id="myImg"><br>
+                    <p id="name"></p>
+                    <div id="status">
+                    </div>
+<%--                    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--%>
                 </form>
             </div>
         </div>
@@ -145,13 +153,22 @@
         }
     }
 
-    // function changebg(){
-    //     let url =
-    //     document.getElementById("carousel-div").style.backgroundImage = ""
-    //     setTimeout(function (){
-    //         document.getElementById("carousel-div").style.backgroundImage =
-    //     }, 3000)
-    // }
+    function onSignIn(googleUser) {
+        // window.location.href='success.jsp';
+        var profile = googleUser.getBasicProfile();
+        var imagurl=profile.getImageUrl();
+        var name=profile.getName();
+        var email=profile.getEmail();
+        document.getElementById("myImg").src = imagurl;
+        document.getElementById("name").innerHTML = name;
+        document.getElementById("myP").style.visibility = "hidden";
+        document.getElementById("status").innerHTML = 'Welcome '+name+'!<a href=LoginSuccess.jsp?email='+email+'&name='+name+'/>Continue with Google login</a></p>'
+    }
+
+    function myFunction() {
+        gapi.auth2.getAuthInstance().disconnect();
+        location.reload();
+    }
 </script>
 </body>
 </html>

@@ -10,17 +10,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a93bda67-3b14-4139-bb97-441de64275ad" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/AddRestaurant.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/carousel-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/carousel-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/carousel-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/carousel-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/carousel-5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/mainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/mainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/LoginSuccess.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/LoginSuccess.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Registration.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/RegisterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/mainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/mainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pack/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pack/RegisterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/pack/mainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pack/mainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/.netbeans_automatic_build" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +42,14 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Jsp File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,13 +72,16 @@
     </option>
   </component>
   <component name="ProjectId" id="2KzR5W0gFrCrK2TYogbiYFUdWPf" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
@@ -69,8 +93,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;326e9efcb3ee7b6984b98823789ac8b1&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;f5d2dde345df350361754763875b502d&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -178,7 +203,9 @@
       <workItem from="1674975503461" duration="58000" />
       <workItem from="1674992180726" duration="427000" />
       <workItem from="1674995107327" duration="1331000" />
-      <workItem from="1674996840816" duration="791000" />
+      <workItem from="1674996840816" duration="6204000" />
+      <workItem from="1675006502931" duration="7213000" />
+      <workItem from="1675048898014" duration="24634000" />
     </task>
     <servers />
   </component>
@@ -186,6 +213,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>

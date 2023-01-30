@@ -74,6 +74,7 @@ public class RegisterController {
                     usnm=rs.getString("username");
                     object2.addAttribute("NA", rs.getString("username"));
                     object2.addAttribute("EM", rs.getString("email"));
+
                     return "main";
                 }
             }
@@ -121,7 +122,6 @@ public class RegisterController {
     @RequestMapping(value = "/setlocation",method = RequestMethod.POST)
     public String getLocation(@RequestParam("location") String x) {
         System.out.println(x);
-
         return "main";
     }
 }
