@@ -98,7 +98,7 @@
                                 <div class="container" style="width: 95%">
                                     <div class="row">
                                         <div class="col">
-                                            <input name="g" type="checkbox" class="form-check-input"/> Bakery<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Bakery"/> Bakery<br><br>
                                             <input name="g" type="checkbox" class="form-check-input"/> Bhojanalya<br><br>
                                             <input name="g" type="checkbox" class="form-check-input"/> Casual Dining<br><br>
                                             <input name="g" type="checkbox" class="form-check-input"/> Confectionery<br><br>
@@ -188,7 +188,7 @@
                                             <input name="h" type="checkbox" class="form-check-input"/> European<br><br>
                                             <input name="h" type="checkbox" class="form-check-input"/> Fast Food<br><br>
                                             <input name="h" type="checkbox" class="form-check-input"/> Finger Food<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> French<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input"/> French<br><br><br>
                                         </div>
 
                                         <div class="col">
@@ -495,6 +495,18 @@
                                 <br><br>
                             </div>
                         </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <br><div class="details-col col col2">
+                                <br><h4 style="font-weight: 700; margin-left: 20px">6. Restaurant Images</h4>
+                                <p style="color: grey; margin-left: 40px; font-size: 0.9em">Upload various pictures of your outlet</p>
+                                <br>
+                                <input id="images" required type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" multiple />
+                                <br><br><br>
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <br><br><input type="submit" name="submit-button" id="submit-btn" value="   Submit   " class="submit-btn"/>

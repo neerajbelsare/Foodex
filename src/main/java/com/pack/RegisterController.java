@@ -75,6 +75,8 @@ public class RegisterController {
             while (rs.next()) {
                 if (rs.getString("username").equals(x) && rs.getString("password").equals(y)) {
                     HttpSession session = request.getSession();
+                    session.setAttribute("userName", x);
+
                     session.setMaxInactiveInterval(30 * 24 * 30 * 60);
                     session.setAttribute("loggedIn", true);
 
@@ -95,7 +97,7 @@ public class RegisterController {
             System.out.println(k);
         }
 
-        return "errorLogin";
+        return "Login";
     }
     
     @RequestMapping(value = "/profile",method = RequestMethod.POST)
