@@ -99,36 +99,36 @@
                                     <div class="row">
                                         <div class="col">
                                             <input name="g" type="checkbox" class="form-check-input" value="Bakery"/> Bakery<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Bhojanalya<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Casual Dining<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Confectionery<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Fine Dining<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Irani Cafe<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Mess<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Pub<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Sweet Shop<br><br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Bhojanalya"/> Bhojanalya<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Casual Dining"/> Casual Dining<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Confectionery"/> Confectionery<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Fine Dining"/> Fine Dining<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Irani Cafe"/> Irani Cafe<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Mess"/> Mess<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Pub"/> Pub<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Sweet Shop"/> Sweet Shop<br><br><br>
                                         </div>
 
                                         <div class="col">
-                                            <input name="g" type="checkbox" class="form-check-input"/> Bar<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Butcher Shop<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Club<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Dessert Parlour<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Food Court<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Kiosk<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Microbrewery<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Quick Bites<br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Bar"/> Bar<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Butcher Shop"/> Butcher Shop<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Club"/> Club<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Dessert Parlour"/> Dessert Parlour<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Food Court"/> Food Court<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Kiosk"/> Kiosk<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Microbrewery"/> Microbrewery<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Quick Bites"/> Quick Bites<br>
                                         </div>
 
                                         <div class="col">
-                                            <input name="g" type="checkbox" class="form-check-input"/> Beverage Shop<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Café<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Cocktail Bar<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Dhaba<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Food Truck<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Lounge<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Paan Shop<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input"/> Shack<br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Beverage Shop"/> Beverage Shop<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Café"/> Café<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Cocktail Bar"/> Cocktail Bar<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Dhaba"/> Dhaba<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Food Truck"/> Food Truck<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Lounge"/> Lounge<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Paan Shop"/> Paan Shop<br><br>
+                                            <input name="g" type="checkbox" class="form-check-input" value="Shack"/> Shack<br>
                                         </div>
                                     </div>
                                 </div>
@@ -145,118 +145,118 @@
                                 <div class="container" style="width: 95%">
                                     <div class="row">
                                         <div class="col">
-                                            <input name="h" type="checkbox" class="form-check-input"/> Afghan<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> African<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> American<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Andhra<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Arabian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Asian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Asian Fusion<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Assamese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Australian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Awadhi<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Bakery<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Bangladeshi<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Bar Food<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> BBQ<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Belgian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Bengali<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Beverages<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Bihari<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Biryani<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Bohri<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Brazilian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> British<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Bubble Tea<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Burger<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Burmese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Cafe<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Cafe Food<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Cake<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Cantonese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Charcoal Chicken<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Chettinad<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Chili<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Chinese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Coffee<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Coffee and Tea<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Continental<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Desserts<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Drinks Only<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Egyptian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Ethiopian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> European<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Fast Food<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Finger Food<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> French<br><br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Afghan"/> Afghan<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="African"/> African<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="American"/> American<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Andhra"/> Andhra<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Arabian"/> Arabian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Asian"/> Asian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Asian Fusion"/> Asian Fusion<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Assamese"/> Assamese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Australian"/> Australian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Awadhi"/> Awadhi<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Bakery"/> Bakery<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Bangladeshi"/> Bangladeshi<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Bar Food"/> Bar Food<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="BBQ"/> BBQ<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Belgian"/> Belgian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Bengali"/> Bengali<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Beverages"/> Beverages<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Bihari"/> Bihari<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Biryani"/> Biryani<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Bohri"/> Bohri<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Brazilian"/> Brazilian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="British"/> British<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Bubble Tea"/> Bubble Tea<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Burger"/> Burger<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Burmese"/> Burmese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Cafe"/> Cafe<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Cafe Food"/> Cafe Food<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Cake"/> Cake<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Cantonese"/> Cantonese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Charcoal Chicken"/> Charcoal Chicken<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Chettinad"/> Chettinad<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Chili"/> Chili<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Chinese"/> Chinese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Coffee"/> Coffee<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Coffee and Tea"/> Coffee and Tea<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Continental"/> Continental<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Desserts"/> Desserts<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Drinks Only"/> Drinks Only<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Egyptian"/> Egyptian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Ethiopian"/> Ethiopian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="European"/> European<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Fast Food"/> Fast Food<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Finger Food"/> Finger Food<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="French"/> French<br><br><br>
                                         </div>
 
                                         <div class="col">
-                                            <input name="h" type="checkbox" class="form-check-input"/> Fried Chicken<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Frozen Yogurt<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Fusion<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Garhwali<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> German<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Goan<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Greek<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Grill<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Gujarati<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Healthy Food<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Himachali<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Hyderabadi<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Ice Cream<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Indian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Indonesian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Iranian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Irish<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Israeli<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Italian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Japanese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Juices<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Kashmiri<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Kebab<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Kerala<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Konkan<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Korean<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Lebanese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Lucknowi<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Maharashtrian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Malaysian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Malwani<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Mandi<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Mangalorean<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Mediterranean<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Mexican<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Middle Eastern<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Mishti<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Mithai<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Modern Indian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Momos<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Mongolian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Moroccan<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Mughlai<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Naga<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Fried Chicken"/> Fried Chicken<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Frozen Yogurt"/> Frozen Yogurt<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Fusion"/> Fusion<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Garhwali"/> Garhwali<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="German"/> German<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Goan"/> Goan<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Greek"/> Greek<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Grill"/> Grill<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Gujarati"/> Gujarati<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Healthy Food"/> Healthy Food<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Himachali"/> Himachali<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Hyderabadi"/> Hyderabadi<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Ice Cream"/> Ice Cream<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Indian"/> Indian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Indonesian"/> Indonesian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Iranian"/> Iranian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Irish"/> Irish<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Israeli"/> Israeli<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Italian"/> Italian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Japanese"/> Japanese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Juices"/> Juices<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Kashmiri"/> Kashmiri<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Kebab"/> Kebab<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Kerala"/> Kerala<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Konkan"/> Konkan<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Korean"/> Korean<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Lebanese"/> Lebanese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Lucknowi"/> Lucknowi<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Maharashtrian"/> Maharashtrian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Malaysian"/> Malaysian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Malwani"/> Malwani<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Mandi"/> Mandi<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Mangalorean"/> Mangalorean<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Mediterranean"/> Mediterranean<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Mexican"/> Mexican<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Middle Eastern"/> Middle Eastern<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Mishti"/> Mishti<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Mithai"/> Mithai<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Modern Indian"/> Modern Indian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Momos"/> Momos<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Mongolian"/> Mongolian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Moroccan"/> Moroccan<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Mughlai"/> Mughlai<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Naga"/> Naga<br><br>
                                         </div>
 
                                         <div class="col">
-                                            <input name="h" type="checkbox" class="form-check-input"/> Nepalese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> North Eastern<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> North Indian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Odia<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Oriental<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Paan<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Pakistani<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Pan Asian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Panini<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Parsi<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Peruvian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Pizza<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Poké<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Portuguese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Rajasthani<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Raw Meats<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Roast Chicken<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Rolls<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Nepalese"/> Nepalese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="North Eastern"/> North Eastern<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="North Indian"/> North Indian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Odia"/> Odia<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Oriental"/> Oriental<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Paan"/> Paan<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Pakistani"/> Pakistani<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Pan Asian"/> Pan Asian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Panini"/> Panini<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Parsi"/> Parsi<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Peruvian"/> Peruvian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Pizza"/> Pizza<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Poké"/> Poké<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Portuguese"/> Portuguese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Rajasthani"/> Rajasthani<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Raw Meat"/> Raw Meats<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Roast Chicken"/> Roast Chicken<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Rolls"/> Rolls<br><br>
                                             <input name="h" type="checkbox" class="form-check-input"/> Russian<br><br>
                                             <input name="h" type="checkbox" class="form-check-input"/> Salad<br><br>
                                             <input name="h" type="checkbox" class="form-check-input"/> Sandwich<br><br>
