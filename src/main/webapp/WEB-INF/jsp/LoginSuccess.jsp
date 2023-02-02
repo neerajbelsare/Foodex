@@ -12,9 +12,13 @@
 </head>
 <body>
 <%
-  String m=(String)  request.getAttribute("NA");
-  String n=(String)  request.getAttribute("EM");
+  String name=(String)request.getParameter("name");
+  String email=(String)request.getParameter("email");
 %>
+
+<%=name %>
+
+<%=email %>
 <h2>Welcome,<%=m%></h2>
 <b>Your Email ID is: <%=n%></b>
 </body>

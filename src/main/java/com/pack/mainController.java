@@ -3,17 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.pack;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/browse")
 
 public class mainController
 {
-    
-    @RequestMapping (method = RequestMethod.GET)
+    @RequestMapping (value="/browse")
     public String homePage()
     {
         return "main";

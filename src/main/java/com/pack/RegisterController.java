@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -57,7 +60,7 @@ public class RegisterController {
         return "Login";
     }
     @RequestMapping(value = "/loginform", method = RequestMethod.POST)
-    public String processLogin(@RequestParam("a") String x, @RequestParam("b") String y, Model object2) {
+    public String processLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String x, @RequestParam("b") String y, Model object2) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -71,10 +74,21 @@ public class RegisterController {
 
             while (rs.next()) {
                 if (rs.getString("username").equals(x) && rs.getString("password").equals(y)) {
+                    HttpSession session = request.getSession();
+                    session.setMaxInactiveInterval(30 * 24 * 30 * 60);
+                    session.setAttribute("loggedIn", true);
+
                     usnm=rs.getString("username");
                     object2.addAttribute("NA", rs.getString("username"));
                     object2.addAttribute("EM", rs.getString("email"));
-                    return "main";
+
+                    String previousPage = (String) session.getAttribute("previousPage");
+                    if (previousPage != null) {
+                        session.removeAttribute("previousPage");
+                        response.sendRedirect(previousPage);
+                    } else {
+                        response.sendRedirect("home");
+                    }
                 }
             }
         } catch (Exception k) {
@@ -121,7 +135,6 @@ public class RegisterController {
     @RequestMapping(value = "/setlocation",method = RequestMethod.POST)
     public String getLocation(@RequestParam("location") String x) {
         System.out.println(x);
-
         return "main";
     }
 }

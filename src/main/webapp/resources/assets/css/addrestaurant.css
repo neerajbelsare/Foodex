@@ -1,0 +1,71 @@
+.main-details-div {
+    font-family: 'Poppins', sans-serif;
+    width: 60%;
+}
+
+.details-col {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 10px;
+}
+
+.form-input {
+    width: 80% !important;
+    margin-left: 40px;
+}
+
+#map {
+    height: 400px; /* The height is 400 pixels */
+    width: 100%; /* The width is the width of the web page */
+}
+
+.form-select {
+    width: 80%!important;
+    margin-left: 40px;
+}
+
+@media (max-width: 575.98px){
+    .main-details-div{
+        width: 80%;
+    }
+}
+
+@media (min-width: 576px) {
+    .main-details-div{
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .main-details-div{
+        width: 60%;
+    }
+}
+
+@media (min-width: 992px) {
+    .main-details-div{
+        width: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-details-div{
+        width: 60%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .main-details-div{
+        width: 60%;
+    }
+}
+
+.submit-btn {
+    background-color: #1e53ff;
+    border-radius: 40px;
+    margin-left: 30px;
+    outline: none;
+    border: none;
+    color: white;
+    padding: 10px;
+}
