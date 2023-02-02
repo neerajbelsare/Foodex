@@ -257,28 +257,28 @@
                                             <input name="h" type="checkbox" class="form-check-input" value="Raw Meat"/> Raw Meats<br><br>
                                             <input name="h" type="checkbox" class="form-check-input" value="Roast Chicken"/> Roast Chicken<br><br>
                                             <input name="h" type="checkbox" class="form-check-input" value="Rolls"/> Rolls<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Russian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Salad<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Sandwich<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Seafood<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Sindhi<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Singaporean<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> South American<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> South Indian<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Spanish<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Sri Lankan<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Steak<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Street Food<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Sushi<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Swedish<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Tamil<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Tea<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Tex-Mex<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Thai<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Tibetan<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Turkish<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Vietnamese<br><br>
-                                            <input name="h" type="checkbox" class="form-check-input"/> Wraps<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Russian"/> Russian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Salad"/> Salad<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Sandwich"/> Sandwich<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Seafood"/> Seafood<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Sindhi"/> Sindhi<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Singaporean"/> Singaporean<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="South American"/> South American<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="South Indian"/> South Indian<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Spanish"/> Spanish<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Sri Lankan"/> Sri Lankan<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Steak"/> Steak<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Street Food"/> Street Food<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Sushi"/> Sushi<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Swedish"/> Swedish<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Tamil"/> Tamil<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Tea"/> Tea<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Tex-Mex"/> Tex-Mex<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Thai"/> Thai<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Tibetan"/> Tibetan<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Turkish"/> Turkish<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Vietnamese"/> Vietnamese<br><br>
+                                            <input name="h" type="checkbox" class="form-check-input" value="Wraps"/> Wraps<br><br>
                                         </div>
                                     </div>
                                 </div>
@@ -503,7 +503,7 @@
                                 <br><h4 style="font-weight: 700; margin-left: 20px">6. Restaurant Images</h4>
                                 <p style="color: grey; margin-left: 40px; font-size: 0.9em">Upload various pictures of your outlet</p>
                                 <br>
-                                <input id="images" required type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" multiple />
+                                <input id="images" required type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" multiple name="k"/>
                                 <br><br><br>
                             </div>
                             </div>
