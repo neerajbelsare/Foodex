@@ -169,6 +169,15 @@
         gapi.auth2.getAuthInstance().disconnect();
         location.reload();
     }
+
+    const inputField = document.querySelector("#input-register3");
+
+    inputField.addEventListener("input", function(event) {
+    const value = event.target.value;
+    if (!/^\d*$/.test(value)) {
+    event.target.value = value.replace(/[^0-9]/g, "");
+    }
+    });
 </script>
 </body>
 </html>

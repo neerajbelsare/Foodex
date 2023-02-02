@@ -6,24 +6,15 @@ package com.pack;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 
 public class mainController
 {
-    @RequestMapping (value="/browse", method = RequestMethod.GET)
+    @RequestMapping (value="/browse")
     public String homePage()
     {
         return "main";
-    }
-
-    @RequestMapping (value="/browseform", method = RequestMethod.POST)
-    public String returnhomePage(@RequestParam("a") String x)
-    {
-        System.out.println(x);
-        return "Login";
     }
 }
 

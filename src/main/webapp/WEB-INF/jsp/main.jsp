@@ -63,7 +63,7 @@
                         <div class="col-sm-4 splide__slide m-2">
                             <div class="card text-white">
                                 <div class="card-body">
-                                    <img src="<c:url value="/resources/img/carousel-1.jpg" />" style="width: 80%">
+                                    <img src="<c:url value="/resources/img/carousel-1.jpg" />" style="width: 80%;">
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
 
     <body>
         <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -104,21 +104,32 @@
                     </div>
                     <div class="modal-body">
                         <div class="grid">
-                            <div>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p>Cuisine<p>
-                                        </div>
-                                    </div>
+                            <div class="col-1">
+                                <div class="ele" id="ele1">
+                                    <p class="filter not-selectable">Sort By</p>
+                                    <p class="selection">Selected</p>
+                                </div>
+                                <div class="ele" id="ele2">
+                                    <p class="filter not-selectable">Cuisine</p>
+                                    <p class="selection">Selected</p>
+                                </div>
+                                <div class="ele" id="ele3">
+                                    <p class="filter not-selectable">Rating</p>
+                                    <p class="selection">Selected</p>
+                                </div>
+                                <div class="ele" id="ele4">
+                                    <p class="filter not-selectable">Cost</p>
+                                    <p class="selection">Selected</p>
                                 </div>
                             </div>
-                            <div></div>
+                            <div class="col-1">
+                                <p>fjf</p>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear All</button>
-                        <button type="button" class="btn btn-primary">Apply</button>
+                        <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>
+                        <button type="button" class="btn-prim">Apply</button>
                     </div>
                 </div>
             </div>
@@ -128,6 +139,11 @@
         <div class="row">
             <div class="col">
                 <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="material-symbols-outlined" style="color: #1e53ff; margin-right: 5px;">filter_alt</span>Filter</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4 class="res-heading">0 Restaurants</h4>
             </div>
         </div>
     </div>
@@ -235,6 +251,47 @@
 
         splide.mount();
     </script>
+
+        <script>
+            const div1 = document.getElementById('ele1')
+
+            div1.addEventListener("click", function (){
+                div1.style.backgroundColor = "#f3f3f3";
+                div2.style.backgroundColor = "#ffffff";
+                div3.style.backgroundColor = "#ffffff";
+                div4.style.backgroundColor = "#ffffff";
+            });
+
+            const div2 = document.getElementById('ele2')
+            const para2 = document.getElementById('ele2')
+
+            para2.addEventListener("click", function (){
+                div2.style.backgroundColor = "#f3f3f3";
+                div1.style.backgroundColor = "#ffffff";
+                div3.style.backgroundColor = "#ffffff";
+                div4.style.backgroundColor = "#ffffff";
+            });
+
+            const div3 = document.getElementById('ele3')
+            const para3 = document.getElementById('ele3')
+
+            para3.addEventListener("click", function (){
+                div3.style.backgroundColor = "#f3f3f3";
+                div2.style.backgroundColor = "#ffffff";
+                div1.style.backgroundColor = "#ffffff";
+                div4.style.backgroundColor = "#ffffff";
+            });
+
+            const div4 = document.getElementById('ele4')
+            const para4 = document.getElementById('ele4')
+
+            div4.addEventListener("click", function (){
+                div4.style.backgroundColor = "#f3f3f3";
+                div2.style.backgroundColor = "#ffffff";
+                div3.style.backgroundColor = "#ffffff";
+                div1.style.backgroundColor = "#ffffff";
+            });
+        </script>
     </body>
 </html>
 
