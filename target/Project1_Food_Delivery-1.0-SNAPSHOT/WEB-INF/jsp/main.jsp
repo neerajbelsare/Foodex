@@ -1,3 +1,4 @@
+<%@page import="org.springframework.stereotype.Controller"%>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.PreparedStatement" %>
@@ -232,6 +233,34 @@
             </div>
         </div>
     </div>
+<!--    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class = "grid">
+                    <%--
+                        try
+                        {
+                            Class.forName("com.mysql.cj.jdbc.Driver");
+
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+                            PreparedStatement stmt=con.prepareStatement("select * from restaurants limit4");
+                            
+                            ResultSet rs = stmt.executeQuery();
+                            
+                            while(rs.next())
+                            {
+                                String NM = 
+                            }
+                        }
+                        catch (Exception k)
+                        {
+                            System.out.println(k.getMessage());
+                        }
+                            --%>
+                </div>
+            </div>
+        </div>
+    </div>-->
 
 <%--    <footer class="text-center text-lg-start bg-white text-muted footer-main">--%>
 <%--        <section class="">--%>
