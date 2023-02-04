@@ -1,3 +1,7 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -39,14 +43,95 @@
                     <li class="nav-item">
                         <a class="nav-link nav-reg" href="#"><span class="material-symbols-outlined nav-icons">loyalty</span>Offers</a>
                     </li>
+
+                    <%
+                        boolean flag = false;
+                        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+                        if (loggedIn == null || !loggedIn) {
+                    %>
+
                     <li class="nav-item">
                         <a class="nav-link nav-reg" href="register"><span class="material-symbols-outlined nav-icons">person</span>Sign Up</a>
                     </li>
+
                     <li class="nav-item">
-                        <form method="post" action="browseform"><button class="nav-link nav-reg" href="login" type="submit"><span class="material-symbols-outlined nav-icons">login</span>Login</button>
-                            <input type="text" value="main" name="a" style="display: none;" />
-                        </form>
+                        <a class="nav-link nav-reg" href="login"><span class="material-symbols-outlined nav-icons">login</span>Login</a>
                     </li>
+
+                    <%
+                    } else {
+                            try {
+                                String usnm = (String) session.getAttribute("userName");
+                                String pwd = (String) session.getAttribute("password");
+                                String prefix_u = "admin";
+                                String prefix_p = "admin@123";
+
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+                                PreparedStatement stmt = con.prepareStatement("select * from restaurants where username=?");
+                                stmt.setString(1, usnm);
+
+                                PreparedStatement stmt2 = con.prepareStatement("select * from users where username=? and password=?");
+                                stmt2.setString(1, usnm);
+                                stmt2.setString(2, pwd);
+
+                                ResultSet rs = stmt.executeQuery();
+                                ResultSet rs1 = stmt2.executeQuery();
+
+                    %>
+
+                    <li class="nav-item">
+                        <ul>
+                            <a href="#" class="display-picture"><img src="https://i.pravatar.cc/85" alt="User Icon"></a>
+                        </ul>
+                        <div class="card hidden">
+                            <ul>
+                                <%
+                                    if(usnm.startsWith(prefix_u) && pwd.startsWith(prefix_p)) {
+                                        flag = true;
+                                %>
+                                <li><a href="admin" target="_blank">Dashboard</a></li>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Log Out</a></li>
+                                <%
+                                    }
+                                    if(!flag){
+                                    while(rs.next()){
+                                        if(rs.getString("username").equals(usnm)){
+                                            flag = true;
+
+                                %>
+                                <li><a href="dashboard" target="_blank">Dashboard</a></li>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Log Out</a></li>
+                                <%
+                                    }}}
+
+                                    if(!flag){
+                                        while(rs1.next()){
+                                            if(rs1.getString("username").equals(usnm) && rs1.getString("password").equals(pwd)) {
+                                                flag = true;
+                                %>
+
+                                <li><a href="">Profile</a></li>
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Log Out</a></li>
+                            </ul>
+                        </div>
+                                <%
+                                                    }}}}catch (Exception k) {
+                                            System.out.println(k);
+                                        }
+                                    }
+                                %>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link nav-reg" href="register"><span class="material-symbols-outlined nav-icons">shopping_cart</span>Cart</a>
                     </li>
@@ -123,7 +208,7 @@
                                 </div>
                             </div>
                             <div class="col-1">
-                                <p>fjf</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -291,6 +376,13 @@
                 div3.style.backgroundColor = "#ffffff";
                 div1.style.backgroundColor = "#ffffff";
             });
+
+            let card = document.querySelector(".card");
+            let displayPicture = document.querySelector(".display-picture");
+
+            displayPicture.addEventListener("click", function() {
+                card.classList.toggle("hidden")})
+
         </script>
     </body>
 </html>

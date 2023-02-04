@@ -19,9 +19,7 @@
             <br><br>
             Enter Your Username <input type="text" name="b">
                 <br><br>
-                <input type="submit" value="click">
-                <br><br>
-                <b>(* Form returns back, if entered invalid or non existing Email ID or Username)
+                <input type="submit" value="click"><br>
         </form>
         </div>
     </body>

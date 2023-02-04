@@ -76,6 +76,7 @@ public class RegisterController {
                 if (rs.getString("username").equals(x) && rs.getString("password").equals(y)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("userName", x);
+                    session.setAttribute("password", y);
 
                     session.setMaxInactiveInterval(30 * 24 * 30 * 60);
                     session.setAttribute("loggedIn", true);
