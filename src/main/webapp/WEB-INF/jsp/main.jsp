@@ -1,10 +1,15 @@
+<%@page import="java.sql.Statement"%>
+<%@page import="org.springframework.ui.Model"%>
 <%@page import="org.springframework.stereotype.Controller"%>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%int cnt=0;%>
 <!DOCTYPE html>
 
 <html>
@@ -27,6 +32,15 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
         <title>Foodex | Browse</title>
         <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
+        
+        <style>
+            td{
+                padding-left: 90px;
+                padding-right: 90px;
+                padding-bottom: 50px;
+                padding-top: 30px;
+            }
+        </style>
     </head>
 
     <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
@@ -229,129 +243,72 @@
         </div>
         <div class="row">
             <div class="col">
-                <h4 class="res-heading">0 Restaurants</h4>
+                <%
+                    try{
+                         Class.forName("com.mysql.cj.jdbc.Driver");
+
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+                        Statement state = con.createStatement();
+                        
+                        ResultSet rst = state.executeQuery("select count(*) from restaurants");
+                        while (rst.next()) {
+                            cnt = rst.getInt(1);
+                        }
+                    }
+                    catch (Exception k){
+                        System.out.println(k.getMessage());
+                    }
+                %>            
+                <h4 class="res-heading"><%=cnt%> Restaurants</h4>
             </div>
         </div>
     </div>
-<!--    <div class="container">
+    
+    <div class="container">
+    <table>
+    <div class="container">
         <div class="row">
             <div class="col">
-                <div class = "grid">
-                    <%--
-                        try
-                        {
-                            Class.forName("com.mysql.cj.jdbc.Driver");
+                    <table>
+                        <%
+                            int colind = 0;
+                            try{
+                                Class.forName("com.mysql.cj.jdbc.Driver");
 
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-                            PreparedStatement stmt=con.prepareStatement("select * from restaurants limit4");
-                            
-                            ResultSet rs = stmt.executeQuery();
-                            
-                            while(rs.next())
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+                                PreparedStatement stmt=con.prepareStatement("select * from restaurants");
+                                ResultSet rs = stmt.executeQuery();
+                                
+                                %>
+                        <%
+                                        while(rs.next()){
+                        %>
+                            <td>
+                               <% String m=rs.getString("res_name");%>
+                                <a href="#">
+                                   <%=m%><br>
+                                </a>
+                                    <%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
+                                <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %><br>
+                                <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br>
+                            </td>
+                                <%colind++;%>
+                            <% if (colind%4==0)
                             {
-                                String NM = 
+                            %></tr><tr>
+                            <%}%>
+                        <%
+                            }}
+                            catch (Exception k){
+                                System.out.println(k.getMessage());
                             }
-                        }
-                        catch (Exception k)
-                        {
-                            System.out.println(k.getMessage());
-                        }
-                            --%>
-                </div>
+                        %>                     
+                    </table>     
             </div>
         </div>
-    </div>-->
+    </div>
 
-<%--    <footer class="text-center text-lg-start bg-white text-muted footer-main">--%>
-<%--        <section class="">--%>
-<%--            <div class="container text-center text-md-start mt-5">--%>
-<%--                <div class="row mt-3">--%>
-<%--                    <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">--%>
-<%--                        <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" style="width: 200px;"/>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-
-<%--                <div class="row mt-3">--%>
-<%--                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">--%>
-<%--                        <h6 class="text-uppercase fw-bold mb-4">--%>
-<%--                            About Foodex--%>
-<%--                        </h6>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Who We Are</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Blog</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="contact" class="text-reset">Contact Us</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Work With Us</a>--%>
-<%--                        </p>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">--%>
-<%--                        <h6 class="text-uppercase fw-bold mb-4">--%>
-<%--                            For Restaurants--%>
-<%--                        </h6>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Pricing</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Partner With Us</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Ride With Us</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Contact</a>--%>
-<%--                        </p>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">--%>
-<%--                        <h6 class="text-uppercase fw-bold mb-4">--%>
-<%--                            Learn More--%>
-<%--                        </h6>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Terms</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Privacy</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Security</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Rules and Regulations</a>--%>
-<%--                        </p>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">--%>
-<%--                        <h6 class="text-uppercase fw-bold mb-4">--%>
-<%--                            Follow Foodex--%>
-<%--                        </h6>--%>
-<%--                        <i class="fa-brands fa-instagram social-icon"></i>--%>
-<%--                        <i class="fa-brands fa-facebook-f social-icon"></i>--%>
-<%--                        <i class="fa-brands fa-youtube social-icon"></i>--%>
-<%--                        <i class="fa-brands fa-linkedin-in social-icon"></i>--%>
-<%--                        <i class="fa-brands fa-twitter social-icon"></i>--%>
-<%--                    </div>--%>
-
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </section>--%>
-
-<%--        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">--%>
-<%--            © 2023 Copyright:--%>
-<%--            <a class="text-reset fw-bold" href="#">Foodex.com</a>--%>
-<%--        </div>--%>
-<%--    </footer>--%>
+    <%@ include file="footer.jsp" %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
@@ -417,6 +374,3 @@
 </html>
 
 
-       
-
-    
