@@ -1,8 +1,8 @@
-<%--
+<%@ page import="java.sql.*" %><%--
   Created by IntelliJ IDEA.
   User: NEERAJ BELSARE
-  Date: 03-02-2023
-  Time: 17:03
+  Date: 04-02-2023
+  Time: 18:05
   To change this template use File | Settings | File Templates.
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,13 +10,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-          crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<c:url value="/resources/css/admin.css" />" rel="stylesheet">
-    <title>Admin Dashboard | Foodex</title>
+    <title>Users | Foodex</title>
 </head>
 <body>
 <div class="sidebar close">
@@ -82,6 +81,63 @@
     <div class="home-content">
         <i class='bx bx-menu' ></i>
     </div>
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4 style="font-family: 'Poppins', sans-serif">All Users</h4><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" style="display: flex; justify-content: center;align-items: center">
+                <%
+                    try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+                        PreparedStatement stmt = con.prepareStatement("select * from users");
+
+                        ResultSet rs = stmt.executeQuery();
+
+                        int columnCount = rs.getMetaData().getColumnCount();
+                        int columnIndex = 0;
+                %>
+
+                        <table class="table table-striped table-hover users-table">
+                            <tr>
+                                <th>Username</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                            </tr>
+                            <%
+                        while (rs.next()) {
+                            out.println("<tr>");
+                            for (int i = 1; i <= columnCount - 1; i++) {
+                                out.println("<td>" + rs.getString(i) + "</td>");
+                                columnIndex++;
+                                if (columnIndex % 5 == 0) {
+                                    out.println("</tr><tr>");
+                                }
+                            }
+                            out.println("</tr>");
+                        }
+                        out.println("</table>");
+
+                        rs.close();
+                        stmt.close();
+                        con.close();
+                    } catch (SQLException e) {
+                        out.println("SQL Error: " + e.getMessage());
+                    } catch (ClassNotFoundException e) {
+                        out.println("Class Not Found Error: " + e.getMessage());
+                    }
+                %>
+            </div>
+        </div>
+    </div>
 </section>
 
 <div class="one"></div>
@@ -89,7 +145,7 @@
     let arrow = document.querySelectorAll(".arrow");
     for (var i = 0; i < arrow.length; i++) {
         arrow[i].addEventListener("click", (e)=>{
-            let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+            let arrowParent = e.target.parentElement.parentElement;
             arrowParent.classList.toggle("showMenu");
         });
     }

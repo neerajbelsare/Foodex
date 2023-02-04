@@ -9,4 +9,9 @@ public class AdminController {
     public String getAdmin() {
         return "Admin";
     }
+
+    @RequestMapping(value = "/users")
+    public String getUsers() {
+        return "Users";
+    }
 }
