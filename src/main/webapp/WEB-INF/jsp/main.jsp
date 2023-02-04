@@ -119,19 +119,25 @@
                                                 flag = true;
                                 %>
 
-                                <li><a href="">Profile</a></li>
+                                <li><a href="#">Profile</a></li>
                                 <li><a href="#">Account</a></li>
                                 <li><a href="#">Settings</a></li>
                                 <li><a href="#">Log Out</a></li>
+                                <%
+                                                    }}}
+
+                                %>
+
                             </ul>
                         </div>
-                                <%
-                                                    }}}}catch (Exception k) {
+                    </li>
+
+                            <%
+                            }catch (Exception k) {
                                             System.out.println(k);
                                         }
                                     }
                                 %>
-                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link nav-reg" href="register"><span class="material-symbols-outlined nav-icons">shopping_cart</span>Cart</a>
@@ -262,96 +268,7 @@
         </div>
     </div>-->
 
-<%--    <footer class="text-center text-lg-start bg-white text-muted footer-main">--%>
-<%--        <section class="">--%>
-<%--            <div class="container text-center text-md-start mt-5">--%>
-<%--                <div class="row mt-3">--%>
-<%--                    <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">--%>
-<%--                        <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" style="width: 200px;"/>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-
-<%--                <div class="row mt-3">--%>
-<%--                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">--%>
-<%--                        <h6 class="text-uppercase fw-bold mb-4">--%>
-<%--                            About Foodex--%>
-<%--                        </h6>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Who We Are</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Blog</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="contact" class="text-reset">Contact Us</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Work With Us</a>--%>
-<%--                        </p>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">--%>
-<%--                        <h6 class="text-uppercase fw-bold mb-4">--%>
-<%--                            For Restaurants--%>
-<%--                        </h6>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Pricing</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Partner With Us</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Ride With Us</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Contact</a>--%>
-<%--                        </p>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">--%>
-<%--                        <h6 class="text-uppercase fw-bold mb-4">--%>
-<%--                            Learn More--%>
-<%--                        </h6>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Terms</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Privacy</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Security</a>--%>
-<%--                        </p>--%>
-<%--                        <p>--%>
-<%--                            <a href="#!" class="text-reset">Rules and Regulations</a>--%>
-<%--                        </p>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">--%>
-<%--                        <h6 class="text-uppercase fw-bold mb-4">--%>
-<%--                            Follow Foodex--%>
-<%--                        </h6>--%>
-<%--                        <i class="fa-brands fa-instagram social-icon"></i>--%>
-<%--                        <i class="fa-brands fa-facebook-f social-icon"></i>--%>
-<%--                        <i class="fa-brands fa-youtube social-icon"></i>--%>
-<%--                        <i class="fa-brands fa-linkedin-in social-icon"></i>--%>
-<%--                        <i class="fa-brands fa-twitter social-icon"></i>--%>
-<%--                    </div>--%>
-
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </section>--%>
-
-<%--        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">--%>
-<%--            © 2023 Copyright:--%>
-<%--            <a class="text-reset fw-bold" href="#">Foodex.com</a>--%>
-<%--        </div>--%>
-<%--    </footer>--%>
+        <%@ include file="footer.jsp" %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
