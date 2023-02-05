@@ -35,8 +35,8 @@
 
     <style>
         td{
-            padding-left: 90px;
-            padding-right: 90px;
+            padding-left: 0px;
+            padding-right: 62px;
             padding-bottom: 50px;
             padding-top: 30px;
         }
@@ -281,7 +281,7 @@
                         %>
                         <td>
                             <% String m=rs.getString("res_name"); long z = rs.getLong("res_id");%>
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" style="width: 14rem;">
                                 <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
                                     <h5 class="card-title"><%=m%></h5>
                                     <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
