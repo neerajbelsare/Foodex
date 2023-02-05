@@ -71,7 +71,7 @@
                                 <p style="color: grey; margin-left: 40px; font-size: 0.9em">Name and Address</p>
                                 <br><input type="text" id="name" class="form-control form-input" placeholder="Restaurant Name" name="a"/><br>
                                 <input type="text" id="address" class="form-control form-input" placeholder="Restaurant Address" name="b"/><br>
-                                <input type="text" id="license-number" class="form-control form-input" placeholder="FSSAI License Number" name="l"/>
+                                <input type="text" id="license-number" class="form-control form-input" placeholder="FSSAI License Number (14 Digit)" name="l"/>
                                 <br><br>
                             </div>
                             </div>
@@ -504,11 +504,7 @@
                                 <br><h4 style="font-weight: 700; margin-left: 20px">6. Restaurant Images</h4>
                                 <p style="color: grey; margin-left: 40px; font-size: 0.9em">Upload various pictures of your outlet</p>
                                 <br>
-<<<<<<< Updated upstream
                                 <input id="images" type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" name="k"/>
-=======
-                                <input id="images" required type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" multiple name="k"/>
->>>>>>> Stashed changes
                                 <br><br><br>
                             </div>
                             </div>

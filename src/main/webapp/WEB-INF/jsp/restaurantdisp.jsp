@@ -1,13 +1,12 @@
-<%@page import="java.sql.Statement"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="org.springframework.stereotype.Controller"%>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.springframework.web.bind.annotation.GetMapping" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.OutputStream" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%int cnt=0;%>
 <!DOCTYPE html>
@@ -281,16 +280,18 @@
                             while(rs.next()){
                         %>
                         <td>
-                            <% String m=rs.getString("res_name");%>
-                            <a href="" value="m">
-                                <%=m%><br>
-                            </a>
-                            <%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
-                            <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %><br>
-                            <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br>
+                            <% String m=rs.getString("res_name"); long z = rs.getLong("res_id");%>
+                            <div class="card" style="width: 18rem;">
+                                <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
+                                    <h5 class="card-title"><%=m%></h5>
+                                    <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
+                                        <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -
+                                        <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br></p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </td>
                         <%colind++;%>
-                            <% if (colind%4==0)
+                            <% if (colind%4 == 0)
                             {
                             %></tr><tr>
                             <%}%>
@@ -304,6 +305,7 @@
                 </div>
             </div>
         </div>
+
 
         <%@ include file="footer.jsp" %>
 

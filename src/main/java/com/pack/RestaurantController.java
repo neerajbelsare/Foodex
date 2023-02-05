@@ -1,6 +1,7 @@
 package com.pack;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.*;
+
+import static java.lang.System.out;
 
 @Controller
 public class RestaurantController extends HttpServlet {
@@ -32,15 +36,17 @@ public class RestaurantController extends HttpServlet {
         }
     }
 
+    Long id = 0L;
 
     @RequestMapping(value = "/restaurantform", method = RequestMethod.POST)
     public String submitresForm(HttpServletRequest request, HttpServletResponse response,@RequestParam("l") Long r , @RequestParam("a") String s,
                                 @RequestParam("b") String t, @RequestParam("c") Long u, @RequestParam("d") String v
             , @RequestParam("e") String w, @RequestParam("f") Long x, @RequestParam("g") String[] y, @RequestParam("h") String[] z
             , @RequestParam("i") String m, @RequestParam("j") String n, @RequestParam("k") CommonsMultipartFile file) {
+
         try {
             HttpSession session = request.getSession();
-
+            session.setAttribute("res_id", r);
             String type = String.join(",", y);
             String cuisine = String.join(",", z);
 
@@ -77,13 +83,12 @@ public class RestaurantController extends HttpServlet {
 
                 ResultSet rs1 = stmt1.executeQuery();
 
-                String sql = "INSERT INTO res_images (name, res_id, data) values (?, ?, ?)";
+                String sql = "INSERT INTO res_images (res_id, data) values (?, ?)";
                 PreparedStatement statement = con.prepareStatement(sql);
-                statement.setString(1, file.getName());
-                statement.setLong(2, r);
+                statement.setLong(1, r);
 
                 if (inputStream != null) {
-                    statement.setBlob(3, inputStream);
+                    statement.setBlob(2, inputStream);
                 }
 
                 stmt.executeUpdate();
@@ -92,10 +97,50 @@ public class RestaurantController extends HttpServlet {
                     message = "File uploaded and saved into database";
                 }
             } catch (SQLException ex) {
-                System.out.println(ex);
+                out.println(ex);
             }
 
             return "ResFormSubmit";
+        } catch (SQLException | ClassNotFoundException | IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @GetMapping("/displayImage")
+    public void displayImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        long z = 0;
+        Blob image = null;
+        byte[] imgData = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+
+            PreparedStatement stmt1 =con.prepareStatement("select * from restaurants");
+            ResultSet rst = stmt1.executeQuery();
+
+            while(rst.next()) {
+                z = rst.getLong("res_id");
+
+                PreparedStatement stmt = con.prepareStatement("select data from res_images where res_id=?");
+                stmt.setLong(1, z);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    image = rs.getBlob("data");
+                    imgData = image.getBytes(1, (int) image.length());
+                } else {
+                    System.out.println("image not found for given id");
+                    return;
+                }
+
+                response.setContentType("image/jpeg");
+
+                OutputStream outputStream = response.getOutputStream();
+                outputStream.write(imgData);
+                outputStream.flush();
+                outputStream.close();
+            }
         } catch (SQLException | ClassNotFoundException | IOException ex) {
             throw new RuntimeException(ex);
         }
