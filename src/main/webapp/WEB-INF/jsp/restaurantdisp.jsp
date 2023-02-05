@@ -1,4 +1,3 @@
-<%@page import="java.util.Random"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="org.springframework.stereotype.Controller"%>
@@ -10,9 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%int cnt=0;%>
-    
 <!DOCTYPE html>
 
 <html>
@@ -60,10 +57,7 @@
                     <a class="nav-link nav-reg" href="login"><span class="material-symbols-outlined nav-icons">search</span>Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-reg" href="#"><span class="material-symbols-outlined nav-icons">loyalty</span>Offers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-reg" href="restaurants"><span class="material-symbols-outlined">storefront</span>Restaurants</a>
+                    <a class="nav-link nav-reg" href="browse"><span class="material-symbols-outlined">restaurant_menu</span>Items</a>
                 </li>
 
                 <%
@@ -153,10 +147,6 @@
                         }
                     %>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link nav-reg" href="register"><span class="material-symbols-outlined nav-icons">shopping_cart</span>Cart</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -241,10 +231,8 @@
         </div>
     </div>
 </div>
-<br>
+<br><br><br>
 <div class="container">
-    <div class="row">
-        <div class="col"><h1>Items</h1></div></div><br>
     <div class="row">
         <div class="col">
             <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="material-symbols-outlined" style="color: #1e53ff; margin-right: 5px;">filter_alt</span>Filter</button>
@@ -259,7 +247,7 @@
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
                     Statement state = con.createStatement();
 
-                    ResultSet rst = state.executeQuery("select count(*) from items");
+                    ResultSet rst = state.executeQuery("select count(*) from restaurants");
                     while (rst.next()) {
                         cnt = rst.getInt(1);
                     }
@@ -268,7 +256,7 @@
                     System.out.println(k.getMessage());
                 }
             %>
-            <h4 class="res-heading"><%=cnt%> Items</h4>
+            <h4 class="res-heading"><%=cnt%> Restaurants</h4>
         </div>
     </div>
 </div>
@@ -285,7 +273,7 @@
                                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-                                PreparedStatement stmt=con.prepareStatement("select * from items order by rand()");
+                                PreparedStatement stmt=con.prepareStatement("select * from restaurants order by rand()");
                                 ResultSet rs = stmt.executeQuery();
 
                         %>
@@ -293,19 +281,13 @@
                             while(rs.next()){
                         %>
                         <td>
-                            <% long m=rs.getLong("res_id");
-                            PreparedStatement state=con.prepareStatement("select * from restaurants where res_id=?");
-                            state.setLong(1, m);
-                            ResultSet rst = state.executeQuery();
-                            String l="";
-                            while(rst.next())
-                            {
-                                l=rst.getString("res_name");
-                            }
-                            %>
-                            <%=l%><br>
-                            <%= rs.getString("item_name") %><br><%= rs.getFloat("price") %><br>
-                            <%= rs.getLong("item_id") %><br><%= rs.getFloat("rating") %><br>
+                            <% long m=rs.getLong("res_id");%>
+                            <a href="" value="m">
+                                <%=m%><br>
+                            </a>
+                            <%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
+                            <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %><br>
+                            <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br>
                         </td>
                         <%colind++;%>
                             <% if (colind%4==0)
