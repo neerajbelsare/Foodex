@@ -1,6 +1,8 @@
 com\pack\HomeController.class
-com\pack\PasswordController.class
+com\pack\AdminController.class
 com\pack\ContactUsController.class
+com\pack\mainController.class
+com\pack\PasswordController.class
 com\pack\RegisterController.class
 com\pack\DeleteController.class
-com\pack\mainController.class
+com\pack\RestaurantController.class
