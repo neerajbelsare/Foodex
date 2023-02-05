@@ -41,13 +41,13 @@
 
     <style>
         td{
-            padding-left: 100px;
-            padding-right: 80px;
+            padding-left: 0px;
+            padding-right: 64px;
             padding-bottom: 50px;
             padding-top: 30px;
         }
         .btn-circle.btn-sm {
-            width: 46px;
+            width: 100px;
             height: 40px;
             padding: 6px 0px;
             border-radius: 10px;
@@ -306,7 +306,6 @@
                             while(rs.next()){
                         %>
                         <td>
-                            <h3><%= rs.getString("item_name")%></h3>
                             <% long m=rs.getLong("res_id");
                             PreparedStatement state=con.prepareStatement("select * from restaurants where res_id=?");
                             state.setLong(1, m);
@@ -316,20 +315,24 @@
                                 l=rst.getString("res_name");
                             }
                             %>
-                            <h5><%=l%></h5>
-                            Rs. <%= rs.getFloat("price") %><br>
-                            <%--= rs.getLong("item_id") --%>
-                            Rating:<%= rs.getFloat("rating")%><br>
-                            <div align="center" style="display: inline-block;">
-                                <button type="button" class="btn btn-warning btn-circle btn-sm">
-                                    <span class="material-symbols-outlined">add_shopping_cart</span>
-                                </button>
-                                <select name="quantity" autocomplete="off" data-action="a-dropdown-select" >
-                                    <option value="1" selected="">1 </option>
-                                    <option value="2">2 </option>
-                                    <option value="3">3 </option>
-                                    <option value="4">4 </option>
-                                </select>
+                            <div class="card" style="width: 14rem;">
+                                <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
+                                    <h5 class="card-title"><%= rs.getString("item_name")%></h5>
+                                    <p class="card-text"><%=l%><br>
+                                        Rs. <%= rs.getFloat("price") %><br>
+                                        Rating:<%= rs.getFloat("rating")%><br>
+                                        <div align="center" style="display: inline-block;">
+                                            <button type="button" class="btn btn-warning btn-circle btn-sm">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                                            </button>
+                                            <select name="quantity" autocomplete="off" data-action="a-dropdown-select" >
+                                                <option value="1" selected="">1</option>
+                                                <option value="2">2 </option>
+                                                <option value="3">3 </option>
+                                                <option value="4">4 </option>
+                                            </select>
+                                        </div>
+                                    </p>
                             </div>
                         </td>
                         <%colind++;%>
