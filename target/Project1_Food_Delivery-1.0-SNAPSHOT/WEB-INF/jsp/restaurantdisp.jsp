@@ -281,7 +281,7 @@
                             while(rs.next()){
                         %>
                         <td>
-                            <% long m=rs.getLong("res_id");%>
+                            <% String m=rs.getString("res_name");%>
                             <a href="" value="m">
                                 <%=m%><br>
                             </a>
