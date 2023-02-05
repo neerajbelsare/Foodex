@@ -16,6 +16,12 @@ public class mainController
     {
         return "main";
     }
+    
+    @RequestMapping (value = "/restaurants")
+    public String restaurantPage()
+    {
+        return "restaurantdisp";
+    }
 }
 
    
