@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
@@ -39,10 +41,21 @@
 
     <style>
         td{
-            padding-left: 90px;
-            padding-right: 90px;
+            padding-left: 100px;
+            padding-right: 80px;
             padding-bottom: 50px;
             padding-top: 30px;
+        }
+        .btn-circle.btn-sm {
+            width: 46px;
+            height: 40px;
+            padding: 6px 0px;
+            border-radius: 10px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .abcd{
+            
         }
     </style>
 </head>
@@ -293,19 +306,31 @@
                             while(rs.next()){
                         %>
                         <td>
+                            <h3><%= rs.getString("item_name")%></h3>
                             <% long m=rs.getLong("res_id");
                             PreparedStatement state=con.prepareStatement("select * from restaurants where res_id=?");
                             state.setLong(1, m);
                             ResultSet rst = state.executeQuery();
                             String l="";
-                            while(rst.next())
-                            {
+                            while(rst.next()){
                                 l=rst.getString("res_name");
                             }
                             %>
-                            <%=l%><br>
-                            <%= rs.getString("item_name") %><br><%= rs.getFloat("price") %><br>
-                            <%= rs.getLong("item_id") %><br><%= rs.getFloat("rating") %><br>
+                            <h5><%=l%></h5>
+                            Rs. <%= rs.getFloat("price") %><br>
+                            <%--= rs.getLong("item_id") --%>
+                            Rating:<%= rs.getFloat("rating")%><br>
+                            <div align="center" style="display: inline-block;">
+                                <button type="button" class="btn btn-warning btn-circle btn-sm">
+                                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                                </button>
+                                <select name="quantity" autocomplete="off" data-action="a-dropdown-select" >
+                                    <option value="1" selected="">1 </option>
+                                    <option value="2">2 </option>
+                                    <option value="3">3 </option>
+                                    <option value="4">4 </option>
+                                </select>
+                            </div>
                         </td>
                         <%colind++;%>
                             <% if (colind%4==0)
