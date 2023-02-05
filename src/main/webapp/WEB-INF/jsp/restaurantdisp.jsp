@@ -35,10 +35,7 @@
 
     <style>
         td{
-            padding-left: 0px;
-            padding-right: 62px;
-            padding-bottom: 50px;
-            padding-top: 30px;
+            padding: 30px 62px 50px 0;
         }
     </style>
 </head>
@@ -261,50 +258,48 @@
 </div>
 
 <div class="container">
-    <table>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <table>
-                        <%
-                            int colind = 0;
-                            try{
-                                Class.forName("com.mysql.cj.jdbc.Driver");
+    <div class="row">
+        <div class="col">
+            <table style="width: 100%;">
+                <%
+                    int colind = 0;
+                    try{
+                        Class.forName("com.mysql.cj.jdbc.Driver");
 
-                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-                                PreparedStatement stmt=con.prepareStatement("select * from restaurants order by rand()");
-                                ResultSet rs = stmt.executeQuery();
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+                        PreparedStatement stmt=con.prepareStatement("select * from restaurants order by rand()");
+                        ResultSet rs = stmt.executeQuery();
 
-                        %>
-                        <%
-                            while(rs.next()){
-                        %>
-                        <td>
-                            <% String m=rs.getString("res_name"); long z = rs.getLong("res_id");%>
-                            <div class="card" style="width: 14rem;">
-                                <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
-                                    <h5 class="card-title"><%=m%></h5>
-                                    <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
-                                        <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -
-                                        <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br></p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </td>
-                        <%colind++;%>
-                            <% if (colind%4 == 0)
-                            {
-                            %></tr><tr>
-                            <%}%>
-                            <%
-                            }}
-                            catch (Exception k){
-                                System.out.println(k.getMessage());
-                            }
-                        %>
-                    </table>
-                </div>
-            </div>
+                %>
+                <%
+                    while(rs.next()){
+                %>
+                <td>
+                    <% String m=rs.getString("res_name"); long z = rs.getLong("res_id");%>
+                    <div class="card" style="width: 14rem;">
+                        <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
+                            <h5 class="card-title"><%=m%></h5>
+                            <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
+                                <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -
+                                <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br></p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </td>
+                <%colind++;%>
+                    <% if (colind%4 == 0)
+                    {
+                    %></tr><tr>
+                    <%}%>
+                    <%
+                    }}
+                    catch (Exception k){
+                        System.out.println(k.getMessage());
+                    }
+                %>
+            </table>
         </div>
+    </div>
+</div>
 
 
         <%@ include file="footer.jsp" %>
