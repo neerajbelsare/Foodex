@@ -2,6 +2,10 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/main/java/com/pack/RestaurantController.java" dialect="MySQL" />
+<<<<<<< Updated upstream
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" dialect="MySQL" />
+=======
+    <file url="PROJECT" dialect="MySQL" />
+>>>>>>> Stashed changes
   </component>
 </project>

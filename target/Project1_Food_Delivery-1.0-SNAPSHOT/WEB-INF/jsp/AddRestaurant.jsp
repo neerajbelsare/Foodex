@@ -62,7 +62,7 @@
     <div class="row">
         <div class="col" style="display: flex; justify-content: center; align-content: center">
             <div class="main-details-div">
-                <form action="restaurantform" method="post" style="font-family: 'Poppins', sans-serif;" id="form">
+                <form action="restaurantform" method="post" style="font-family: 'Poppins', sans-serif;" id="form" enctype="multipart/form-data">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
@@ -70,7 +70,8 @@
                                 <br><h4 style="font-weight: 700; margin-left: 20px">1. Restaurant Details</h4>
                                 <p style="color: grey; margin-left: 40px; font-size: 0.9em">Name and Address</p>
                                 <br><input type="text" id="name" class="form-control form-input" placeholder="Restaurant Name" name="a"/><br>
-                                <input type="text" id="address" class="form-control form-input" placeholder="Restaurant Address" name="b"/>
+                                <input type="text" id="address" class="form-control form-input" placeholder="Restaurant Address" name="b"/><br>
+                                <input type="text" id="license-number" class="form-control form-input" placeholder="FSSAI License Number" name="l"/>
                                 <br><br>
                             </div>
                             </div>
@@ -503,7 +504,11 @@
                                 <br><h4 style="font-weight: 700; margin-left: 20px">6. Restaurant Images</h4>
                                 <p style="color: grey; margin-left: 40px; font-size: 0.9em">Upload various pictures of your outlet</p>
                                 <br>
+<<<<<<< Updated upstream
                                 <input id="images" type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" name="k"/>
+=======
+                                <input id="images" required type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" multiple name="k"/>
+>>>>>>> Stashed changes
                                 <br><br><br>
                             </div>
                             </div>
@@ -633,8 +638,9 @@
         const d = document.getElementById("phone1");
         const e = document.getElementById("man_name");
         const f = document.getElementById("man_email");
+        const g = document.getElementById("license-number");
 
-        if (!a.value || !b.value || !c.value || !d.value || !e.value || !f.value) {
+        if (!a.value || !b.value || !c.value || !d.value || !e.value || !f.value || !g.value) {
             alert("All fields are required.");
             event.preventDefault();
         }
