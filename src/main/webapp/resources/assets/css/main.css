@@ -180,3 +180,10 @@ ul{
 a{
     text-decoration: none;
 }
+
+.grid1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    font-family: 'Poppins', sans-serif;
+}

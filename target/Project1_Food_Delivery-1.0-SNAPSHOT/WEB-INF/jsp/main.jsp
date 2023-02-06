@@ -356,7 +356,7 @@
                                 l=rst.getString("res_name");
                             }
                             %>
-                            <div class="card" style="width: 14rem;">
+                            <div class="card" style="width: 20rem;">
                                 <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
                                     <h4 class="card-title"><%= rs.getString("item_name")%></h4>
                                     <p class="card-text">
@@ -380,15 +380,15 @@
                                         <%}
                                         %>
                                         <br>
-                                    <div class="container-fluid">
-                                        <div class="inline-div row" style="margin-bottom: 10px;">
-                                            <div class="text-container col">
+
+                                        <div class="inline-div grid1" style="margin-bottom: 10px;">
+                                            <div class="text-container">
                                                 <div class="truncate" ><%= rs.getString("description") %></div>
                                                 <div class="text-desc"><%= rs.getString("description") %></div>
                                             </div>
-                                            <div class="col">Rs. <%= rs.getFloat("price") %></div>
+                                            <div align="right">Rs. <%= rs.getFloat("price") %></div>
                                         </div>
-                                    </div>
+
                                         <div align="center" style="display: inline-block; margin-top: 10px; margin-bottom: 0px">
                                             <button type="button" class="btn btn-warning btn-circle btn-sm" style="margin-right: 20px;">
                                                 <span class="material-symbols-outlined">add_shopping_cart</span>

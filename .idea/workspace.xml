@@ -11,10 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8ea66058-2935-48ac-ae01-af668147bce4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/restaurantdisp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/restaurantdisp.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/RestaurantController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/RestaurantController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/restaurantdisp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/restaurantdisp.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pack/RestaurantController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pack/RestaurantController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
