@@ -277,7 +277,7 @@
                 <td>
                     <% String m=rs.getString("res_name"); long z = rs.getLong("res_id");%>
                     <div class="card" style="width: 14rem;">
-                        <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
+                        <img src="<c:url value='/displayImage'/>" class="card-img-top" alt="...">
                             <h5 class="card-title"><%=m%></h5>
                             <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
                                 <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -

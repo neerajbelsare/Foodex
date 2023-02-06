@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
@@ -54,9 +56,48 @@
             font-size: 10px;
             text-align: center;
         }
-        .abcd{
-            
+        .card-title,.card-text {
+            margin-bottom: 4px;
         }
+        .card-body {
+            padding-top: 10rem;
+        }
+        .truncate {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 50%;
+          }
+        .inline-div {
+/*            display: inline-block;*/
+            width: 100%;
+            position: sticky;
+            height: 18px;
+            vertical-align: top;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        text-container {
+            display: inline-block; 
+        }
+        .text-container .text-desc {
+            text-align: center;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: lightgray;
+            padding: 8px;
+            width: 100%;
+            border-radius: 50px;
+        }
+        .text-container:hover .text-desc {
+            display: block;
+        }
+        
     </style>
 </head>
 
@@ -317,12 +358,39 @@
                             %>
                             <div class="card" style="width: 14rem;">
                                 <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
-                                    <h5 class="card-title"><%= rs.getString("item_name")%></h5>
-                                    <p class="card-text"><%=l%><br>
-                                        Rs. <%= rs.getFloat("price") %><br>
-                                        Rating:<%= rs.getFloat("rating")%><br>
-                                        <div align="center" style="display: inline-block;">
-                                            <button type="button" class="btn btn-warning btn-circle btn-sm">
+                                    <h4 class="card-title"><%= rs.getString("item_name")%></h4>
+                                    <p class="card-text">
+                                        <a href="#">
+                                            <%=l%><br>
+                                        </a>
+                                        
+                                        <%float rate = rs.getFloat("rating");
+                                        int n = (int) rate; 
+                                        for (int i=0;i<n;i++)
+                                        {%>
+                                            <span class="material-symbols-rounded" style="color: #3EC70B;">
+                                                star
+                                            </span>
+                                        <%}
+                                        if (rate%1!=0)
+                                        {%>
+                                            <span class="material-symbols-rounded" style="color: #3EC70B;">
+                                                star_half
+                                            </span>
+                                        <%}
+                                        %>
+                                        <br>
+                                    <div class="container-fluid">
+                                        <div class="inline-div row" style="margin-bottom: 10px;">
+                                            <div class="text-container col">
+                                                <div class="truncate" ><%= rs.getString("description") %></div>
+                                                <div class="text-desc"><%= rs.getString("description") %></div>
+                                            </div>
+                                            <div class="col">Rs. <%= rs.getFloat("price") %></div>
+                                        </div>
+                                    </div>
+                                        <div align="center" style="display: inline-block; margin-top: 10px; margin-bottom: 0px">
+                                            <button type="button" class="btn btn-warning btn-circle btn-sm" style="margin-right: 20px;">
                                                 <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
                                             <select name="quantity" autocomplete="off" data-action="a-dropdown-select" >
