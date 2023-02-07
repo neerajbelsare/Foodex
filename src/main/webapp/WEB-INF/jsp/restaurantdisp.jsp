@@ -271,15 +271,11 @@
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
                         PreparedStatement stmt=con.prepareStatement("select * from restaurants");
                         ResultSet rs = stmt.executeQuery();
-
-                %>
-                <%
+                        
+                    String base64Image = "";
+                    
                     while(rs.next()){
-                %>
-                <td>
-                    <% String m=rs.getString("res_name"); long z = rs.getLong("res_id");%>
-                    <div class="card" style="width: 14rem;">
-                        <%
+                        long z = rs.getLong("res_id");
 //                            Blob image = null;
                             byte[] imgData = null;
 
@@ -288,22 +284,16 @@
 
                                 ResultSet rst = stmt1.executeQuery();
 
-                                if (rst.next())
-                                {
-                                    //image = rst.getBlob("data");
+//                                if (rst.next())
+//                                {
                                     imgData = rst.getBytes("data");
-                                    String base64Image = Base64.getEncoder().encodeToString(imgData);
-                                    out.println("<img src='data:image/png;base64," + base64Image + "' />");
-                                }
-
-//            response.setContentType("image/jpeg");
-
-//            OutputStream outputStream = response.getOutputStream();
-//            outputStream.write(imgData);
-//            outputStream.flush();
-//            outputStream.close();
-
-                        %>
+                                    base64Image = Base64.getEncoder().encodeToString(imgData);
+//                                }
+                %>
+                <td>
+                    <% String m=rs.getString("res_name");%>
+                    <div class="card" style="width: 14rem;">
+                        <img class="card-img-top" alt="..." src='data:image/png;base64,<%= base64Image %>'/>
 <%--                        <img class="card-img-top" alt="..." src="<c:url value='/displayImage'/>?value=${value}"/>--%>
                         <h5 class="card-title"><%=m%></h5>
                         <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
