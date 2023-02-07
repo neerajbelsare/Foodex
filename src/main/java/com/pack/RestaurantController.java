@@ -17,6 +17,7 @@ import java.io.OutputStream;
 import java.sql.*;
 
 import static java.lang.System.out;
+import org.springframework.ui.Model;
 
 @Controller
 public class RestaurantController extends HttpServlet {
@@ -107,24 +108,25 @@ public class RestaurantController extends HttpServlet {
     }
 
     @GetMapping("/displayImage")
-    public void displayImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void displayImage(HttpServletRequest request, HttpServletResponse response, @RequestParam(name="value", required = true) long value, Model model) throws IOException {
 
-        long z = 0;
+        model.addAttribute("value",value);
+        long val= (long) model.asMap().get("value");
         Blob image = null;
         byte[] imgData = null;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-
-            PreparedStatement stmt1 =con.prepareStatement("select * from restaurants");
-            ResultSet rst = stmt1.executeQuery();
-
-            while(rst.next()) {
-                z = rst.getLong("res_id");
+//
+//            PreparedStatement stmt1 =con.prepareStatement("select * from restaurants");
+//            ResultSet rst = stmt1.executeQuery();
+//
+//            while(rst.next()) {
+//                z = rst.getLong("res_id");
 
                 PreparedStatement stmt = con.prepareStatement("select data from res_images where res_id=?");
-                stmt.setLong(1, z);
+                stmt.setLong(1, val);
                 ResultSet rs = stmt.executeQuery();
                 if (rs.next()) {
                     image = rs.getBlob("data");
@@ -140,7 +142,7 @@ public class RestaurantController extends HttpServlet {
                 outputStream.write(imgData);
                 outputStream.flush();
                 outputStream.close();
-            }
+//            }
         } catch (SQLException | ClassNotFoundException | IOException ex) {
             throw new RuntimeException(ex);
         }
