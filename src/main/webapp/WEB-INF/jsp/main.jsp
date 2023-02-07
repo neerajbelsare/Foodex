@@ -77,9 +77,6 @@
             height: 18px;
             vertical-align: top;
         }
-        .price{
-            
-        }
         a{
             color: black;
             text-decoration: none;
