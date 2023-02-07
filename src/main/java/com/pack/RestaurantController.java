@@ -125,16 +125,16 @@ public class RestaurantController extends HttpServlet {
 //            while(rst.next()) {
 //                z = rst.getLong("res_id");
 
+<<<<<<< Updated upstream
                 PreparedStatement stmt = con.prepareStatement("select data from res_images where res_id=?");
                 stmt.setLong(1, val);
+=======
+                PreparedStatement stmt = con.prepareStatement("select * from res_images where res_id=?");
+                stmt.setLong(1, z);
+>>>>>>> Stashed changes
                 ResultSet rs = stmt.executeQuery();
-                if (rs.next()) {
-                    image = rs.getBlob("data");
-                    imgData = image.getBytes(1, (int) image.length());
-                } else {
-                    System.out.println("image not found for given id");
-                    return;
-                }
+                image = rs.getBlob("data");
+                imgData = image.getBytes(1, (int) image.length());
 
                 response.setContentType("image/jpeg");
 

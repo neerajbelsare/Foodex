@@ -277,7 +277,11 @@
                 <td>
                     <% String m=rs.getString("res_name"); long value = rs.getLong("res_id");%>
                     <div class="card" style="width: 14rem;">
+<<<<<<< Updated upstream
                         <img class="card-img-top" alt="..." src="<c:url value='/displayImage'/>?value=${value}"/>
+=======
+                        <img id="myImage" src="<c:url value='/displayImage' />" class="card-img-top" alt="res" data-value="z">
+>>>>>>> Stashed changes
                             <h5 class="card-title"><%=m%></h5>
                             <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
                                 <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -
@@ -362,6 +366,7 @@
 
             displayPicture.addEventListener("click", function() {
                 card.classList.toggle("hidden")})
+
 
         </script>
 </body>
