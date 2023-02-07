@@ -7,6 +7,8 @@
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.io.OutputStream" %>
+<%@ page import="java.util.Base64" %>
+<%@ page import="static java.lang.System.out" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%int cnt=0;%>
 <!DOCTYPE html>
@@ -275,22 +277,39 @@
                     while(rs.next()){
                 %>
                 <td>
-                    <% String m=rs.getString("res_name"); long value = rs.getLong("res_id");%>
+                    <% String m=rs.getString("res_name"); long z = rs.getLong("res_id");%>
                     <div class="card" style="width: 14rem;">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                        <img class="card-img-top" alt="..." src="<c:url value='/displayImage'/>?value=${value}"/>
-=======
-                        <img id="myImage" src="<c:url value='/displayImage' />" class="card-img-top" alt="res" data-value="z">
->>>>>>> Stashed changes
-=======
-                        <img id="myImage" src="<c:url value='/displayImage' />" class="card-img-top" alt="res" data-value="z">
->>>>>>> Stashed changes
-                            <h5 class="card-title"><%=m%></h5>
-                            <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
-                                <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -
-                                <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <%
+//                            Blob image = null;
+                            byte[] imgData = null;
+
+                                PreparedStatement stmt1 = con.prepareStatement("select data from res_images where res_id=?");
+                                stmt.setLong(1, z);
+
+                                ResultSet rst = stmt1.executeQuery();
+
+                                if (rst.next())
+                                {
+                                    //image = rst.getBlob("data");
+                                    imgData = rst.getBytes("data");
+                                    String base64Image = Base64.getEncoder().encodeToString(imgData);
+                                    out.println("<img src='data:image/png;base64," + base64Image + "' />");
+                                }
+
+//            response.setContentType("image/jpeg");
+
+//            OutputStream outputStream = response.getOutputStream();
+//            outputStream.write(imgData);
+//            outputStream.flush();
+//            outputStream.close();
+
+                        %>
+<%--                        <img class="card-img-top" alt="..." src="<c:url value='/displayImage'/>?value=${value}"/>--%>
+                        <h5 class="card-title"><%=m%></h5>
+                        <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
+                            <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -
+                            <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br></p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </td>
                 <%colind++;%>

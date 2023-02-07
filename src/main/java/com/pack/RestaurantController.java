@@ -1,7 +1,6 @@
 package com.pack;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,11 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.*;
 
 import static java.lang.System.out;
-import org.springframework.ui.Model;
 
 @Controller
 public class RestaurantController extends HttpServlet {
@@ -107,54 +104,36 @@ public class RestaurantController extends HttpServlet {
         }
     }
 
-    @GetMapping("/displayImage")
-    public void displayImage(HttpServletRequest request, HttpServletResponse response, @RequestParam(name="value", required = true) long value, Model model) throws IOException {
-
-        model.addAttribute("value",value);
-        long val= (long) model.asMap().get("value");
-        Blob image = null;
-        byte[] imgData = null;
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-<<<<<<< Updated upstream
+//    @GetMapping("/displayImage")
+//    public void displayImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        Blob image = null;
+//        byte[] imgData = null;
 //
-//            PreparedStatement stmt1 =con.prepareStatement("select * from restaurants");
-//            ResultSet rst = stmt1.executeQuery();
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
 //
-//            while(rst.next()) {
-//                z = rst.getLong("res_id");
-
-<<<<<<< Updated upstream
-                PreparedStatement stmt = con.prepareStatement("select data from res_images where res_id=?");
-                stmt.setLong(1, val);
-=======
-=======
-
-            PreparedStatement stmt1 =con.prepareStatement("select * from restaurants");
-            ResultSet rst = stmt1.executeQuery();
-
-            while(rst.next()) {
-                z = rst.getLong("res_id");
-
->>>>>>> Stashed changes
-                PreparedStatement stmt = con.prepareStatement("select * from res_images where res_id=?");
-                stmt.setLong(1, z);
->>>>>>> Stashed changes
-                ResultSet rs = stmt.executeQuery();
-                image = rs.getBlob("data");
-                imgData = image.getBytes(1, (int) image.length());
-
-                response.setContentType("image/jpeg");
-
-                OutputStream outputStream = response.getOutputStream();
-                outputStream.write(imgData);
-                outputStream.flush();
-                outputStream.close();
+//            PreparedStatement stmt = con.prepareStatement("select data from res_images where res_id=?");
+//            stmt.setLong(1, val);
+//
+//            ResultSet rs = stmt.executeQuery();
+//
+//            if (rs.next())
+//            {
+//                image = rs.getBlob("data");
+//                imgData = image.getBytes(1, (int) image.length());
+//                String base64Image = Base64.getEncoder().encodeToString(imgData);
+//                out.println("<img src='data:image/png;base64," + base64Image + "' />");
 //            }
-        } catch (SQLException | ClassNotFoundException | IOException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
+//
+////            response.setContentType("image/jpeg");
+//
+////            OutputStream outputStream = response.getOutputStream();
+////            outputStream.write(imgData);
+////            outputStream.flush();
+////            outputStream.close();
+//        } catch (SQLException | ClassNotFoundException | IOException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//}
 }
