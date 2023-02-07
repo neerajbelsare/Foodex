@@ -63,10 +63,12 @@
             padding-top: 10rem;
         }
         .truncate {
+            color:#494949;
+            font-size: 12px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            width: 50%;
+            width: 70%;
           }
         .inline-div {
 /*            display: inline-block;*/
@@ -74,6 +76,9 @@
             position: sticky;
             height: 18px;
             vertical-align: top;
+        }
+        .price{
+            
         }
         a{
             color: black;
@@ -83,6 +88,7 @@
             display: inline-block; 
         }
         .text-container .text-desc {
+            font-size: 12px;
             text-align: center;
             display: none;
             position: absolute;
@@ -90,9 +96,9 @@
             left: 50%;
             transform: translateX(-50%);
             background-color: lightgray;
-            padding: 8px;
-            width: 100%;
-            border-radius: 50px;
+            padding: 5px;
+            width: 60%;
+            border-radius: 100px;
         }
         .text-container:hover .text-desc {
             display: block;
@@ -346,8 +352,7 @@
                         <%
                             while(rs.next()){
                         %>
-                        <td>
-                            <% long m=rs.getLong("res_id");
+                        <% long m=rs.getLong("res_id");
                             PreparedStatement state=con.prepareStatement("select * from restaurants where res_id=?");
                             state.setLong(1, m);
                             ResultSet rst = state.executeQuery();
@@ -356,7 +361,8 @@
                                 l=rst.getString("res_name");
                             }
                             %>
-                            <div class="card" style="width: 20rem;">
+                        <td>
+                            <div class="card" style="width: 14rem;">
                                 <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
                                     <h4 class="card-title"><%= rs.getString("item_name")%></h4>
                                     <p class="card-text">
@@ -381,15 +387,15 @@
                                         %>
                                         <br>
 
-                                        <div class="inline-div grid1" style="margin-bottom: 10px;">
+                                        <div class="inline-div grid1" style="margin-bottom: 5px;">
                                             <div class="text-container">
-                                                <div class="truncate" ><%= rs.getString("description") %></div>
-                                                <div class="text-desc"><%= rs.getString("description") %></div>
+                                                <div class="truncate"><%= rs.getString("description") %></div>
+                                                <div align="left" class="text-desc"><%= rs.getString("description") %></div>
                                             </div>
-                                            <div align="right">Rs. <%= rs.getFloat("price") %></div>
+                                            <div class="price" align="right">Rs. <%= rs.getFloat("price") %></div>
                                         </div>
 
-                                        <div align="center" style="display: inline-block; margin-top: 10px; margin-bottom: 0px">
+                                        <div align="center" style="display: inline-block; margin-top: 1px; margin-bottom: 0px">
                                             <button type="button" class="btn btn-warning btn-circle btn-sm" style="margin-right: 20px;">
                                                 <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
