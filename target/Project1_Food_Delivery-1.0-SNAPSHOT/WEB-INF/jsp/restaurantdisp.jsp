@@ -9,6 +9,8 @@
 <%@ page import="java.io.OutputStream" %>
 <%@ page import="java.util.Base64" %>
 <%@ page import="static java.lang.System.out" %>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.ByteArrayOutputStream" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%int cnt=0;%>
 <!DOCTYPE html>
@@ -269,32 +271,25 @@
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-                        PreparedStatement stmt=con.prepareStatement("select * from restaurants");
+                        //PreparedStatement stmt=con.prepareStatement("select * from restaurants");
+                        PreparedStatement stmt = con.prepareStatement("select * from restaurants, res_images where restaurants.res_id = res_images.res_id");
                         ResultSet rs = stmt.executeQuery();
-                        
-                    String base64Image = "";
-                    
-                    while(rs.next()){
-                        long z = rs.getLong("res_id");
-//                            Blob image = null;
-                            byte[] imgData = null;
 
-                                PreparedStatement stmt1 = con.prepareStatement("select data from res_images where res_id=?");
-                                stmt.setLong(1, z);
-
-                                ResultSet rst = stmt1.executeQuery();
-
-//                                if (rst.next())
-//                                {
-                                    imgData = rst.getBytes("data");
-                                    base64Image = Base64.getEncoder().encodeToString(imgData);
-//                                }
+                        while(rs.next()){
+                            Blob imageBlob = rs.getBlob("data");
+                            InputStream imageStream = imageBlob.getBinaryStream();
+                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                            byte[] buffer = new byte[4096];
+                            int n = 0;
+                            while (-1 != (n = imageStream.read(buffer))) {
+                                outputStream.write(buffer, 0, n);
+                            }
+                            byte[] imageBytes = outputStream.toByteArray();
                 %>
                 <td>
                     <% String m=rs.getString("res_name");%>
                     <div class="card" style="width: 14rem;">
-                        <img class="card-img-top" alt="..." src='data:image/png;base64,<%= base64Image %>'/>
-<%--                        <img class="card-img-top" alt="..." src="<c:url value='/displayImage'/>?value=${value}"/>--%>
+                        <img class="card-img-top" alt="..." src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
                         <h5 class="card-title"><%=m%></h5>
                         <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
                             <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -
@@ -303,7 +298,7 @@
                     </div>
                 </td>
                 <%colind++;%>
-                    <% if (colind%4 == 0)
+                    <% if (colind %4 == 0)
                     {
                     %></tr><tr>
                     <%}%>

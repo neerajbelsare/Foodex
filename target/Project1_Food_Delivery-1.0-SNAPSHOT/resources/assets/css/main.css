@@ -187,3 +187,8 @@ a{
     gap: 0;
     font-family: 'Poppins', sans-serif;
 }
+
+.card-img-top {
+    width: 200px;
+    height: 200px;
+}

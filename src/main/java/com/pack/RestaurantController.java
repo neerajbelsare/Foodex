@@ -28,8 +28,7 @@ public class RestaurantController extends HttpServlet {
         if (loggedIn == null || !loggedIn) {
             response.sendRedirect("login");
             return "Login";
-        }
-        else {
+        } else {
             return "AddRestaurant";
         }
     }
@@ -37,7 +36,7 @@ public class RestaurantController extends HttpServlet {
     Long id = 0L;
 
     @RequestMapping(value = "/restaurantform", method = RequestMethod.POST)
-    public String submitresForm(HttpServletRequest request, HttpServletResponse response,@RequestParam("l") Long r , @RequestParam("a") String s,
+    public String submitresForm(HttpServletRequest request, HttpServletResponse response, @RequestParam("l") Long r, @RequestParam("a") String s,
                                 @RequestParam("b") String t, @RequestParam("c") Long u, @RequestParam("d") String v
             , @RequestParam("e") String w, @RequestParam("f") Long x, @RequestParam("g") String[] y, @RequestParam("h") String[] z
             , @RequestParam("i") String m, @RequestParam("j") String n, @RequestParam("k") CommonsMultipartFile file) {
@@ -103,37 +102,4 @@ public class RestaurantController extends HttpServlet {
             throw new RuntimeException(ex);
         }
     }
-
-//    @GetMapping("/displayImage")
-//    public void displayImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        Blob image = null;
-//        byte[] imgData = null;
-//
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-//
-//            PreparedStatement stmt = con.prepareStatement("select data from res_images where res_id=?");
-//            stmt.setLong(1, val);
-//
-//            ResultSet rs = stmt.executeQuery();
-//
-//            if (rs.next())
-//            {
-//                image = rs.getBlob("data");
-//                imgData = image.getBytes(1, (int) image.length());
-//                String base64Image = Base64.getEncoder().encodeToString(imgData);
-//                out.println("<img src='data:image/png;base64," + base64Image + "' />");
-//            }
-//
-////            response.setContentType("image/jpeg");
-//
-////            OutputStream outputStream = response.getOutputStream();
-////            outputStream.write(imgData);
-////            outputStream.flush();
-////            outputStream.close();
-//        } catch (SQLException | ClassNotFoundException | IOException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//}
 }
