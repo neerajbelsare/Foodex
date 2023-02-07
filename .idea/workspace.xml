@@ -14,11 +14,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/RestaurantController.java" afterDir="false" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/AddRestaurant.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/AddRestaurant.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Admin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" afterDir="false" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/restaurantdisp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/restaurantdisp.jsp" afterDir="false" />
@@ -66,6 +69,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -82,6 +86,8 @@
     &quot;spring.configuration.checksum&quot;: &quot;f5d2dde345df350361754763875b502d&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
 =======
+=======
+>>>>>>> Stashed changes
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -97,6 +103,9 @@
     "nodejs_package_manager_path": "npm",
     "spring.configuration.checksum": "f5d2dde345df350361754763875b502d",
     "vue.rearranger.settings.migration": "true"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   },
   "keyToStringList": {
@@ -208,9 +217,13 @@
       <workItem from="1675602338844" duration="4700000" />
       <workItem from="1675608126899" duration="1620000" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <workItem from="1675743070927" duration="5113000" />
       <workItem from="1675759677268" duration="3974000" />
       <workItem from="1675769611025" duration="1315000" />
+=======
+      <workItem from="1675688663943" duration="1945000" />
+>>>>>>> Stashed changes
 =======
       <workItem from="1675688663943" duration="1945000" />
 >>>>>>> Stashed changes

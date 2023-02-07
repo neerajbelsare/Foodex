@@ -118,6 +118,7 @@ public class RestaurantController extends HttpServlet {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+<<<<<<< Updated upstream
 //
 //            PreparedStatement stmt1 =con.prepareStatement("select * from restaurants");
 //            ResultSet rst = stmt1.executeQuery();
@@ -129,6 +130,15 @@ public class RestaurantController extends HttpServlet {
                 PreparedStatement stmt = con.prepareStatement("select data from res_images where res_id=?");
                 stmt.setLong(1, val);
 =======
+=======
+
+            PreparedStatement stmt1 =con.prepareStatement("select * from restaurants");
+            ResultSet rst = stmt1.executeQuery();
+
+            while(rst.next()) {
+                z = rst.getLong("res_id");
+
+>>>>>>> Stashed changes
                 PreparedStatement stmt = con.prepareStatement("select * from res_images where res_id=?");
                 stmt.setLong(1, z);
 >>>>>>> Stashed changes

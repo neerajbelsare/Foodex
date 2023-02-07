@@ -278,7 +278,11 @@
                     <% String m=rs.getString("res_name"); long value = rs.getLong("res_id");%>
                     <div class="card" style="width: 14rem;">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                         <img class="card-img-top" alt="..." src="<c:url value='/displayImage'/>?value=${value}"/>
+=======
+                        <img id="myImage" src="<c:url value='/displayImage' />" class="card-img-top" alt="res" data-value="z">
+>>>>>>> Stashed changes
 =======
                         <img id="myImage" src="<c:url value='/displayImage' />" class="card-img-top" alt="res" data-value="z">
 >>>>>>> Stashed changes
