@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <style>
         .carousel-div{
             background: url("<c:url value="/resources/img/register-carousel1.jpg" />");
@@ -32,7 +33,8 @@
                 <h3 class="form-heading">Login</h3><br>
                 <p class="form-subhead">New to Foodex? <a href="register" class="link">Create an Account</a></p><br>
                 <input type="text" name = "a" placeholder="Username" class="input-login"/>
-                <input type="password" name = "b" placeholder="Password" class="input-login" />
+                <input type="password" name = "b" placeholder="Password" class="input-login" id="password" />
+                <button type="button" onclick="showPassword()" id="show-pwd"><span class="material-symbols-outlined">visibility</span></button>
                 <a href="forgot" class="link forgot-pass">Forgot Password?</a><br>
                 <input type="submit" value="Login" class="login-submit" />
             </form>
@@ -40,5 +42,14 @@
     </div>
 </div>
 </body>
-<script href="<c:url value="/resources/js/login.js" />" rel="script"></script>
+<script>
+    function showPassword() {
+        let passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
 </html>

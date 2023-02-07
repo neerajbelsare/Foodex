@@ -46,7 +46,7 @@ public class RestaurantController extends HttpServlet {
 
         try {
             HttpSession session = request.getSession();
-            session.setAttribute("res_id", r);
+
             String type = String.join(",", y);
             String cuisine = String.join(",", z);
 

@@ -115,3 +115,9 @@
     align-items: center;
     font-family: 'Poppins', sans-serif;
 }
+
+#show-pwd {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

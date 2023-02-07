@@ -267,7 +267,7 @@
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-                        PreparedStatement stmt=con.prepareStatement("select * from restaurants order by rand()");
+                        PreparedStatement stmt=con.prepareStatement("select * from restaurants");
                         ResultSet rs = stmt.executeQuery();
 
                 %>
