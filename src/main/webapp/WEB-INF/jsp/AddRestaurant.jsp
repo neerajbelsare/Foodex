@@ -92,37 +92,37 @@
                                 <div class="container" style="width: 95%">
                                     <div class="row">
                                         <div class="col">
-                                            <input name="g" type="checkbox" class="form-check-input" value="Bakery"/> Bakery<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Bhojanalya"/> Bhojanalya<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Casual Dining"/> Casual Dining<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Confectionery"/> Confectionery<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Fine Dining"/> Fine Dining<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Irani Cafe"/> Irani Cafe<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Mess"/> Mess<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Pub"/> Pub<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Sweet Shop"/> Sweet Shop<br><br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Bakery"/> Bakery<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Bhojanalya"/> Bhojanalya<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Casual Dining"/> Casual Dining<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Confectionery"/> Confectionery<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Fine Dining"/> Fine Dining<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Irani Cafe"/> Irani Cafe<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Mess"/> Mess<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Pub"/> Pub<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Sweet Shop"/> Sweet Shop<br><br><br>
                                         </div>
 
                                         <div class="col">
-                                            <input name="g" type="checkbox" class="form-check-input" value="Bar"/> Bar<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Butcher Shop"/> Butcher Shop<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Club"/> Club<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Dessert Parlour"/> Dessert Parlour<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Food Court"/> Food Court<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Kiosk"/> Kiosk<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Microbrewery"/> Microbrewery<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Quick Bites"/> Quick Bites<br>
+                                            <input name="g" type="radio" class="form-check-input" value="Bar"/> Bar<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Butcher Shop"/> Butcher Shop<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Club"/> Club<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Dessert Parlour"/> Dessert Parlour<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Food Court"/> Food Court<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Kiosk"/> Kiosk<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Microbrewery"/> Microbrewery<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Quick Bites"/> Quick Bites<br>
                                         </div>
 
                                         <div class="col">
-                                            <input name="g" type="checkbox" class="form-check-input" value="Beverage Shop"/> Beverage Shop<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Café"/> Cafe<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Cocktail Bar"/> Cocktail Bar<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Dhaba"/> Dhaba<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Food Truck"/> Food Truck<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Lounge"/> Lounge<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Paan Shop"/> Paan Shop<br><br>
-                                            <input name="g" type="checkbox" class="form-check-input" value="Shack"/> Shack<br>
+                                            <input name="g" type="radio" class="form-check-input" value="Beverage Shop"/> Beverage Shop<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Café"/> Cafe<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Cocktail Bar"/> Cocktail Bar<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Dhaba"/> Dhaba<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Food Truck"/> Food Truck<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Lounge"/> Lounge<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Paan Shop"/> Paan Shop<br><br>
+                                            <input name="g" type="radio" class="form-check-input" value="Shack"/> Shack<br>
                                         </div>
                                     </div>
                                 </div>
