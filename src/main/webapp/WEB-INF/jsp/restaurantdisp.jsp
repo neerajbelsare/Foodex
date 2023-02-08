@@ -41,6 +41,55 @@
         td{
             padding: 30px 62px 50px 0;
         }
+        .btn-circle.btn-sm {
+            width: 100px;
+            height: 40px;
+            padding: 6px 0px;
+            border-radius: 10px;
+            font-size: 15px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .card-title,.card-text {
+            margin-bottom: 4px;
+        }
+        .inline-div {
+/*            display: inline-block;*/
+            width: 100%;
+            position: sticky;
+            height: 18px;
+            vertical-align: top;
+        }
+        .space{
+            margin-bottom: 0%;
+        }
+        .truncate {
+            color:#494949;
+            font-size: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 90%;
+        }
+        text-container {
+            display: inline-block; 
+        }
+        .text-container .text-desc {
+            font-size: 12px;
+            text-align: center;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: lightgray;
+            padding: 5px;
+            width: 60%;
+            border-radius: 100px;
+        }
+        .text-container:hover .text-desc {
+            display: block;
+        }
     </style>
 </head>
 
@@ -272,7 +321,7 @@
 
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
                         //PreparedStatement stmt=con.prepareStatement("select * from restaurants");
-                        PreparedStatement stmt = con.prepareStatement("select * from restaurants, res_images where restaurants.res_id = res_images.res_id");
+                        PreparedStatement stmt = con.prepareStatement("select * from restaurants, res_images where restaurants.res_id = res_images.res_id order by rand()");
                         ResultSet rs = stmt.executeQuery();
 
                         while(rs.next()){
@@ -288,13 +337,21 @@
                 %>
                 <td>
                     <% String m=rs.getString("res_name");%>
-                    <div class="card" style="width: 14rem;">
+                    <div class="card space" style="width: 14rem;">
                         <img class="card-img-top" alt="..." src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
-                        <h5 class="card-title"><%=m%></h5>
-                        <p class="card-text"><%= rs.getString("address") %><br><%= rs.getString("res_phone") %><br>
-                            <%= rs.getString("cuisine") %><br><%= rs.getString("timing_open") %> -
-                            <%= rs.getString("timing_close") %><br><%= rs.getString("type") %><br></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h4 class="card-title"><%=m%></h4>
+                        <p class="card-text"><%= rs.getString("type") %><br>
+                            <div class="text-desc"><%= rs.getString("cuisine") %></div>                            
+                            <div class="text-container">
+                                <div class="truncate"><%= rs.getString("address") %></div>
+                                    <div class="text-desc"><%= rs.getString("address") %></div>
+                            </div>
+                            <%= rs.getString("res_phone") %>
+                            <br><%= rs.getString("timing_open") %> - <%= rs.getString("timing_close") %>
+                            <div align="center">
+                                <a href="#" class="btn btn-warning btn-circle btn-sm">Details</a>
+                            </div>
+                        </p>
                     </div>
                 </td>
                 <%colind++;%>

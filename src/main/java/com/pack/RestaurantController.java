@@ -38,14 +38,14 @@ public class RestaurantController extends HttpServlet {
     @RequestMapping(value = "/restaurantform", method = RequestMethod.POST)
     public String submitresForm(HttpServletRequest request, HttpServletResponse response, @RequestParam("l") Long r, @RequestParam("a") String s,
                                 @RequestParam("b") String t, @RequestParam("c") Long u, @RequestParam("d") String v
-            , @RequestParam("e") String w, @RequestParam("f") Long x, @RequestParam("g") String[] y, @RequestParam("h") String[] z
+            , @RequestParam("e") String w, @RequestParam("f") Long x, @RequestParam("g") String y, @RequestParam("h") String [] z
             , @RequestParam("i") String m, @RequestParam("j") String n, @RequestParam("k") CommonsMultipartFile file) {
 
         try {
             HttpSession session = request.getSession();
 
-            String type = String.join(",", y);
-            String cuisine = String.join(",", z);
+//            String type = String.join(",", y);
+            String cuisine = String.join(", ", z);
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -58,8 +58,9 @@ public class RestaurantController extends HttpServlet {
             stmt.setString(4, v);
             stmt.setString(5, w);
             stmt.setLong(6, x);
-            stmt.setString(7, type);
+            stmt.setString(7, y);
             stmt.setString(8, cuisine);
+//            stmt.setString(8, z);
             stmt.setString(9, m);
             stmt.setString(10, n);
             stmt.setString(11, (String) session.getAttribute("userName"));
