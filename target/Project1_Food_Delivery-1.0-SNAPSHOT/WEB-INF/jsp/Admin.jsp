@@ -44,7 +44,7 @@
             </ul>
         </li>
         <li>
-            <a href="#">
+            <a href="Restaurants">
                 <i class='bx bx-restaurant' ></i>
                 <span class="link_name">Restaurants</span>
             </a>
