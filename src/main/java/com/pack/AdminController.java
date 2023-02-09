@@ -114,4 +114,45 @@ public class AdminController {
         
         return "Users";
     }
+    
+    @RequestMapping(value = "/Restaurantsdash")
+    public String getRes() {
+        return "Restaurants";
+    }
+    
+    @RequestMapping(value = "/restrodelete", method = RequestMethod.POST)
+    public String deleteRestro(String res_id)
+    {
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+            PreparedStatement stmt=con.prepareStatement("select * from restaurants where res_id=?");
+
+            stmt.setString(1, res_id);
+            ResultSet rs=stmt.executeQuery();
+                    
+            while (rs.next())
+            {
+                if((rs.getString("res_id").equals(res_id)))
+                {
+//                    PreparedStatement stmt2=con.prepareStatement("delete from res_images where res_id=?");
+//                    stmt2.setString(1, res_id);
+                    PreparedStatement stmt1=con.prepareStatement("delete from restaurants where res_id=?");
+                    stmt1.setString(1, res_id);
+                    stmt1.executeUpdate();
+//                    stmt2.executeUpdate();
+                }
+            }
+            stmt.executeUpdate();
+        }
+        
+        catch (Exception k)
+        {
+            System.out.println(k);
+        }
+        
+        return "Restaurants";
+    }
 }
