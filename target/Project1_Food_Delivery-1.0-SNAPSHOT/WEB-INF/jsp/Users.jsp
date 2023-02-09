@@ -13,6 +13,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -30,6 +31,16 @@
             border-radius: 10px;
             font-size: 15px;
             text-align: center;
+        }
+        .modal-inner{
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+            width: 50%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
     <title>Users | Foodex</title>
@@ -187,7 +198,7 @@
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Feed New user's details</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -210,11 +221,11 @@
                                         <label for="password">Create a password: </label>
                                         <input type="password" id="password" name="password">
                                         <br><br>
-                                        <input class="btn btn-warning btn-circle btn-sm" type="submit" value="Submit">
+                                        <input class="btn btn-success btn-circle btn-sm" type="submit" value="Submit">
                                       </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
+                                    <button type="button" class="btn btn-info btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
                                 </div>
                             </div>
                         </div>
@@ -224,37 +235,33 @@
                         Update user info
                     </button>
                     
-                    <div class="modal fade" id="staticBackdrop1" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="staticBackdrop1" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter </h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Select to update</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    
-                                    <button class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" type="button">
-                                        Update user info
-                                    </button>
-                                    
-                                    <div class="modal fade" id="staticBackdrop3" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    hello
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>
-                                                    <button type="button" class="btn-prim">Apply</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+<!--                                    <a href="#update-name">
+                                        Name
+                                    </a>
+                                    <br>
+                                    <a href="#">
+                                        Phone Number
+                                    </a><br>
+                                    <a href="#">
+                                        Email
+                                    </a><br>
+                                    <a href="#">
+                                        Address
+                                    </a>-->
+                                    <form action="userupdate" method="post">
+                                        <label for="username">Enter username: </label>
+                                        <input type="text" id="username" name="username">
+                                        <br><br>
+                                        <input class="btn btn-warning btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');" type="submit" value="Submit">
+                                    </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
@@ -272,7 +279,7 @@
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Enter username to update</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -280,7 +287,7 @@
                                         <label for="username">Enter username: </label>
                                         <input type="text" id="username" name="username">
                                         <br><br>
-                                        <input class="btn btn-warning btn-circle btn-sm" type="submit" value="Submit">
+                                        <input class="btn btn-warning btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');" type="submit" value="Submit">
                                       </form>
                                 </div>
                                 <div class="modal-footer">
@@ -292,8 +299,62 @@
                     </div>
             </div>
     </div>
+            <div class="row">
+                <div class="col">
+                    <div class="modal" id="update-name" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Enter username to update</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="userdelete" method="post">
+                                                        <label for="username">Enter username: </label>
+                                                        <input type="text" id="username" name="username">
+                                                        <br><br>
+                                                        <input class="btn btn-warning btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');" type="submit" value="Submit">
+                                                      </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
+                <!--                                    <button type="button" class="btn btn-warning btn-circle btn-sm">Add</button>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                </div>
+            </div>
 </section>
 
+<script>
+      var modal = document.getElementById("update-name");
+
+      var links = document.getElementsByTagName("a");
+
+      for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        if (link.href.endsWith("#update-name")) {
+          link.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+          };
+        }
+      }
+
+      var span = document.getElementsByClassName("close")[0];
+
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>            
+            
 <script>
     let arrow = document.querySelectorAll(".arrow");
     for (var i = 0; i < arrow.length; i++) {

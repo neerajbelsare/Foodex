@@ -21,7 +21,7 @@ public class AdminController {
     }
     
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public void addUsers(String username, String name, String phone, String email, String address, String password)
+    public String addUsers(String username, String name, String phone, String email, String address, String password)
     {
         try
         {
@@ -43,6 +43,8 @@ public class AdminController {
         {
             System.out.println(k);
         }
+        
+        return "Users";
     }
     
     @RequestMapping(value = "/userdelete", method = RequestMethod.POST)
@@ -75,6 +77,41 @@ public class AdminController {
             System.out.println(k);
         }
         
-        return "users";
+        return "Users";
+    }
+    
+    String usnm="";
+    
+    @RequestMapping(value = "/userupdate", method = RequestMethod.POST)
+    public String updateUsers(String username)
+    {
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+            PreparedStatement stmt=con.prepareStatement("select * from users where username=?");
+
+            stmt.setString(1, username);
+            ResultSet rs=stmt.executeQuery();
+                
+            usnm=username;
+            
+            while (rs.next())
+            {
+                if((rs.getString("username").equals(username)))
+                {
+                    return "updateUsers";
+                }
+            }
+            stmt.executeUpdate();
+        }
+        
+        catch (Exception k)
+        {
+            System.out.println(k);
+        }
+        
+        return "Users";
     }
 }
