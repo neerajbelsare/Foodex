@@ -1,9 +1,156 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%int cnt=0;%>
+
+<!DOCTYPE html>
+
 <html>
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
     <title>Restaurant Dashboard | Foodex</title>
+    <link href="<c:url value="/resources/css/admin.css" />" rel="stylesheet">
+
 </head>
 <body>
+<c:if test="${not empty errorMessage}">
+    <div class="error alert alert-danger">
+        <p>${errorMessage}</p>
+    </div>
+</c:if>
 
+<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="itemform" method="post" style="font-family: 'Poppins', sans-serif;" id="form" enctype="multipart/form-data">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <div class="details-col col">
+                                <br><input type="text" id="item-name" class="form-control form-input" placeholder="Item Name" name="a"/><br>
+                                <input type="text" id="item-price" class="form-control form-input" placeholder="Price" name="b"/><br>
+                                <input id="res-id" value="<%=session.getAttribute("res_id")%>" class="form-control form-input" name="c" readonly="readonly"><br>
+                                <input type="text" id="item-id" class="form-control form-input" placeholder="Item Id" name="d"/><br>
+                                <input type="text" id="desc" class="form-control form-input" placeholder="Item Description" name="e"/>
+                                <br>
+                                <input id="images" type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" name="f" required/><br>
+                                <input type="submit" name="submit-button" id="submit-btn" value="   Submit   " class="submit-btn"/>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%--<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">--%>
+<%--    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>--%>
+<%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
+<%--            </div>--%>
+<%--            <div class="modal-body">--%>
+<%--                --%>
+<%--            </div>--%>
+<%--            <div class="modal-footer">--%>
+<%--                <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>--%>
+<%--                <button type="button" class="btn-prim">Apply</button>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="material-symbols-outlined" style="color: #1e53ff; margin-right: 5px;">filter_alt</span>Filter</button>
+        </div>
+        <div class="col">
+            <button>View Items</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button>Manage Orders</button>
+        </div>
+        <div class="col">
+            <button>View Reports and Complaints</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col" style="display: flex; justify-content: center; align-content: center">
+            <div class="main-details-div">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script>
+    const inputField = document.querySelector("#item-id");
+
+    inputField.addEventListener("input", function(event) {
+        const value = event.target.value;
+        if (!/^\d*$/.test(value)) {
+            event.target.value = value.replace(/[^0-9]/g, "");
+        }
+    });
+
+    const inputField1 = document.querySelector("#item-price");
+
+    inputField1.addEventListener("input", function(event) {
+        const value = event.target.value;
+        if (!/^\d*$/.test(value)) {
+            event.target.value = value.replace(/[^0-9]/g, "");
+        }
+    });
+
+    const form = document.getElementById("form");
+    form.addEventListener("submit", function(event) {
+        const a = document.getElementById("item-name");
+        const b = document.getElementById("item-price");
+        const c = document.getElementById("res-id");
+        const d = document.getElementById("item-id");
+        const e = document.getElementById("desc");
+
+        if (!a.value || !b.value || !c.value || !d.value || !e.value || !f.value || !g.value) {
+            alert("All fields are required.");
+            event.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>

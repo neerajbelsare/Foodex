@@ -72,11 +72,20 @@ public class RegisterController {
 
             ResultSet rs = stmt.executeQuery();
 
+            PreparedStatement stmt1 = con.prepareStatement("select * from restaurants where username=?");
+            stmt1.setString(1, x);
+
+            ResultSet rst = stmt1.executeQuery();
+
             while (rs.next()) {
                 if (rs.getString("username").equals(x) && rs.getString("password").equals(y)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("userName", x);
                     session.setAttribute("password", y);
+
+                    while (rst.next()){
+                        session.setAttribute("res_id", rst.getString("res_id"));
+                    }
 
                     session.setMaxInactiveInterval(30 * 24 * 30 * 60);
                     session.setAttribute("loggedIn", true);
@@ -95,7 +104,9 @@ public class RegisterController {
                 }
             }
         } catch (Exception k) {
-            System.out.println(k);
+            String errorMessage = "This is an error message.";
+            object2.addAttribute("errorMessage", errorMessage);
+            return "Login";
         }
 
         return "Login";

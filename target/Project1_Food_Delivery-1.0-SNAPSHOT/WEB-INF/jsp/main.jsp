@@ -43,10 +43,7 @@
 
     <style>
         td{
-            padding-left: 0px;
-            padding-right: 64px;
-            padding-bottom: 50px;
-            padding-top: 30px;
+            padding: 30px 64px 50px 0px;
         }
         .btn-circle.btn-sm {
             width: 100px;
@@ -56,9 +53,18 @@
             font-size: 10px;
             text-align: center;
         }
+<<<<<<< Updated upstream
         .card-title,.card-text {
             margin-bottom: 4px;
         }
+=======
+        /*.card-title,.card-text {*/
+        /*    margin-bottom: 4px;*/
+        /*}*/
+        /*.card-body {*/
+        /*    padding-top: 10rem;*/
+        /*}*/
+>>>>>>> Stashed changes
         .truncate {
             color:#494949;
             font-size: 12px;
@@ -68,7 +74,6 @@
             width: 70%;
           }
         .inline-div {
-/*            display: inline-block;*/
             width: 100%;
             position: sticky;
             height: 18px;
@@ -79,7 +84,7 @@
             text-decoration: none;
         }
         text-container {
-            display: inline-block; 
+            display: inline-block;
         }
         .text-container .text-desc {
             font-size: 12px;
@@ -198,14 +203,14 @@
                             <li><a href="#">Account</a></li>
                             <li><a href="#">Settings</a></li>
                             <li><a href="#">Log Out</a></li>
-                        </ul>
-                    </div>
                     <%
                                         }}}}catch (Exception k) {
                                 System.out.println(k);
                             }
                         }
                     %>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="nav-item">

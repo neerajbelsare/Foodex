@@ -22,6 +22,12 @@ public class mainController
     {
         return "restaurantdisp";
     }
+
+    @RequestMapping (value = "/dashboard")
+    public String resDashboardPage()
+    {
+        return "RestaurantDashboard";
+    }
 }
 
    

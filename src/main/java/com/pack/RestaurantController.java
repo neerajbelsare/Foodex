@@ -1,6 +1,7 @@
 package com.pack;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -102,5 +103,60 @@ public class RestaurantController extends HttpServlet {
         } catch (SQLException | ClassNotFoundException | IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    @RequestMapping(value = "/itemform", method = RequestMethod.POST)
+    public String setImage(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String m, @RequestParam("b") Float n,
+                           @RequestParam("c") Long o, @RequestParam("d") Long p, @RequestParam("e") String q, @RequestParam("f") CommonsMultipartFile file, Model model) {
+
+        try {
+            HttpSession session = request.getSession();
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+            PreparedStatement stmt = con.prepareStatement("insert into items (item_name, price, res_id, item_id, description) values(?,?,?,?,?)");
+
+            stmt.setString(1, m);
+            stmt.setFloat(2, n);
+            stmt.setLong(3, o);
+            stmt.setLong(4, p);
+            stmt.setString(5, q);
+
+            InputStream inputStream = null;
+
+            if (file != null) {
+                inputStream = file.getInputStream();
+            }
+
+            String message = null;
+
+            try {
+                PreparedStatement stmt1 = con.prepareStatement("SELECT * FROM items WHERE res_id=?");
+                stmt1.setLong(1, o);
+
+                ResultSet rs1 = stmt1.executeQuery();
+
+                PreparedStatement statement = con.prepareStatement("INSERT INTO item_images (item_id, data) values (?, ?)");
+                statement.setLong(1, p);
+
+                if (inputStream != null) {
+                    statement.setBlob(2, inputStream);
+                }
+
+                stmt.executeUpdate();
+                int row = statement.executeUpdate();
+                if (row > 0) {
+                    message = "File uploaded and saved into database";
+                }
+            } catch (SQLException ex) {
+                out.println(ex);
+            }
+
+        } catch (SQLException | IOException e) {
+            String errorMessage = "Unknown Error";
+            model.addAttribute("errorMessage", errorMessage);
+            return "RestaurantDashboard";
+        }
+
+        return "RestaurantDashboard";
     }
 }

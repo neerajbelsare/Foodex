@@ -29,27 +29,28 @@
             <img src="<c:url value="/resources/img/logo-exp.png" />" alt="Foodex Logo" width="500px" />
         </div>
         <div class="col login-div">
-            <form action="loginform" method="post" class="login-form">
+            <form action="loginform" method="post" class="login-form" id="form">
                 <h3 class="form-heading">Login</h3><br>
                 <p class="form-subhead">New to Foodex? <a href="register" class="link">Create an Account</a></p><br>
-                <input type="text" name = "a" placeholder="Username" class="input-login"/>
+                <input type="text" name = "a" placeholder="Username" class="input-login" id="username"/>
                 <input type="password" name = "b" placeholder="Password" class="input-login" id="password" />
-                <button type="button" onclick="showPassword()" id="show-pwd"><span class="material-symbols-outlined">visibility</span></button>
                 <a href="forgot" class="link forgot-pass">Forgot Password?</a><br>
                 <input type="submit" value="Login" class="login-submit" />
             </form>
         </div>
     </div>
 </div>
-</body>
 <script>
-    function showPassword() {
-        let passwordInput = document.getElementById("password");
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
-        }
+    const form = document.getElementById("form");
+    form.addEventListener("submit", function(event) {
+    const a = document.getElementById("username");
+    const b = document.getElementById("password");
+
+    if (!a.value || !b.value || !c.value || !d.value || !e.value || !f.value || !g.value) {
+    alert("All fields are required.");
+    event.preventDefault();
     }
+    });
 </script>
+</body>
 </html>
