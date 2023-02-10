@@ -253,6 +253,21 @@
 
 .users-table {
     background-color: white;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
     font-family: 'Poppins', sans-serif;
+}
+
+.stat {
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    background: linear-gradient(to left top, #154efd, #5b87fe);
+    color: white;
+}
+
+.submit-btn {
+    border-radius: 30px;
+    background-color: #1e53ff;
+    margin-top: 20px;
+    color: white;
 }

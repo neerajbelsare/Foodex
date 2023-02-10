@@ -1,3 +1,7 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,7 +35,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
     <title>Restaurant Dashboard | Foodex</title>
     <link href="<c:url value="/resources/css/admin.css" />" rel="stylesheet">
-
 </head>
 <body>
 <c:if test="${not empty errorMessage}">
@@ -44,7 +47,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add an Item</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -60,7 +63,7 @@
                                 <input type="text" id="desc" class="form-control form-input" placeholder="Item Description" name="e"/>
                                 <br>
                                 <input id="images" type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" name="f" required/><br>
-                                <input type="submit" name="submit-button" id="submit-btn" value="   Submit   " class="submit-btn"/>
+                                <input class="form-control form-input submit-btn" type="submit" name="submit-button" id="submit-btn" value="   Add Item   "/>
                             </div>
                             </div>
                         </div>
@@ -71,28 +74,61 @@
     </div>
 </div>
 
-<%--<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">--%>
-<%--    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>--%>
-<%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                --%>
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>--%>
-<%--                <button type="button" class="btn-prim">Apply</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+<%@ include file="header-bg-dark.jsp" %>
 
 <div class="container">
+    <%
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+
+            PreparedStatement stmt = con.prepareStatement("SELECT COUNT(*) FROM orders where res_id=?");
+            stmt.setLong(1, (Long) session.getAttribute("res_id"));
+            ResultSet rs1 = stmt.executeQuery();
+
+            PreparedStatement stmt1 = con.prepareStatement("SELECT rating FROM restaurants where res_id=?");
+            stmt.setLong(1, (Long) session.getAttribute("res_id"));
+            ResultSet rs2 = stmt1.executeQuery();
+
+            PreparedStatement stmt2 = con.prepareStatement("SELECT COUNT(*) FROM reports where res_id=?");
+            stmt.setLong(1, (Long) session.getAttribute("res_id"));
+            ResultSet rs3 = stmt2.executeQuery();
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    %>
+    <br><br>
     <div class="row">
         <div class="col">
-            <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="material-symbols-outlined" style="color: #1e53ff; margin-right: 5px;">filter_alt</span>Filter</button>
+            <div class="stat">
+                <h2 style="padding: 100px 0 100px 30px; font-weight: 600; font-size: 3em;"><br>Orders</h2>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="stat">
+                <h2 style="padding: 100px 0 100px 30px; font-weight: 600; font-size: 3em;"><br>Reports</h2>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="stat">
+                <h2 style="padding: 100px 0 100px 30px; font-weight: 600; font-size: 3em;"><br>Rating</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <br><br><h3 style="font-weight: 600; font-size: 2em; ">Manage your Restaurant</h3>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Add an Item</button>
         </div>
         <div class="col">
             <button>View Items</button>

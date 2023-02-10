@@ -61,7 +61,6 @@ public class RestaurantController extends HttpServlet {
             stmt.setLong(6, x);
             stmt.setString(7, y);
             stmt.setString(8, cuisine);
-//            stmt.setString(8, z);
             stmt.setString(9, m);
             stmt.setString(10, n);
             stmt.setString(11, (String) session.getAttribute("userName"));
