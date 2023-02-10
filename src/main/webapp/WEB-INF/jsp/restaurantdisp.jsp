@@ -241,6 +241,25 @@
 
 <body>
 <!-- Modal -->
+
+<div class="modal fade" id="staticBackdrop5" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="modalValue" class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>
+                <button type="button" class="btn-prim">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
@@ -348,9 +367,11 @@
                             </div>
                             <%= rs.getString("res_phone") %>
                             <br><%= rs.getString("timing_open") %> - <%= rs.getString("timing_close") %>
-                            <div align="center">
-                                <a href="#" class="btn btn-warning btn-circle btn-sm">Details</a>
-                            </div>
+<!--                            <div align="center">-->
+<button id="openModal" class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-value="<%long z=rs.getLong("res_id");%>" data-bs-target="#staticBackdrop5" type="button">
+                                    Details
+                                </button>
+                                <!--                            </div>-->
                         </p>
                     </div>
                 </td>
@@ -375,6 +396,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
+        
         <script>
             var splide = new Splide('.splide', {
                 type: 'loop',
@@ -384,6 +406,20 @@
             });
 
             splide.mount();
+        </script>
+        
+        <script>
+                $(document).ready(function() {
+                $("#openModal").click(function() {
+                  var value = $(this).data("value");
+                  $("#staticBackdrop5").show();
+                  $("#modalValue").text(value);
+                });
+
+                $(".close").click(function() {
+                  $("#staticBackdrop5").hide();
+                });
+              });
         </script>
 
         <script>
