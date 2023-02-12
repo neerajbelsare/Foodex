@@ -261,8 +261,6 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
     font-family: 'Poppins', sans-serif;
     border-radius: 10px;
-    background: linear-gradient(to left top, #154efd, #5b87fe);
-    color: white;
 }
 
 .submit-btn {
@@ -270,4 +268,22 @@
     background-color: #1e53ff;
     margin-top: 20px;
     color: white;
+}
+
+.control-item {
+    padding: 60px;
+    width: 60%;
+    border: none;
+    outline: none;
+    background: linear-gradient(to left top, #154efd, #5b87fe);
+    color: white;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.c1 {
+    display: flex;
+    justify-content: right;
+    align-items: center;
 }

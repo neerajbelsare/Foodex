@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.pack;
 
 import org.springframework.stereotype.Controller;
@@ -20,8 +16,8 @@ import java.sql.ResultSet;
 
 @Controller
 public class RegisterController {
-    
-    String usnm="";
+
+    String usnm = "";
     
     @RequestMapping(value = "/register")
     public String viewRegistration() {
@@ -127,7 +123,6 @@ public class RegisterController {
             
             while(rs.next())
             {
-//                obj.addAttribute("NM",rs.getString("NAME"));
                 obj.addAttribute("NM",rs.getString("name"));
                 obj.addAttribute("PHN",rs.getString("phone"));
                 obj.addAttribute("USNM",rs.getString("username"));
@@ -147,8 +142,9 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/setlocation",method = RequestMethod.POST)
-    public String getLocation(@RequestParam("location") String x) {
-        System.out.println(x);
+    public String getLocation(HttpServletRequest request, HttpServletResponse response, @RequestParam("location") String x) {
+        HttpSession session = request.getSession();
+        session.setAttribute("currentLocation", x);
         return "main";
     }
 }

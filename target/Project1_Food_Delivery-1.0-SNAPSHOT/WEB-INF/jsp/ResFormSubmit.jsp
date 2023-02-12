@@ -11,6 +11,7 @@
     <title>Form Submitted | Foodex</title>
 </head>
 <body>
+<%@ include file="header-bg-dark.jsp"%>
 <p>Thank you for registering your restaurant with us! Your requested has been submitted. Our team will verify all the credentials and
 let you know through your email address.</p>
 </body>

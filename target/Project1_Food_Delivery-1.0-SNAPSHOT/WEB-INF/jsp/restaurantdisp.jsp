@@ -450,7 +450,6 @@
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-                        //PreparedStatement stmt=con.prepareStatement("select * from restaurants");
                         PreparedStatement stmt = con.prepareStatement("select * from restaurants, res_images where restaurants.res_id = res_images.res_id order by rand()");
                         ResultSet rs = stmt.executeQuery();
 
@@ -526,22 +525,19 @@
 
             
 
+<<<<<<< Updated upstream
         <%@ include file="footer.jsp" %>
         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+=======
+<%@ include file="footer.jsp" %>
+>>>>>>> Stashed changes
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
-        
-        <script>
-            var splide = new Splide('.splide', {
-                type: 'loop',
-                perPage: 4,
-                rewind: true,
-                autoplay: true,
-            });
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
 
+<<<<<<< Updated upstream
             splide.mount();
         </script>
         
@@ -885,54 +881,73 @@ $(document).ready(function() {
                 document.querySelector("#modal-res").innerHTML = document.querySelector(".res-id").innerHTML
             })
         </script>-->
+=======
+<script>
+    var splide = new Splide('.splide', {
+        type: 'loop',
+        perPage: 4,
+        rewind: true,
+        autoplay: true,
+    });
+>>>>>>> Stashed changes
 
-        <script>
-            const div1 = document.getElementById('ele1')
+    splide.mount();
+</script>
 
-            div1.addEventListener("click", function (){
-                div1.style.backgroundColor = "#f3f3f3";
-                div2.style.backgroundColor = "#ffffff";
-                div3.style.backgroundColor = "#ffffff";
-                div4.style.backgroundColor = "#ffffff";
-            });
+<script>
+    let modb = document.querySelector("#openModal")
+    modb.addEventListener("click", function (){
+        document.querySelector("#modal-res").innerHTML = document.querySelector(".res-id").innerHTML
+    })
+</script>
 
-            const div2 = document.getElementById('ele2')
-            const para2 = document.getElementById('ele2')
+<script>
+    const div1 = document.getElementById('ele1')
 
-            para2.addEventListener("click", function (){
-                div2.style.backgroundColor = "#f3f3f3";
-                div1.style.backgroundColor = "#ffffff";
-                div3.style.backgroundColor = "#ffffff";
-                div4.style.backgroundColor = "#ffffff";
-            });
+    div1.addEventListener("click", function (){
+        div1.style.backgroundColor = "#f3f3f3";
+        div2.style.backgroundColor = "#ffffff";
+        div3.style.backgroundColor = "#ffffff";
+        div4.style.backgroundColor = "#ffffff";
+    });
 
-            const div3 = document.getElementById('ele3')
-            const para3 = document.getElementById('ele3')
+    const div2 = document.getElementById('ele2')
+    const para2 = document.getElementById('ele2')
 
-            para3.addEventListener("click", function (){
-                div3.style.backgroundColor = "#f3f3f3";
-                div2.style.backgroundColor = "#ffffff";
-                div1.style.backgroundColor = "#ffffff";
-                div4.style.backgroundColor = "#ffffff";
-            });
+    para2.addEventListener("click", function (){
+        div2.style.backgroundColor = "#f3f3f3";
+        div1.style.backgroundColor = "#ffffff";
+        div3.style.backgroundColor = "#ffffff";
+        div4.style.backgroundColor = "#ffffff";
+    });
 
-            const div4 = document.getElementById('ele4')
-            const para4 = document.getElementById('ele4')
+    const div3 = document.getElementById('ele3')
+    const para3 = document.getElementById('ele3')
 
-            div4.addEventListener("click", function (){
-                div4.style.backgroundColor = "#f3f3f3";
-                div2.style.backgroundColor = "#ffffff";
-                div3.style.backgroundColor = "#ffffff";
-                div1.style.backgroundColor = "#ffffff";
-            });
+    para3.addEventListener("click", function (){
+        div3.style.backgroundColor = "#f3f3f3";
+        div2.style.backgroundColor = "#ffffff";
+        div1.style.backgroundColor = "#ffffff";
+        div4.style.backgroundColor = "#ffffff";
+    });
 
-            let card = document.querySelector(".card");
-            let displayPicture = document.querySelector(".display-picture");
+    const div4 = document.getElementById('ele4')
+    const para4 = document.getElementById('ele4')
 
-            displayPicture.addEventListener("click", function() {
-                card.classList.toggle("hidden")})
+    div4.addEventListener("click", function (){
+        div4.style.backgroundColor = "#f3f3f3";
+        div2.style.backgroundColor = "#ffffff";
+        div3.style.backgroundColor = "#ffffff";
+        div1.style.backgroundColor = "#ffffff";
+    });
+
+    let card = document.querySelector(".card");
+    let displayPicture = document.querySelector(".display-picture");
+
+    displayPicture.addEventListener("click", function() {
+        card.classList.toggle("hidden")})
 
 
-        </script>
+</script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 body {
     scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
 }
 
 .nav-main{
@@ -191,4 +192,18 @@ a{
 .card-img-top {
     width: 200px;
     height: 200px;
+}
+
+.location-input {
+    border: none;
+    border-bottom: #949494 solid 1px;
+    outline: none;
+    transition: 0.2s all;
+    margin-left: 30px;
+    width: 20%;
+}
+
+.location-input:hover {
+    border-bottom: #1e53ff 2px solid;
+    transition: 0.2s all;
 }

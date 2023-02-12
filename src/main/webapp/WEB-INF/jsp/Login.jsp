@@ -46,7 +46,7 @@
     const a = document.getElementById("username");
     const b = document.getElementById("password");
 
-    if (!a.value || !b.value || !c.value || !d.value || !e.value || !f.value || !g.value) {
+    if (!a.value || !b.value) {
     alert("All fields are required.");
     event.preventDefault();
     }

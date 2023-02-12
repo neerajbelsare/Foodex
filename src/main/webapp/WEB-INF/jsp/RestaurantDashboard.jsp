@@ -125,21 +125,22 @@
 
 <div class="container">
     <br><br><h3 style="font-weight: 600; font-size: 2em; ">Manage your Restaurant</h3>
-    <hr>
+    <hr><br><br>
     <div class="row">
-        <div class="col">
-            <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Add an Item</button>
+        <div class="col c1">
+            <button class="filter-icon control-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Add an Item</button>
         </div>
         <div class="col">
-            <button>View Items</button>
+            <button class="control-item">View Items</button>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col">
-            <button>Manage Orders</button>
+        <div class="col c1">
+            <button class="control-item">Manage Orders</button>
         </div>
         <div class="col">
-            <button>View Reports and Complaints</button>
+            <button class="control-item">View Reports</button>
         </div>
     </div>
 

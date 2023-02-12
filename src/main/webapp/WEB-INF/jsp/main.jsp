@@ -1,14 +1,9 @@
-<%@page import="java.util.Random"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="org.springframework.ui.Model"%>
-<%@page import="org.springframework.stereotype.Controller"%>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.ByteArrayOutputStream" %>
+<%@ page import="java.util.Base64" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%int cnt=0;%>
@@ -43,7 +38,7 @@
 
     <style>
         td{
-            padding: 30px 64px 50px 0px;
+            padding: 30px 64px 50px 0;
         }
         .btn-circle.btn-sm {
             width: 100px;
@@ -53,6 +48,7 @@
             font-size: 10px;
             text-align: center;
         }
+<<<<<<< Updated upstream
         .card-title,.card-text {
             margin-bottom: 4px;
         }
@@ -62,6 +58,8 @@
         /*.card-body {*/
         /*    padding-top: 10rem;*/
         /*}*/
+=======
+>>>>>>> Stashed changes
         .truncate {
             color:#494949;
             font-size: 12px;
@@ -77,7 +75,6 @@
             vertical-align: top;
         }
         a{
-            color: black;
             text-decoration: none;
         }
         text-container {
@@ -106,6 +103,7 @@
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
     <div class="container-fluid">
         <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
+        <input type="text" value="<%= session.getAttribute("currentLocation")%>" class="location-input">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -116,7 +114,7 @@
                     <a class="nav-link nav-reg" href="login"><span class="material-symbols-outlined nav-icons">search</span>Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-reg" href="#"><span class="material-symbols-outlined nav-icons">loyalty</span>Offers</a>
+                    <a class="nav-link nav-reg" href="offers"><span class="material-symbols-outlined nav-icons">loyalty</span>Offers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-reg" href="restaurants"><span class="material-symbols-outlined">storefront</span>Restaurants</a>
@@ -170,22 +168,20 @@
                                     flag = true;
                             %>
                             <li><a href="admin" target="_blank">Dashboard</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="account">Account</a></li>
+                            <li><a href="settings">Settings</a></li>
                             <li><a href="#">Log Out</a></li>
                             <%
                                 }
                                 if(!flag){
-                                    while(rs.next()){
-                                        if(rs.getString("username").equals(usnm)){
+                                    while(rs1.next()){
+                                        if(rs1.getString("username").equals(usnm)){
                                             flag = true;
 
                             %>
                             <li><a href="dashboard" target="_blank">Dashboard</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="account">Account</a></li>
+                            <li><a href="settings">Settings</a></li>
                             <li><a href="#">Log Out</a></li>
                             <%
                                         }}}
@@ -196,18 +192,21 @@
                                             flag = true;
                             %>
 
-                            <li><a href="">Profile</a></li>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="account">Account</a></li>
+                            <li><a href="settings">Settings</a></li>
                             <li><a href="#">Log Out</a></li>
                     <%
-                                        }}}}catch (Exception k) {
+                                        }}}
+                    %>
+                        </ul>
+                    </div>
+
+                    <%
+                            }catch (Exception k) {
                                 System.out.println(k);
                             }
                         }
                     %>
-                        </ul>
-                    </div>
                 </li>
 
                 <li class="nav-item">
@@ -257,7 +256,6 @@
 </div>
 
 <body>
-<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
@@ -298,6 +296,7 @@
     </div>
 </div>
 <br>
+
 <div class="container">
     <div class="row">
         <div class="col"><h1>Items</h1></div></div><br>
@@ -337,28 +336,37 @@
                         <%
                             int colind = 0;
                             try{
-                                Class.forName("com.mysql.cj.jdbc.Driver");
+                            Class.forName("com.mysql.cj.jdbc.Driver");
 
-                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-                                PreparedStatement stmt=con.prepareStatement("select * from items order by rand()");
-                                ResultSet rs = stmt.executeQuery();
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
 
-                        %>
-                        <%
+                            PreparedStatement stmt = con.prepareStatement("select * from items, item_images where items.item_id = item_images.item_id order by rand()");
+                            ResultSet rs = stmt.executeQuery();
+
                             while(rs.next()){
+                                long m = rs.getLong("res_id");
+
+                                PreparedStatement state = con.prepareStatement("select * from restaurants where res_id=?");
+                                state.setLong(1, m);
+                                ResultSet rst = state.executeQuery();
+                                String l="";
+                                while(rst.next()){
+                                    l=rst.getString("res_name");
+                                }
+
+                                Blob imageBlob = rs.getBlob("data");
+                                InputStream imageStream = imageBlob.getBinaryStream();
+                                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                byte[] buffer = new byte[4096];
+                                int n = 0;
+                                while (-1 != (n = imageStream.read(buffer))) {
+                                    outputStream.write(buffer, 0, n);
+                                }
+                                byte[] imageBytes = outputStream.toByteArray();
                         %>
-                        <% long m=rs.getLong("res_id");
-                            PreparedStatement state=con.prepareStatement("select * from restaurants where res_id=?");
-                            state.setLong(1, m);
-                            ResultSet rst = state.executeQuery();
-                            String l="";
-                            while(rst.next()){
-                                l=rst.getString("res_name");
-                            }
-                            %>
                         <td>
                             <div class="card" style="width: 14rem;">
-                                <img src="<c:url value='/displayImage' />" class="card-img-top" alt="...">
+                                    <img class="card-img-top" alt="..." src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
                                     <h4 class="card-title"><%= rs.getString("item_name")%></h4>
                                     <p class="card-text">
                                         <a href="#">
@@ -366,8 +374,8 @@
                                         </a>
                                         
                                         <%float rate = rs.getFloat("rating");
-                                        int n = (int) rate; 
-                                        for (int i=0;i<n;i++)
+                                        int x = (int) rate;
+                                        for (int i=0; i<x; i++)
                                         {%>
                                             <span class="material-symbols-rounded" style="color: #3EC70B;">
                                                 star
@@ -390,7 +398,7 @@
                                             <div class="price" align="right">Rs. <%= rs.getFloat("price") %></div>
                                         </div>
 
-                                        <div align="center" style="display: inline-block; margin-top: 1px; margin-bottom: 0px">
+                                        <div align="center" style="display: inline-block; margin-top: 1px; margin-bottom: 0">
                                             <button type="button" class="btn btn-warning btn-circle btn-sm" style="margin-right: 20px;">
                                                 <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
@@ -420,21 +428,9 @@
             </div>
         </div>
 
-        <footer class="text-center text-lg-start bg-white text-muted footer-main">
-            <section class="">
-                <div class="container text-center text-md-start mt-5">
-                    <div class="row mt-3">
-                        <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">
-                            <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" style="width: 200px;"/>
-                        </div>
-                        <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">
-                        </div>
-                        <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">
-                        </div>
-                        <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">
-                        </div>
-                    </div>
+    <%@ include file="footer.jsp"%>
 
+<<<<<<< Updated upstream
                     <div class="row mt-3">
                         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                             <h6 class="text-uppercase fw-bold mb-4">
@@ -453,123 +449,68 @@
                                 <a href="#!" class="text-reset">Work With Us</a>
                             </p>
                         </div>
+=======
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
+<script>
+    var splide = new Splide('.splide', {
+        type: 'loop',
+        perPage: 4,
+        rewind: true,
+        autoplay: true,
+    });
+>>>>>>> Stashed changes
 
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                For Restaurants
-                            </h6>
-                            <p>
-                                <a href="#!" class="text-reset">Pricing</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Partner With Us</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Ride With Us</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Contact</a>
-                            </p>
-                        </div>
+    splide.mount();
+</script>
 
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Learn More
-                            </h6>
-                            <p>
-                                <a href="#!" class="text-reset">Terms</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Privacy</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Security</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Rules and Regulations</a>
-                            </p>
-                        </div>
+<script>
+    const div1 = document.getElementById('ele1')
 
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Follow Foodex
-                            </h6>
-                            <i class="fa-brands fa-instagram social-icon"></i>
-                            <i class="fa-brands fa-facebook-f social-icon"></i>
-                            <i class="fa-brands fa-youtube social-icon"></i>
-                            <i class="fa-brands fa-linkedin-in social-icon"></i>
-                            <i class="fa-brands fa-twitter social-icon"></i>
-                        </div>
+    div1.addEventListener("click", function (){
+        div1.style.backgroundColor = "#f3f3f3";
+        div2.style.backgroundColor = "#ffffff";
+        div3.style.backgroundColor = "#ffffff";
+        div4.style.backgroundColor = "#ffffff";
+    });
 
-                    </div>
-                </div>
-            </section>
+    const div2 = document.getElementById('ele2')
+    const para2 = document.getElementById('ele2')
 
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-                © 2023 Copyright:
-                <a class="text-reset fw-bold" href="#">Foodex.com</a>
-            </div>
-        </footer>
+    para2.addEventListener("click", function (){
+        div2.style.backgroundColor = "#f3f3f3";
+        div1.style.backgroundColor = "#ffffff";
+        div3.style.backgroundColor = "#ffffff";
+        div4.style.backgroundColor = "#ffffff";
+    });
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
-        <script>
-            var splide = new Splide('.splide', {
-                type: 'loop',
-                perPage: 4,
-                rewind: true,
-                autoplay: true,
-            });
+    const div3 = document.getElementById('ele3')
+    const para3 = document.getElementById('ele3')
 
-            splide.mount();
-        </script>
+    para3.addEventListener("click", function (){
+        div3.style.backgroundColor = "#f3f3f3";
+        div2.style.backgroundColor = "#ffffff";
+        div1.style.backgroundColor = "#ffffff";
+        div4.style.backgroundColor = "#ffffff";
+    });
 
-        <script>
-            const div1 = document.getElementById('ele1')
+    const div4 = document.getElementById('ele4')
+    const para4 = document.getElementById('ele4')
 
-            div1.addEventListener("click", function (){
-                div1.style.backgroundColor = "#f3f3f3";
-                div2.style.backgroundColor = "#ffffff";
-                div3.style.backgroundColor = "#ffffff";
-                div4.style.backgroundColor = "#ffffff";
-            });
+    div4.addEventListener("click", function (){
+        div4.style.backgroundColor = "#f3f3f3";
+        div2.style.backgroundColor = "#ffffff";
+        div3.style.backgroundColor = "#ffffff";
+        div1.style.backgroundColor = "#ffffff";
+    });
 
-            const div2 = document.getElementById('ele2')
-            const para2 = document.getElementById('ele2')
+    let card = document.querySelector(".card");
+    let displayPicture = document.querySelector(".display-picture");
 
-            para2.addEventListener("click", function (){
-                div2.style.backgroundColor = "#f3f3f3";
-                div1.style.backgroundColor = "#ffffff";
-                div3.style.backgroundColor = "#ffffff";
-                div4.style.backgroundColor = "#ffffff";
-            });
+    displayPicture.addEventListener("click", function() {
+        card.classList.toggle("hidden")})
 
-            const div3 = document.getElementById('ele3')
-            const para3 = document.getElementById('ele3')
-
-            para3.addEventListener("click", function (){
-                div3.style.backgroundColor = "#f3f3f3";
-                div2.style.backgroundColor = "#ffffff";
-                div1.style.backgroundColor = "#ffffff";
-                div4.style.backgroundColor = "#ffffff";
-            });
-
-            const div4 = document.getElementById('ele4')
-            const para4 = document.getElementById('ele4')
-
-            div4.addEventListener("click", function (){
-                div4.style.backgroundColor = "#f3f3f3";
-                div2.style.backgroundColor = "#ffffff";
-                div3.style.backgroundColor = "#ffffff";
-                div1.style.backgroundColor = "#ffffff";
-            });
-
-            let card = document.querySelector(".card");
-            let displayPicture = document.querySelector(".display-picture");
-
-            displayPicture.addEventListener("click", function() {
-                card.classList.toggle("hidden")})
-
-        </script>
+</script>
+</div>
 </body>
 </html>

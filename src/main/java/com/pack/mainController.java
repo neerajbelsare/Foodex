@@ -7,6 +7,8 @@ package com.pack;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.IOException;
+
 @Controller
 
 public class mainController
@@ -24,9 +26,13 @@ public class mainController
     }
 
     @RequestMapping (value = "/dashboard")
-    public String resDashboardPage()
-    {
+    public String resDashboardPage() throws IOException {
         return "RestaurantDashboard";
+    }
+
+    @RequestMapping (value = "/offers")
+    public String offersPage() throws IOException {
+        return "Offers";
     }
 }
 

@@ -1,9 +1,11 @@
-<footer class="text-center text-lg-start bg-white text-muted footer-main">
+<script src="https://kit.fontawesome.com/e0a94bc150.js" crossorigin="anonymous"></script>
+
+<footer class="text-center text-lg-start bg-dark text-muted footer-main">
   <section class="">
-    <div class="container text-center text-md-start mt-5">
+    <div class="container-fluid text-center text-md-start mt-5">
       <div class="row mt-3">
         <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">
-          <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" style="width: 200px;"/>
+          <img src="<c:url value="/resources/img/logo-exp.png" />" alt="Foodex Logo" style="width: 200px; margin-top: 50px"/>
         </div>
         <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">
         </div>
@@ -13,7 +15,7 @@
         </div>
       </div>
 
-      <div class="row mt-3">
+      <div class="row mt-3 text-white">
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <h6 class="text-uppercase fw-bold mb-4">
             About Foodex
@@ -83,8 +85,14 @@
     </div>
   </section>
 
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-    © 2023 Copyright:
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025); color: white">
+    &#169 2023 Copyright:
     <a class="text-reset fw-bold" href="#">Foodex.com</a>
   </div>
 </footer>
+
+<style>
+  .social-icon {
+    margin-right: 10px;
+  }
+</style>
