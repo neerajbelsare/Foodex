@@ -25,7 +25,7 @@
             <a href="#!" class="text-reset">Blog</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Contact Us</a>
+            <a href="contact" class="text-reset">Contact Us</a>
           </p>
           <p>
             <a href="#!" class="text-reset">Work With Us</a>
