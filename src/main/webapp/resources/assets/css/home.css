@@ -87,6 +87,7 @@ body {
 
 .footer-main {
     font-family: 'Poppins', sans-serif;
+    width: 100% !important;
 }
 
 .social-icon {

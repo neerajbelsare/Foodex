@@ -48,18 +48,10 @@
             font-size: 10px;
             text-align: center;
         }
-<<<<<<< Updated upstream
+
         .card-title,.card-text {
             margin-bottom: 4px;
         }
-        /*.card-title,.card-text {*/
-        /*    margin-bottom: 4px;*/
-        /*}*/
-        /*.card-body {*/
-        /*    padding-top: 10rem;*/
-        /*}*/
-=======
->>>>>>> Stashed changes
         .truncate {
             color:#494949;
             font-size: 12px;
