@@ -115,7 +115,7 @@
                     <a class="nav-link nav-reg" href="offers"><span class="material-symbols-outlined nav-icons">loyalty</span>Offers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-reg" href="browse"><span class="material-symbols-outlined nav-icons">restaurant_menu</span>Items</a>
+                    <a class="nav-link nav-reg" href="browse"><span class="material-symbols-outlined">restaurant_menu</span>Items</a>
                 </li>
 
                 <%
@@ -157,7 +157,7 @@
 
                 <li class="nav-item">
                     <ul>
-                        <a href="#" class="display-picture"><img src="https://i.pravatar.cc/85" alt="User Icon"></a>
+                        <a href="#" class="display-picture"><img src="<c:url value="/resources/img/user-icon-default.png" />" alt="User Icon"></a>
                     </ul>
                     <div class="card hidden">
                         <ul>
@@ -172,8 +172,8 @@
                             <%
                                 }
                                 if(!flag){
-                                    while(rs1.next()){
-                                        if(rs1.getString("username").equals(usnm)){
+                                    if(rs.next()){
+                                        if(rs.getString("username").equals(usnm)){
                                             flag = true;
 
                             %>
@@ -206,7 +206,7 @@
                         }
                     %>
                 </li>
-
+                
             </ul>
         </div>
     </div>
