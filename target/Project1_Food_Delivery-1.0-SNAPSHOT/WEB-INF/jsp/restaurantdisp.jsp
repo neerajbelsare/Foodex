@@ -101,6 +101,7 @@
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
     <div class="container-fluid">
         <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
+        <input type="text" value="<%= session.getAttribute("currentLocation")%>" class="location-input">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -109,6 +110,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto" style="display: flex; align-items: center">
                 <li class="nav-item">
                     <a class="nav-link nav-reg" href="login"><span class="material-symbols-outlined nav-icons">search</span>Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-reg" href="offers"><span class="material-symbols-outlined nav-icons">loyalty</span>Offers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-reg" href="browse"><span class="material-symbols-outlined">restaurant_menu</span>Items</a>
@@ -153,7 +157,7 @@
 
                 <li class="nav-item">
                     <ul>
-                        <a href="#" class="display-picture"><img src="https://i.pravatar.cc/85" alt="User Icon"></a>
+                        <a href="#" class="display-picture"><img src="<c:url value="/resources/img/user-icon-default.png" />" alt="User Icon"></a>
                     </ul>
                     <div class="card hidden">
                         <ul>
@@ -162,22 +166,20 @@
                                     flag = true;
                             %>
                             <li><a href="admin" target="_blank">Dashboard</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="account">Account</a></li>
+                            <li><a href="settings">Settings</a></li>
                             <li><a href="#">Log Out</a></li>
                             <%
                                 }
                                 if(!flag){
-                                    while(rs.next()){
+                                    if(rs.next()){
                                         if(rs.getString("username").equals(usnm)){
                                             flag = true;
 
                             %>
                             <li><a href="dashboard" target="_blank">Dashboard</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="account">Account</a></li>
+                            <li><a href="settings">Settings</a></li>
                             <li><a href="#">Log Out</a></li>
                             <%
                                         }}}
@@ -188,19 +190,23 @@
                                             flag = true;
                             %>
 
-                            <li><a href="">Profile</a></li>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="account">Account</a></li>
+                            <li><a href="settings">Settings</a></li>
                             <li><a href="#">Log Out</a></li>
+                            <%
+                                        }}}
+                            %>
                         </ul>
                     </div>
+
                     <%
-                                        }}}}catch (Exception k) {
+                            }catch (Exception k) {
                                 System.out.println(k);
                             }
                         }
                     %>
                 </li>
+                
             </ul>
         </div>
     </div>
@@ -525,21 +531,14 @@
 
             
 
-<<<<<<< Updated upstream
         <%@ include file="footer.jsp" %>
         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-=======
-<%@ include file="footer.jsp" %>
->>>>>>> Stashed changes
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
 
-<<<<<<< Updated upstream
-            splide.mount();
-        </script>
         
         <script>
             
@@ -881,7 +880,7 @@ $(document).ready(function() {
                 document.querySelector("#modal-res").innerHTML = document.querySelector(".res-id").innerHTML
             })
         </script>-->
-=======
+
 <script>
     var splide = new Splide('.splide', {
         type: 'loop',
@@ -889,7 +888,6 @@ $(document).ready(function() {
         rewind: true,
         autoplay: true,
     });
->>>>>>> Stashed changes
 
     splide.mount();
 </script>

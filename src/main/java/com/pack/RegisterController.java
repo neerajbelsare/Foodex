@@ -33,7 +33,7 @@ public class RegisterController {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-            PreparedStatement stmt=con.prepareStatement("insert into users values(?,?,?,?,?,?)");
+            PreparedStatement stmt=con.prepareStatement("insert into users(username, name, phone, email, address, password) values(?,?,?,?,?,?)");
 
             stmt.setString(1, u);
             stmt.setString(2, v);
