@@ -87,7 +87,7 @@
 
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025); color: white">
     &#169 2023 Copyright:
-    <a class="text-reset fw-bold" href="#">Foodex.com</a>
+    <a class="text-reset fw-bold" href="home">Foodex.com</a>
   </div>
 </footer>
 
