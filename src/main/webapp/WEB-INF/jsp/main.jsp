@@ -430,26 +430,6 @@
 
     <%@ include file="footer.jsp"%>
 
-<<<<<<< Updated upstream
-                    <div class="row mt-3">
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                About Foodex
-                            </h6>
-                            <p>
-                                <a href="#!" class="text-reset">Who We Are</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Blog</a>
-                            </p>
-                            <p>
-                                <a href="contact" class="text-reset">Contact Us</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Work With Us</a>
-                            </p>
-                        </div>
-=======
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
 <script>
@@ -459,7 +439,6 @@
         rewind: true,
         autoplay: true,
     });
->>>>>>> Stashed changes
 
     splide.mount();
 </script>
