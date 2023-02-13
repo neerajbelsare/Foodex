@@ -42,6 +42,10 @@ public class RegisterController {
             stmt.setString(5, y);
             stmt.setString(6, z);
             stmt.executeUpdate();
+
+            PreparedStatement stmt1 = con.prepareStatement("insert into user_images(username, data) values(?,?)");
+            stmt1.setString(1, u);
+
         }
         catch(Exception k)
         {

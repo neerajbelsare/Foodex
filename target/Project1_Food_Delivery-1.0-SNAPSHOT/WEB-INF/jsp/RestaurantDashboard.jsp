@@ -63,7 +63,7 @@
                                 <input type="text" id="desc" class="form-control form-input" placeholder="Item Description" name="e"/>
                                 <br>
                                 <input id="images" type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" name="f" required/><br>
-                                <input class="form-control form-input submit-btn" type="submit" name="submit-button" id="submit-btn" value="   Add Item   "/>
+                                <input class="form-control form-input submit-btn" type="submit" name="submit-button" id="submit-btn" value="   Add Item   "/><br>
                             </div>
                             </div>
                         </div>
