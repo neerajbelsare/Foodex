@@ -9,28 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea66058-2935-48ac-ae01-af668147bce4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pack/TwoFA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/RestaurantDashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/RestaurantDashboard.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/restaurantdisp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/restaurantdisp.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/header-dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/header-dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/AccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/AccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/RestaurantDashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/RestaurantDashboard.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/restaurantdisp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/restaurantdisp.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/header-dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/resources/assets/css/header-dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pack/AccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pack/AccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pack/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pack/RegisterController.class" afterDir="false" />
-    </list>
+    <list default="true" id="8ea66058-2935-48ac-ae01-af668147bce4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
