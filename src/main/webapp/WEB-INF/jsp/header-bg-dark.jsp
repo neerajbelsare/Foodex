@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.sql.*" %>
 <link href="<c:url value="/resources/css/header-dark.css" />" rel="stylesheet">
+
 <div class="main-container">
   <nav class="navbar navbar-expand-lg nav-main navbar-dark bg-dark" id="nav-main">
     <div class="container-fluid">
@@ -60,7 +61,7 @@
 
           <li class="nav-item">
             <ul>
-              <a href="#" class="display-picture"><img src="<c:url value="/resources/img/user-icon-default.png" />" alt="User Icon"></a>
+              <a href="#" class="display-picture"><img src="<c:url value="/resources/img/user-icon-default-white.svg" />" alt="User Icon"></a>
             </ul>
             <div class="card hidden">
               <ul>

@@ -3,7 +3,6 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%int cnt=0;%>
@@ -63,7 +62,7 @@
                                 <input type="text" id="desc" class="form-control form-input" placeholder="Item Description" name="e"/>
                                 <br>
                                 <input id="images" type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" name="f" required/><br>
-                                <input class="form-control form-input submit-btn" type="submit" name="submit-button" id="submit-btn" value="   Add Item   "/>
+                                <input class="form-control form-input submit-btn" type="submit" name="submit-button" id="submit-btn" value="   Add Item   "/><br>
                             </div>
                             </div>
                         </div>

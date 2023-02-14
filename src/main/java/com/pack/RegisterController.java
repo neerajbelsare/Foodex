@@ -42,6 +42,10 @@ public class RegisterController {
             stmt.setString(5, y);
             stmt.setString(6, z);
             stmt.executeUpdate();
+
+            PreparedStatement stmt1 = con.prepareStatement("insert into user_images(username, data) values(?,?)");
+            stmt1.setString(1, u);
+            stmt1.executeUpdate();
         }
         catch(Exception k)
         {
@@ -108,38 +112,38 @@ public class RegisterController {
         return "Login";
     }
     
-    @RequestMapping(value = "/profile",method = RequestMethod.POST)
-    public String viewProfile(Model obj)
-    {
-        try
-        {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-            PreparedStatement stmt=con.prepareStatement("select * from users where username=?");
-            stmt.setString(1, usnm);
-            
-            ResultSet rs=stmt.executeQuery();
-            
-            while(rs.next())
-            {
-                obj.addAttribute("NM",rs.getString("name"));
-                obj.addAttribute("PHN",rs.getString("phone"));
-                obj.addAttribute("USNM",rs.getString("username"));
-                obj.addAttribute("EM",rs.getString("email"));
-                obj.addAttribute("ADD",rs.getString("address"));
-            }
-            
-            stmt.executeUpdate();
-        }
-        
-        catch(Exception k)
-        {
-            System.out.println(k.getMessage());
-        }
-        
-        return "DisplayProfile";
-    }
+//    @RequestMapping(value = "/profile",method = RequestMethod.POST)
+//    public String viewProfile(Model obj)
+//    {
+//        try
+//        {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+//            PreparedStatement stmt=con.prepareStatement("select * from users where username=?");
+//            stmt.setString(1, usnm);
+//
+//            ResultSet rs=stmt.executeQuery();
+//
+//            while(rs.next())
+//            {
+//                obj.addAttribute("NM",rs.getString("name"));
+//                obj.addAttribute("PHN",rs.getString("phone"));
+//                obj.addAttribute("USNM",rs.getString("username"));
+//                obj.addAttribute("EM",rs.getString("email"));
+//                obj.addAttribute("ADD",rs.getString("address"));
+//            }
+//
+//            stmt.executeUpdate();
+//        }
+//
+//        catch(Exception k)
+//        {
+//            System.out.println(k.getMessage());
+//        }
+//
+//        return "DisplayProfile";
+//    }
 
     @RequestMapping(value = "/setlocation",method = RequestMethod.POST)
     public String getLocation(HttpServletRequest request, HttpServletResponse response, @RequestParam("location") String x) {
