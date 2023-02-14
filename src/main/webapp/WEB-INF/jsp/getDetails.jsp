@@ -17,7 +17,8 @@
     <body>
         <%
             try {
-                long resId = Long.parseLong(request.getParameter("resId"));
+                long resId = Long.parseLong(request.getParameter("res_id"));
+                System.out.println(resId);
 
                 // Connect to database and prepare statement
                 Class.forName("com.mysql.cj.jdbc.Driver");

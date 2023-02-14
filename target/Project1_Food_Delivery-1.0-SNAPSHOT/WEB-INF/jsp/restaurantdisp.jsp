@@ -21,6 +21,12 @@
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.4.3/css/bootstrap.min.css" integrity="sha512-Gygy+YKihAVv6p7FDG/M83LoZU0JQKDTwxxUfbsDy12CnTNzLjJXkrv7p6cnxNHe+Zn2nNoucNpyU2Bz5o5+FQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-HaIBjKdRVq3vI1+tnDkTjy0V0sbYtuDDv7o/ScbAV0Z7cWgE8wFonVhFxZzJ+O/k" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.4.3/js/bootstrap.min.js" integrity="sha512-l4Zep0JxRwRgJ82KjmgzrHn1jLcIaiR9Y9XZlNtuzjJ2n1+G3qDdCk7JzHzsISdP7oW9D8ymZ7jzZbAoy/LmVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
@@ -300,10 +306,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="myForm">
+<!--                <form id="myForm">
                     <input type="text" id="id" name="id" value="">
                 </form> 
-                <div id="details">Loading...</div>
+                <div id="details">Loading...</div>-->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn-second" data-bs-dismiss="modal">Close</button>
@@ -399,7 +405,7 @@
     </div>
 </div>-->
 
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -414,7 +420,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <br><br><br>
 <div class="container">
@@ -484,9 +490,9 @@
                         </div>
                         <%= rs.getString("res_phone") %>
                         <br><%= rs.getString("timing_open") %> - <%= rs.getString("timing_close") %>
-                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
+<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
                             Details
-                        </button>
+                        </button>-->
 <!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
                             Details
                         </button>-->
@@ -509,6 +515,9 @@
 <!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" type="button">
     Details
 </button>-->
+                        <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<%= rs.getLong("res_id")%>">
+  Open Modal
+</button>
 
 
                     </div>
@@ -539,24 +548,78 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
 
-        
+<!--<script>
+    var splide = new Splide('.splide', {
+        type: 'loop',
+        perPage: 4,
+        rewind: true,
+        autoplay: true,
+    });
+
+    splide.mount();
+</script>        -->
+
+<!--<script>
+function fetchData() {
+  var id = $("#myModal").data('id');  
+  
+  
+}
+</script>-->
+
+<!--<script>
+        $(document).ready(function() {
+            $('button').click(function() {
+                var res_id = $(this).val(); // retrieve the res_id value from the button
+                $.ajax({
+                    type: 'POST',
+                    url: '<--%= request.getContextPath()%>/getDetails.jsp', // URL of the script that will fetch the data based on the res_id value
+                    data: {
+                        res_id: 'res_id'    
+                    },
+                    datatype: HTML
+                    success: function(data) {
+                        $('.modal-body').html(data); // update the modal body with the fetched data
+                    }
+                });
+            });
+        });
+    </script>-->
+
+<!--<script>
+    $(document).ready(function() {
+  $('#myModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var resId = button.val();
+    var modal = $(this);
+    modal.find('.modal-body').load('getDetails.jsp?res_id=' + resId);
+  });
+});
+In this example, the show.bs.modal event is triggered when the modal is shown. The event.relatedTarget property is used to retrieve the button that triggered the modal. The value of the button is then retrieved using the .val() method, and an AJAX request is made to get_data.php with the res_id parameter set to the value of the button. Finally, the content of the modal body is updated with the data returned by the server using the .load() method.
+
+
+
+
+
+</script>-->
+
         <script>
             
-            $(document).on('click', '.btn-warning', function() {
-    var resId = $(this).data('res-id');
-    $.ajax({
-        url: '/getDetails.jsp',
-        type: 'POST',
-        data: {resId: resId},
-        success: function(response) {
-            $('#myModal .modal-body').html(response);
-            $('#myModal').modal('show');
-        },
-        error: function(error) {
-            console.log('Error fetching details: ', error);
-        }
-    });
-});
+//            $(document).on('click', '.btn-warning', function() {
+//    var resId = $(this).data('res-id');
+//    $.ajax({
+//        url: '/getDetails.jsp',
+//        type: 'POST',
+//        data: {resId: resId},
+//        success: function(response) {
+//            $('#myModal .modal-body').html(response);
+//            $('#myModal').modal('show');
+//        },
+//        error: function(error) {
+//            console.log('Error fetching details: ', error);
+//        }
+//    });
+//});
             
 //    function fetchDetails(button) {
 //        // Get the value of the "data-res-id" attribute for the clicked button
