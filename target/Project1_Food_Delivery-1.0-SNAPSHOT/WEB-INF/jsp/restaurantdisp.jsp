@@ -4,7 +4,6 @@
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="org.springframework.stereotype.Controller"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.springframework.web.bind.annotation.GetMapping" %>
 <%@ page import="java.io.IOException" %>

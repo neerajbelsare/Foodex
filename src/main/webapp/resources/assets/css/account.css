@@ -82,3 +82,15 @@ body{
 .form-input:hover {
     border-bottom: 2px solid #1e53ff;
 }
+
+#edit-profile-btn {
+    outline: none;
+    border: 2px solid white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: transparent;
+    color: white;
+}
