@@ -158,4 +158,10 @@ public class RestaurantController extends HttpServlet {
 
         return "RestaurantDashboard";
     }
+    
+    @RequestMapping(value = "/addedit_items", method = RequestMethod.GET)
+    public String itemPageview()
+    {
+        return "addedit_items";
+    }
 }
