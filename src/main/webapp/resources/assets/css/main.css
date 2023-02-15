@@ -5,7 +5,7 @@ body {
 
 .nav-main{
     font-family: 'Poppins', sans-serif;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
 }
 
 .nav-reg{
@@ -71,7 +71,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     background-color: transparent;
     outline: none;
     border: none;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,7 +86,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     background-color: #1e53ff;
     border-radius: 30px;
     border: none;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
     padding: 10px 20px;
     font-family: 'Poppins', sans-serif;
     color: white;
@@ -95,7 +95,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .btn-second {
     border-radius: 30px;
     border: none;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
     padding: 10px 20px;
     background-color: white;
     font-family: 'Poppins', sans-serif;
@@ -109,7 +109,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .col-1 {
     width: 100%;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
     border-radius: 5px;
     font-weight: 600;
 }
@@ -146,7 +146,8 @@ ul{
     margin-left: auto;
 }
 .display-picture img{
-    width: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border:2px solid #fff;
 }
@@ -165,7 +166,7 @@ ul{
     background: #ffffff;
     position: absolute;
     top: 1rem;
-    right:0rem;
+    right:0;
     border-radius: 10px;
     padding: 10px 50px 10px 20px;
 }

@@ -1,3 +1,6 @@
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.ByteArrayOutputStream" %>
+<%@ page import="java.util.Base64" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -39,14 +42,45 @@
         <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page"  target="__blank">Orders</a>
     </nav>
     <hr class="mt-0 mb-4">
-    <form action="accountform" method="post" id="form">
+    <form action="account" method="post" id="form" enctype="multipart/form-data">
     <div class="row">
         <div class="col-xl-4">
             <div class="card mb-4 mb-xl-0">
                 <div class="card-header">Profile Picture</div>
                 <div class="card-body text-center">
-                    <img class="img-account-profile rounded-circle mb-2" src="<c:url value="/resources/img/user-icon-default.svg" />" alt="">
-                    <br><br><input id="profile-image" type="file" accept="image/png, image/jpeg" value="Upload an Image" hidden />
+                    <%
+                        try {
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+                        PreparedStatement stmt = con.prepareStatement("select * from user_images where username=?");
+                        stmt.setString(1, (String) session.getAttribute("userName"));
+
+                        ResultSet rs = stmt.executeQuery();
+                        while(rs.next()){
+                            if (rs.getBlob("data") == null) {
+
+                    %>
+                    <img class="img-account-profile rounded-circle mb-2" src="<c:url value="/resources/img/user-icon-default.svg " />" />
+                    <%
+                        } else {
+                                Blob imageBlob = rs.getBlob("data");
+                                InputStream imageStream = imageBlob.getBinaryStream();
+                                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                byte[] buffer = new byte[4096];
+                                int n = 0;
+                                while (-1 != (n = imageStream.read(buffer))) {
+                                    outputStream.write(buffer, 0, n);
+                                }
+                                byte[] imageBytes = outputStream.toByteArray();
+                    %>
+                    <img class="img-account-profile rounded-circle mb-2" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>" />
+                        <%
+                            }}} catch(Exception k)
+                        {
+                            System.out.println("here");
+                            System.out.println(k);
+                        }
+                    %>
+                    <br><br><input name="profile-image" id="profile-image" type="file" accept="image/png, image/jpeg" value="Upload an Image" hidden />
                     <label for="profile-image" class="btn-primary">Upload an Image</label>
                     <br><br>
                 </div>
@@ -55,33 +89,33 @@
         <div class="col-xl-8">
             <div class="card mb-4">
                 <div class="card-header">Account Details</div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <br><label class="small mb-1" for="inputUsername" style="margin-left: 20px;color: #6b6b6b;">Username</label><br>
-                        <input class="form-input" id="inputUsername" name="inputUsername" type="text" value="<%= r%>" disabled>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <br><label class="small mb-1" for="inputUsername" style="margin-left: 20px;color: #6b6b6b;">Username</label><br>
+                            <input class="form-input" id="inputUsername" name="inputUsername" type="text" value="<%= r%>" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <br><label class="small mb-1" for="inputName" style="margin-left: 20px;color: #6b6b6b;">Name</label><br>
+                            <input class="form-input" id="inputName" name="inputName" type="text" value="<%= p%>" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <br><label class="small mb-1" for="inputPhone" style="margin-left: 20px;color: #6b6b6b;">Phone</label><br>
+                            <input class="form-input" id="inputPhone" name="inputPhone" type="text" value="<%= q%>" maxlength="10" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <br><label class="small mb-1" for="inputEmail" style="margin-left: 20px;color: #6b6b6b;">Email</label><br>
+                            <input class="form-input" id="inputEmail" name="inputEmail" type="text" value="<%= s%>" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <br><label class="small mb-1" for="inputAddress" style="margin-left: 20px;color: #6b6b6b;">Address</label><br>
+                            <input class="form-input" id="inputAddress" name="inputAddress" type="text" value="<%= t%>" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <br><label class="small mb-1" for="inputPassword" style="margin-left: 20px;color: #6b6b6b;">Password</label><br>
+                            <input class="form-input" id="inputPassword" type="password"  name="inputPassword" value="<%= m%>" readonly><br><a href="forgot" style="margin-left: 20px">Change Password</a>
+                        </div><br>
+                        <input class="btn-primary" type="submit" value="Save changes"><br><br>
                     </div>
-                    <div class="mb-3">
-                        <br><label class="small mb-1" for="inputName" style="margin-left: 20px;color: #6b6b6b;">Name</label><br>
-                        <input class="form-input" id="inputName" name="inputName" type="text" value="<%= p%>" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <br><label class="small mb-1" for="inputPhone" style="margin-left: 20px;color: #6b6b6b;">Phone</label><br>
-                        <input class="form-input" id="inputPhone" name="inputPhone" type="text" value="<%= q%>" maxlength="10" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <br><label class="small mb-1" for="inputEmail" style="margin-left: 20px;color: #6b6b6b;">Email</label><br>
-                        <input class="form-input" id="inputEmail" name="inputEmail" type="text" value="<%= s%>" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <br><label class="small mb-1" for="inputAddress" style="margin-left: 20px;color: #6b6b6b;">Address</label><br>
-                        <input class="form-input" id="inputAddress" name="inputAddress" type="text" value="<%= t%>" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <br><label class="small mb-1" for="inputPassword" style="margin-left: 20px;color: #6b6b6b;">Password</label><br>
-                        <input class="form-input" id="inputPassword" type="password"  name="inputPassword" value="<%= m%>" readonly><br><a href="forgot" style="margin-left: 20px">Change Password</a>
-                    </div><br>
-                    <input class="btn-primary" type="submit" value="Save changes"><br><br>
-                </div>
             </div>
         </div>
     </div>
@@ -114,11 +148,10 @@
     });
 
     document.getElementById("edit-profile-btn").addEventListener("click", function() {
-        document.getElementById("inputUsername").removeAttribute("disabled");
-        document.getElementById("inputName").removeAttribute("disabled");
-        document.getElementById("inputEmail").removeAttribute("disabled");
-        document.getElementById("inputAddress").removeAttribute("disabled");
-        document.getElementById("inputPhone").removeAttribute("disabled");
+        document.getElementById("inputName").removeAttribute("readonly");
+        document.getElementById("inputEmail").removeAttribute("readonly");
+        document.getElementById("inputAddress").removeAttribute("readonly");
+        document.getElementById("inputPhone").removeAttribute("readonly");
     });
 </script>
 </body>

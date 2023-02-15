@@ -35,60 +35,60 @@
     <title>Foodex | Browse</title>
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 
-    <style>
-        td{
-            padding: 30px 64px 50px 0;
-        }
-        .btn-circle.btn-sm {
-            width: 100px;
-            height: 40px;
-            padding: 6px 0px;
-            border-radius: 10px;
-            font-size: 10px;
-            text-align: center;
-        }
+<%--    <style>--%>
+<%--        td{--%>
+<%--            padding: 30px 64px 50px 0;--%>
+<%--        }--%>
+<%--        .btn-circle.btn-sm {--%>
+<%--            width: 100px;--%>
+<%--            height: 40px;--%>
+<%--            padding: 6px 0px;--%>
+<%--            border-radius: 10px;--%>
+<%--            font-size: 10px;--%>
+<%--            text-align: center;--%>
+<%--        }--%>
 
-        .card-title,.card-text {
-            margin-bottom: 4px;
-        }
-        .truncate {
-            color:#494949;
-            font-size: 12px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 70%;
-          }
-        .inline-div {
-            width: 100%;
-            position: sticky;
-            height: 18px;
-            vertical-align: top;
-        }
-        a{
-            text-decoration: none;
-        }
-        text-container {
-            display: inline-block;
-        }
-        .text-container .text-desc {
-            font-size: 12px;
-            text-align: center;
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: lightgray;
-            padding: 5px;
-            width: 60%;
-            border-radius: 100px;
-        }
-        .text-container:hover .text-desc {
-            display: block;
-        }
-        
-    </style>
+<%--        .card-title,.card-text {--%>
+<%--            margin-bottom: 4px;--%>
+<%--        }--%>
+<%--        .truncate {--%>
+<%--            color:#494949;--%>
+<%--            font-size: 12px;--%>
+<%--            white-space: nowrap;--%>
+<%--            overflow: hidden;--%>
+<%--            text-overflow: ellipsis;--%>
+<%--            width: 70%;--%>
+<%--          }--%>
+<%--        .inline-div {--%>
+<%--            width: 100%;--%>
+<%--            position: sticky;--%>
+<%--            height: 18px;--%>
+<%--            vertical-align: top;--%>
+<%--        }--%>
+<%--        a{--%>
+<%--            text-decoration: none;--%>
+<%--        }--%>
+<%--        text-container {--%>
+<%--            display: inline-block;--%>
+<%--        }--%>
+<%--        .text-container .text-desc {--%>
+<%--            font-size: 12px;--%>
+<%--            text-align: center;--%>
+<%--            display: none;--%>
+<%--            position: absolute;--%>
+<%--            top: 100%;--%>
+<%--            left: 50%;--%>
+<%--            transform: translateX(-50%);--%>
+<%--            background-color: lightgray;--%>
+<%--            padding: 5px;--%>
+<%--            width: 60%;--%>
+<%--            border-radius: 100px;--%>
+<%--        }--%>
+<%--        .text-container:hover .text-desc {--%>
+<%--            display: block;--%>
+<%--        }--%>
+<%--        --%>
+<%--    </style>--%>
 </head>
 
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
@@ -150,7 +150,36 @@
 
                 <li class="nav-item">
                     <ul>
-                        <a href="#" class="display-picture"><img src="<c:url value="/resources/img/user-icon-default.png" />" alt="User Icon"></a>
+                        <%
+                            try {
+                                PreparedStatement stmt1 = con.prepareStatement("select * from user_images where username=?");
+                                stmt1.setString(1, (String) session.getAttribute("userName"));
+
+                                ResultSet rst = stmt1.executeQuery();
+                                if(rst.next()){
+                                    if (rst.getBlob("data") == null) {
+
+                        %>
+                        <a href="#" class="display-picture"><img class="img-account-profile rounded-circle mb-2" src="<c:url value="/resources/img/user-icon-default.svg" />" alt="user-icon"></a>
+                        <%
+                        } else {
+                            Blob imageBlob = rst.getBlob("data");
+                            InputStream imageStream = imageBlob.getBinaryStream();
+                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                            byte[] buffer = new byte[4096];
+                            int n = 0;
+                            while (-1 != (n = imageStream.read(buffer))) {
+                                outputStream.write(buffer, 0, n);
+                            }
+                            byte[] imageBytes = outputStream.toByteArray();
+                        %>
+                        <a href="#" class="display-picture"><img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>" alt="user-icon"></a>
+                        <%
+                                    }}} catch(Exception k)
+                            {
+                                System.out.println(k);
+                            }
+                        %>
                     </ul>
                     <div class="card hidden">
                         <ul>
@@ -390,7 +419,7 @@
                                         </div>
 
                                         <div align="center" style="display: inline-block; margin-top: 1px; margin-bottom: 0">
-                                            <button type="button" class="btn btn-warning btn-circle btn-sm" style="margin-right: 20px;">
+                                            <button type="button" class="btn btn-primary btn-circle btn-sm" style="margin-right: 20px;">
                                                 <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
                                             <select name="quantity" autocomplete="off" data-action="a-dropdown-select" >
@@ -404,7 +433,7 @@
                             </div>
                         </td>
                         <%colind++;%>
-                            <% if (colind%4==0)
+                            <% if(colind % 4 == 0)
                             {
                             %></tr><tr>
                             <%}%>

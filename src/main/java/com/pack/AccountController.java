@@ -18,7 +18,7 @@ import static java.lang.System.out;
 
 @Controller
 public class AccountController {
-    @RequestMapping(value = "/account")
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String returnAccount(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
         HttpSession session = request.getSession();
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
@@ -47,7 +47,7 @@ public class AccountController {
         }
     }
 
-    @RequestMapping(value = "/accountform", method = RequestMethod.POST)
+    @RequestMapping(value = "/account", method = RequestMethod.POST)
     public String getDetails(HttpServletRequest request, HttpServletResponse response, @RequestParam("inputUsername") String m, @RequestParam("inputName") String n,
                              @RequestParam("inputPhone") Long o, @RequestParam("inputEmail") String p, @RequestParam("inputAddress") String q, @RequestParam("inputPassword") String r, @RequestParam(value = "profile-image", required = false) CommonsMultipartFile file) {
 
@@ -55,7 +55,7 @@ public class AccountController {
             HttpSession session = request.getSession();
 
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-            PreparedStatement stmt = con.prepareStatement("update users set name = ?, phone=?, email=?, address=?, password=? where username=?;");
+            PreparedStatement stmt = con.prepareStatement("update users set name=?, phone=?, email=?, address=?, password=? where username=?");
 
             stmt.setString(1, n);
             stmt.setLong(2, o);
@@ -63,7 +63,6 @@ public class AccountController {
             stmt.setString(4, q);
             stmt.setString(5, r);
             stmt.setString(6, (String) session.getAttribute("userName"));
-            stmt.executeUpdate();
 
             InputStream inputStream = null;
 
@@ -74,14 +73,12 @@ public class AccountController {
             String message = null;
 
             try {
-
                 PreparedStatement statement = con.prepareStatement("update user_images set data=? where username=?");
+                statement.setString(2, m);
 
                 if (inputStream != null) {
                     statement.setBlob(1, inputStream);
                 }
-
-                statement.setString(2, m);
 
                 stmt.executeUpdate();
                 int row = statement.executeUpdate();
