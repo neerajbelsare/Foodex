@@ -93,18 +93,14 @@ public class RegisterController {
                     usnm=rs.getString("username");
                     object2.addAttribute("NA", rs.getString("username"));
                     object2.addAttribute("EM", rs.getString("email"));
-
-                    String previousPage = (String) session.getAttribute("previousPage");
-                    if (previousPage != null) {
-                        session.removeAttribute("previousPage");
-                        response.sendRedirect(previousPage);
-                    } else {
-                        response.sendRedirect("home");
-                    }
+                }
+                else {
+                    String errorMessage = "Invalid username/password";
+                    object2.addAttribute("errorMessage", errorMessage);
                 }
             }
         } catch (Exception k) {
-            String errorMessage = "This is an error message.";
+            String errorMessage = "There was an unknown error! Please try again";
             object2.addAttribute("errorMessage", errorMessage);
             return "Login";
         }

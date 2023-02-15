@@ -42,7 +42,7 @@
         <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page"  target="__blank">Orders</a>
     </nav>
     <hr class="mt-0 mb-4">
-    <form action="account" method="post" id="form" enctype="multipart/form-data">
+    <form action="accountform" method="post" id="form" enctype="multipart/form-data">
     <div class="row">
         <div class="col-xl-4">
             <div class="card mb-4 mb-xl-0">

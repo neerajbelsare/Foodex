@@ -18,7 +18,7 @@ import static java.lang.System.out;
 
 @Controller
 public class AccountController {
-    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    @RequestMapping(value = "/account")
     public String returnAccount(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
         HttpSession session = request.getSession();
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
@@ -47,7 +47,7 @@ public class AccountController {
         }
     }
 
-    @RequestMapping(value = "/account", method = RequestMethod.POST)
+    @RequestMapping(value = "/accountform", method = RequestMethod.POST)
     public String getDetails(HttpServletRequest request, HttpServletResponse response, @RequestParam("inputUsername") String m, @RequestParam("inputName") String n,
                              @RequestParam("inputPhone") Long o, @RequestParam("inputEmail") String p, @RequestParam("inputAddress") String q, @RequestParam("inputPassword") String r, @RequestParam(value = "profile-image", required = false) CommonsMultipartFile file) {
 

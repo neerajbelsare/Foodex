@@ -17,14 +17,7 @@ import java.sql.ResultSet;
 public class AdminController {
     @RequestMapping(value = "/admin")
     public String getAdmin(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        HttpSession session = request.getSession();
-//        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
-//        if (loggedIn == null || !loggedIn || session.getAttribute("userName") != "admin") {
-//            response.sendRedirect("login");
-//            return "Login";
-//        } else {
             return "Admin";
-//        }
     }
 
     @RequestMapping(value = "/users")

@@ -35,60 +35,60 @@
     <title>Foodex | Browse</title>
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 
-<%--    <style>--%>
-<%--        td{--%>
-<%--            padding: 30px 64px 50px 0;--%>
-<%--        }--%>
-<%--        .btn-circle.btn-sm {--%>
-<%--            width: 100px;--%>
-<%--            height: 40px;--%>
-<%--            padding: 6px 0px;--%>
-<%--            border-radius: 10px;--%>
-<%--            font-size: 10px;--%>
-<%--            text-align: center;--%>
-<%--        }--%>
+    <style>
+        td{
+            padding: 30px 64px 50px 0;
+        }
+        .btn-circle.btn-sm {
+            width: 100px;
+            height: 40px;
+            padding: 6px 0px;
+            border-radius: 10px;
+            font-size: 10px;
+            text-align: center;
+        }
 
-<%--        .card-title,.card-text {--%>
-<%--            margin-bottom: 4px;--%>
-<%--        }--%>
-<%--        .truncate {--%>
-<%--            color:#494949;--%>
-<%--            font-size: 12px;--%>
-<%--            white-space: nowrap;--%>
-<%--            overflow: hidden;--%>
-<%--            text-overflow: ellipsis;--%>
-<%--            width: 70%;--%>
-<%--          }--%>
-<%--        .inline-div {--%>
-<%--            width: 100%;--%>
-<%--            position: sticky;--%>
-<%--            height: 18px;--%>
-<%--            vertical-align: top;--%>
-<%--        }--%>
-<%--        a{--%>
-<%--            text-decoration: none;--%>
-<%--        }--%>
-<%--        text-container {--%>
-<%--            display: inline-block;--%>
-<%--        }--%>
-<%--        .text-container .text-desc {--%>
-<%--            font-size: 12px;--%>
-<%--            text-align: center;--%>
-<%--            display: none;--%>
-<%--            position: absolute;--%>
-<%--            top: 100%;--%>
-<%--            left: 50%;--%>
-<%--            transform: translateX(-50%);--%>
-<%--            background-color: lightgray;--%>
-<%--            padding: 5px;--%>
-<%--            width: 60%;--%>
-<%--            border-radius: 100px;--%>
-<%--        }--%>
-<%--        .text-container:hover .text-desc {--%>
-<%--            display: block;--%>
-<%--        }--%>
-<%--        --%>
-<%--    </style>--%>
+        .card-title,.card-text {
+            margin-bottom: 4px;
+        }
+        .truncate {
+            color:#494949;
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 70%;
+          }
+        .inline-div {
+            width: 100%;
+            position: sticky;
+            height: 18px;
+            vertical-align: top;
+        }
+        a{
+            text-decoration: none;
+        }
+        text-container {
+            display: inline-block;
+        }
+        .text-container .text-desc {
+            font-size: 12px;
+            text-align: center;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: lightgray;
+            padding: 5px;
+            width: 60%;
+            border-radius: 100px;
+        }
+        .text-container:hover .text-desc {
+            display: block;
+        }
+
+    </style>
 </head>
 
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
