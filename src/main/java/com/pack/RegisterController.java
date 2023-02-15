@@ -83,12 +83,12 @@ public class RegisterController {
                     session.setAttribute("userName", x);
                     session.setAttribute("password", y);
 
+                    session.setMaxInactiveInterval(30 * 24 * 30 * 60);
+                    session.setAttribute("loggedIn", true);
+
                     while (rst.next()){
                         session.setAttribute("res_id", rst.getString("res_id"));
                     }
-
-                    session.setMaxInactiveInterval(30 * 24 * 30 * 60);
-                    session.setAttribute("loggedIn", true);
 
                     usnm=rs.getString("username");
                     object2.addAttribute("NA", rs.getString("username"));
@@ -105,7 +105,7 @@ public class RegisterController {
             return "Login";
         }
 
-        return "Login";
+        return "Home";
     }
     
 //    @RequestMapping(value = "/profile",method = RequestMethod.POST)
