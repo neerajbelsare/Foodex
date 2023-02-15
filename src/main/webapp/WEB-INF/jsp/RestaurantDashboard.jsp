@@ -130,7 +130,12 @@
             <button class="filter-icon control-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Add an Item</button>
         </div>
         <div class="col">
-            <button class="control-item">View Items</button>
+<!--            <p>-->
+                <% String myData = request.getParameter("res_id"); %>
+                <a href="addedit_items" class="text-reset">
+                    <button class="control-item" type="submit">View Items</button>
+                </a>
+<!--            </p>-->
         </div>
     </div>
     <br>
