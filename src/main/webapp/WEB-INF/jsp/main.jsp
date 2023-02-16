@@ -15,6 +15,7 @@
           rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
           crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -29,7 +30,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
     <title>Foodex | Browse</title>
@@ -49,7 +51,10 @@
         }
 
         .card-title,.card-text {
+            padding-top: 10px;
             margin-bottom: 4px;
+            font-weight: 600;
+            padding-left: 10px;
         }
         .truncate {
             color:#494949;
@@ -87,14 +92,13 @@
         .text-container:hover .text-desc {
             display: block;
         }
-
     </style>
 </head>
 
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
     <div class="container-fluid">
         <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
-        <input type="text   " value="<%= session.getAttribute("currentLocation")%>" class="location-input">
+        <input id="currentLoc" type="text" value="<%= session.getAttribute("currentLocation")%>" class="location-input">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -230,12 +234,98 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-reg" href="register"><span class="material-symbols-outlined nav-icons">shopping_cart</span>Cart</a>
+                    <button id="openSidebarBtn" class="nav-link nav-reg"><span class="material-symbols-outlined nav-icons">shopping_cart</span>Cart</button>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
+<div id="sidebar">
+    <div class="sidebar-head" >
+<%--        <button id="closeSidebarBtn" style="background-color: transparent; outline: none; border: none; margin-top: 20px; margin-right: 20px;">--%>
+<%--            <span class="material-symbols-outlined">--%>
+<%--            close--%>
+<%--            </span> Cart--%>
+<%--        </button>--%>
+    <h1 class="fs-5" style="display: inline-block">Filter Options</h1>
+    <div align="right" style="display: inline-block">
+        <button type="button" class="btn-close" aria-label="Close"></button>
+    </div>
+<%--    <button type="button" class="btn-close" aria-label="Close"></button>--%>
+    </div>
+    <div class="sidebar-body">
+        <table>
+        <%
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+
+                PreparedStatement smt = con.prepareStatement("select * from cart where username=?");
+                smt.setString(1, (String) session.getAttribute("userName"));
+
+                ResultSet rst = smt.executeQuery();
+
+                float totalPrice= 0;
+                int quantity_final = 0;
+
+
+                while(rst.next()) {
+                    long id = rst.getLong("item_id");
+                    PreparedStatement smt1 = con.prepareStatement("select * from items, item_images where items.item_id = item_images.item_id and items.item_id=?");
+                    smt1.setLong(1, id);
+
+                    ResultSet rs = smt1.executeQuery();
+
+                    if(rs.next()) {
+                        Blob imageBlob = rs.getBlob("data");
+                        InputStream imageStream = imageBlob.getBinaryStream();
+                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                        byte[] buffer = new byte[4096];
+                        int n = 0;
+                        while (-1 != (n = imageStream.read(buffer))) {
+                            outputStream.write(buffer, 0, n);
+                        }
+                        byte[] imageBytes = outputStream.toByteArray();
+
+                        int qty = rst.getInt("quantity");
+                        System.out.println(qty);
+        %>
+            <tr class="item-td" style="width: 100%;">
+                <div align="center" class="card item-card" style="width: 100%;">
+                    <div align="center">
+                        <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/></div>
+                    <h4 class="card-title"><%= rs.getString("item_name")%></h4>
+                    <p class="card-text">
+                        <%
+                            float prc = rs.getFloat("price");
+                            float prc_fin = prc*qty;
+                            totalPrice += prc_fin;
+                            quantity_final += qty;
+                        %>
+                        <%= prc_fin%>
+                    </p>
+                </div>
+            </tr>
+
+
+        <%
+            }}
+        %>
+
+        <%= quantity_final%>
+        <%= totalPrice%>
+
+        <%
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        %>
+        </table>
+    </div>
+</div>
 
 <div class="container-fluid" style="background: linear-gradient(48deg, rgba(23,26,41,1) 0%, rgb(20,23,37) 76%, rgb(32,37,56) 95%);">
     <div class="row">
@@ -275,7 +365,7 @@
     </div>
 </div>
 
-<body>
+<body onload="findMyCoordinates()">
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
@@ -319,7 +409,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col"><h1>Items</h1></div></div><br>
+        <div class="col"><h2 style="font-family: 'Poppins', sans-serif; font-weight: 700">Items</h2></div></div><br>
     <div class="row">
         <div class="col">
             <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="material-symbols-outlined" style="color: #1e53ff; margin-right: 5px;">filter_alt</span>Filter</button>
@@ -345,6 +435,7 @@
             %>
             <h4 class="res-heading"><%=cnt%> Items</h4>
         </div>
+        <hr style="width: 100%; color: grey">
     </div>
 </div>
 
@@ -384,9 +475,9 @@
                                 }
                                 byte[] imageBytes = outputStream.toByteArray();
                         %>
-                        <td>
-                            <div class="card" style="width: 14rem;">
-                                    <img class="card-img-top" alt="..." src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
+                        <td class="item-td">
+                            <div class="card item-card" style="width: 14rem;">
+                                    <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
                                     <h4 class="card-title"><%= rs.getString("item_name")%></h4>
                                     <p class="card-text">
                                         <a href="#">
@@ -418,16 +509,19 @@
                                             <div class="price" align="right">Rs. <%= rs.getFloat("price") %></div>
                                         </div>
 
-                                        <div align="center" style="display: inline-block; margin-top: 1px; margin-bottom: 0">
-                                            <button type="button" class="btn btn-primary btn-circle btn-sm" style="margin-right: 20px;">
-                                                <span class="material-symbols-outlined">add_shopping_cart</span>
-                                            </button>
-                                            <select name="quantity" autocomplete="off" data-action="a-dropdown-select" >
-                                                <option value="1" selected="">1</option>
-                                                <option value="2">2 </option>
-                                                <option value="3">3 </option>
-                                                <option value="4">4 </option>
-                                            </select>
+                                        <div align="center" style="display: inline-block; margin-top: 1px; margin-bottom: 15px">
+                                            <form action="cart" method="post">
+                                                <button type="submit" id="cart-btn" class="btn btn-primary btn-circle btn-sm" style="margin-right: 20px;">
+                                                    <span id="cart-text" class="material-symbols-outlined">add_shopping_cart</span>
+                                                </button>
+                                                <input name="a" value="<%= rs.getLong("item_id") %>" hidden>
+                                                <select name="quantity" autocomplete="off" data-action="a-dropdown-select" >
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2 </option>
+                                                    <option value="3">3 </option>
+                                                    <option value="4">4 </option>
+                                                </select>
+                                            </form>
                                         </div>
                                     </p>
                             </div>
@@ -509,6 +603,53 @@
     displayPicture.addEventListener("click", function() {
         card.classList.toggle("hidden")})
 
+
+    document.getElementById('cart-btn').addEventListener("click", function () {
+        <%
+
+        %>
+    })
+
+    const openSidebarBtn = document.getElementById("openSidebarBtn");
+    const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+    const sidebar = document.getElementById("sidebar");
+
+    openSidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+    });
+
+    closeSidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    });
+
+    const http = new XMLHttpRequest();
+    let result = document.querySelector("#currentLoc");
+
+    function findMyCoordinates() {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition((position) => {
+                    const bdcApi = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
+                    getApi(bdcApi);
+                },
+                (err) => {
+                    alert(err.message)
+                })
+        } else {
+            alert("Geolocation is not supported by your browser")
+        }
+    }
+
+    function getApi(bdcApi) {
+        http.open("GET", bdcApi);
+        http.send();
+        http.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                const results = JSON.parse(this.responseText)
+                let final_location = results.locality + ", " + results.city + ", " + results.principalSubdivision + ", " + results.countryName
+                result.value = final_location;
+            }
+        };
+    }
 </script>
 </div>
 </body>

@@ -255,7 +255,7 @@
     </div>
 </div>
 
-<body>
+<body onload="findMyCoordinates()">
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
@@ -1007,7 +1007,34 @@ $(document).ready(function() {
     displayPicture.addEventListener("click", function() {
         card.classList.toggle("hidden")})
 
+    const http = new XMLHttpRequest();
+    let result = document.querySelector("#currentLoc");
 
+    function findMyCoordinates() {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition((position) => {
+                    const bdcApi = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
+                    getApi(bdcApi);
+                },
+                (err) => {
+                    alert(err.message)
+                })
+        } else {
+            alert("Geolocation is not supported by your browser")
+        }
+    }
+
+    function getApi(bdcApi) {
+        http.open("GET", bdcApi);
+        http.send();
+        http.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                const results = JSON.parse(this.responseText)
+                let final_location = results.locality + ", " + results.city + ", " + results.principalSubdivision + ", " + results.countryName
+                result.value = final_location;
+            }
+        };
+    }
 </script>
 </body>
 </html>

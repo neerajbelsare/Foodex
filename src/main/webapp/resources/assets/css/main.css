@@ -208,3 +208,27 @@ a{
     border-bottom: #1e53ff 2px solid;
     transition: 0.2s all;
 }
+
+.item-card:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 500px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    transition: right 0.5s ease-in-out;
+    z-index: 9999;
+}
+
+#sidebar.open {
+    right: 0;
+}
+
+#sidebar.close {
+    right: -500px;
+}
