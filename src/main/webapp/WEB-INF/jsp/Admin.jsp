@@ -38,7 +38,7 @@
             </ul>
         </li>
         <li>
-            <a href="Restaurants">
+            <a href="Restaurantdashboard">
                 <i class='bx bx-restaurant' ></i>
                 <span class="link_name">Restaurants</span>
             </a>
