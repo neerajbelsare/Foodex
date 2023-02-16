@@ -42,7 +42,7 @@
             <a href="#!" class="text-reset">Pricing</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Partner With Us</a>
+            <a href="partner" class="text-reset">Partner With Us</a>
           </p>
           <p>
             <a href="#!" class="text-reset">Ride With Us</a>

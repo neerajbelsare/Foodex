@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.util.Base64" %>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.ByteArrayOutputStream" %>
 <link href="<c:url value="/resources/css/header-dark.css" />" rel="stylesheet">
 
 <div class="main-container">
@@ -31,10 +34,10 @@
         %>
 
           <li class="nav-item">
-            <a class="nav-link nav-reg" href="login">Log In</a>
+            <a class="nav-link nav-reg" href="login">   Log In   </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-reg" href="register">Sign Up</a>
+            <a class="nav-link nav-reg" href="register">   Sign Up   </a>
           </li>
 
         <%
@@ -61,7 +64,36 @@
 
           <li class="nav-item">
             <ul>
-              <a href="#" class="display-picture"><img src="<c:url value="/resources/img/user-icon-default-white.svg" />" alt="User Icon"></a>
+              <%
+                try {
+                  PreparedStatement stmt1 = con.prepareStatement("select * from user_images where username=?");
+                  stmt1.setString(1, (String) session.getAttribute("userName"));
+
+                  ResultSet rst = stmt1.executeQuery();
+                  if(rst.next()){
+                    if (rst.getBlob("data") == null) {
+
+              %>
+              <a href="#" class="display-picture"><img class="img-account-profile rounded-circle mb-2" src="<c:url value="/resources/img/user-icon-default.svg" />" alt="user-icon"></a>
+              <%
+              } else {
+                Blob imageBlob = rst.getBlob("data");
+                InputStream imageStream = imageBlob.getBinaryStream();
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                byte[] buffer = new byte[4096];
+                int n = 0;
+                while (-1 != (n = imageStream.read(buffer))) {
+                  outputStream.write(buffer, 0, n);
+                }
+                byte[] imageBytes = outputStream.toByteArray();
+              %>
+              <a href="#" class="display-picture"><img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>" alt="user-icon"></a>
+              <%
+                    }}} catch(Exception k)
+                {
+                  System.out.println(k);
+                }
+              %>
             </ul>
             <div class="card hidden">
               <ul>

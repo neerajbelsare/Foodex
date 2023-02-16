@@ -1,3 +1,7 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 .nav-main{
     font-family: 'Poppins', sans-serif;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -12,7 +16,7 @@
     justify-content: center;
     align-items: center;
     color: black;
-    font-weight: 600;
+    /*font-weight: 600;*/
     cursor: pointer;
     border: none;
 }
@@ -71,4 +75,8 @@ ul {
 }
 a{
     text-decoration: none;
+}
+
+.nav-link {
+    color: white!important;
 }
