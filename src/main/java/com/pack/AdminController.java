@@ -129,7 +129,7 @@ public class AdminController {
     
     @RequestMapping(value = "/Restaurantsdash")
     public String getRes() {
-        return "Restaurants";
+        return "Restaurantsdash";
     }
     
     @RequestMapping(value = "/restrodelete", method = RequestMethod.POST)
@@ -165,6 +165,6 @@ public class AdminController {
             System.out.println(k);
         }
         
-        return "Restaurants";
+        return "Restaurantsdash";
     }
 }
