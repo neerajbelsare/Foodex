@@ -159,6 +159,8 @@
     </div>
 </div>
 
+<%@ include file="footer.jsp"%>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 <script>
     const inputField = document.querySelector("#item-id");
