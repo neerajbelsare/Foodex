@@ -6,7 +6,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8x
 
 <%int cnt=0;%>
-    
+<%int cnt10=0;%>
+
 <!DOCTYPE html>
 
 <html>
@@ -98,7 +99,7 @@
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
     <div class="container-fluid">
         <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
-        <input id="currentLoc" type="text" value="<%= session.getAttribute("currentLocation")%>" class="location-input">
+        <input type="text" placeholder="Enter your Location" class="location-input">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -154,36 +155,7 @@
 
                 <li class="nav-item">
                     <ul>
-                        <%
-                            try {
-                                PreparedStatement stmt1 = con.prepareStatement("select * from user_images where username=?");
-                                stmt1.setString(1, (String) session.getAttribute("userName"));
-
-                                ResultSet rst = stmt1.executeQuery();
-                                if(rst.next()){
-                                    if (rst.getBlob("data") == null) {
-
-                        %>
-                        <a href="#" class="display-picture"><img class="img-account-profile rounded-circle mb-2" src="<c:url value="/resources/img/user-icon-default.svg" />" alt="user-icon"></a>
-                        <%
-                        } else {
-                            Blob imageBlob = rst.getBlob("data");
-                            InputStream imageStream = imageBlob.getBinaryStream();
-                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                            byte[] buffer = new byte[4096];
-                            int n = 0;
-                            while (-1 != (n = imageStream.read(buffer))) {
-                                outputStream.write(buffer, 0, n);
-                            }
-                            byte[] imageBytes = outputStream.toByteArray();
-                        %>
-                        <a href="#" class="display-picture"><img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>" alt="user-icon"></a>
-                        <%
-                                    }}} catch(Exception k)
-                            {
-                                System.out.println(k);
-                            }
-                        %>
+                        <a href="#" class="display-picture"><img src="<c:url value="/resources/img/user-icon-default.png" />" alt="User Icon"></a>
                     </ul>
                     <div class="card hidden">
                         <ul>
@@ -219,9 +191,9 @@
                             <li><a href="account">Account</a></li>
                             <li><a href="settings">Settings</a></li>
                             <li><a href="#">Log Out</a></li>
-                    <%
+                            <%
                                         }}}
-                    %>
+                            %>
                         </ul>
                     </div>
 
@@ -236,33 +208,44 @@
                 <li class="nav-item">
                     <button id="openSidebarBtn" class="nav-link nav-reg"><span class="material-symbols-outlined nav-icons">shopping_cart</span>Cart</button>
                 </li>
+
             </ul>
         </div>
     </div>
 </nav>
 
-
 <div id="sidebar">
-    <div class="sidebar-head" >
-<%--        <button id="closeSidebarBtn" style="background-color: transparent; outline: none; border: none; margin-top: 20px; margin-right: 20px;">--%>
-<%--            <span class="material-symbols-outlined">--%>
-<%--            close--%>
-<%--            </span> Cart--%>
-<%--        </button>--%>
-    <h1 class="fs-5" style="display: inline-block">Filter Options</h1>
-    <div align="right" style="display: inline-block">
-        <button type="button" class="btn-close" aria-label="Close"></button>
+    <%
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+
+            PreparedStatement smt2 = con.prepareStatement("select count(*) from cart where username=?");
+            smt2.setString(1, (String) session.getAttribute("userName"));
+
+            ResultSet rs3 = smt2.executeQuery();
+
+            while (rs3.next()) {
+                cnt10 = rs3.getInt(1);
+            }
+    %>
+    <div class="sidebar-head">
+        <h1 class="fs-5" style="display: inline-block; margin-top: 20px; margin-left: 20px; font-weight: 700;width: 60%; font-size: 1.7em!important;">My Cart</h1>
+        <p style="background-color: #1e53ff; color: white; display: inline-block; width: 20%; margin-left: 20px; border-radius: 30px; padding: 7px; text-align: center; margin-right: 10px"><%= cnt10%> Item(s)</p>
+        <div style="text-align: right;display: inline-block">
+            <button type="button" class="btn-close"></button>
+        </div>
+        <hr>
+        <div align="center">
+        <a href="checkout" ><button class="btn btn-primary" style="border-radius: 30px; background-color: #1e53ff">Proceed to Checkout</button></a>
+        </div>
     </div>
-<%--    <button type="button" class="btn-close" aria-label="Close"></button>--%>
-    </div>
+    <hr>
+
     <div class="sidebar-body">
         <table>
         <%
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-
                 PreparedStatement smt = con.prepareStatement("select * from cart where username=?");
                 smt.setString(1, (String) session.getAttribute("userName"));
 
@@ -291,31 +274,26 @@
                         byte[] imageBytes = outputStream.toByteArray();
 
                         int qty = rst.getInt("quantity");
-                        System.out.println(qty);
         %>
-            <tr class="item-td" style="width: 100%;">
-                <div align="center" class="card item-card" style="width: 100%;">
-                    <div align="center">
-                        <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/></div>
-                    <h4 class="card-title"><%= rs.getString("item_name")%></h4>
-                    <p class="card-text">
-                        <%
-                            float prc = rs.getFloat("price");
-                            float prc_fin = prc*qty;
-                            totalPrice += prc_fin;
-                            quantity_final += qty;
-                        %>
-                        <%= prc_fin%>
-                    </p>
-                </div>
+            <tr class="item-td">
+                    <div align="center" class="card item-card" style="width: 100%;">
+                        <div align="center">
+                            <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/></div>
+                        <h4 class="card-title"><%= rs.getString("item_name")%></h4>
+                        <p class="card-text">
+                            <%
+                                float prc = rs.getFloat("price");
+                                float prc_fin = prc*qty;
+                                totalPrice += prc_fin;
+                                quantity_final += qty;
+                            %>
+                            <%= prc_fin%>
+                        </p>
+                    </div>
             </tr>
-
-
         <%
             }}
         %>
-
-        <%= quantity_final%>
         <%= totalPrice%>
 
         <%
@@ -501,11 +479,12 @@
                                         %>
                                         <br>
 
-                                        <div class="inline-div grid1" style="margin-bottom: 5px;">
+                                        <div class="inline-div grid1" style="margin-bottom: 15px; margin-top: 0">
                                             <div class="text-container">
-                                                <div class="truncate"><%= rs.getString("description") %></div>
-                                                <div align="left" class="text-desc"><%= rs.getString("description") %></div>
+<%--                                                <div class="truncate"><%= rs.getString("description") %></div>--%>
+<%--                                                <div align="left" class="text-desc"><%= rs.getString("description") %></div>--%>
                                             </div>
+<%--                                            <div align="left" style="font-size: 0.7em"><%= rs.getString("description") %></div>--%>
                                             <div class="price" align="right">Rs. <%= rs.getFloat("price") %></div>
                                         </div>
 
@@ -541,6 +520,7 @@
                 </div>
             </div>
         </div>
+</div>
 
     <%@ include file="footer.jsp"%>
 
@@ -616,10 +596,11 @@
 
     openSidebarBtn.addEventListener("click", () => {
         sidebar.classList.toggle("open");
+        sidebar.style.display = "block";
     });
 
-    closeSidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
+    document.querySelector(".btn-close").addEventListener("click", () => {
+        sidebar.style.display = "none";
     });
 
     const http = new XMLHttpRequest();
