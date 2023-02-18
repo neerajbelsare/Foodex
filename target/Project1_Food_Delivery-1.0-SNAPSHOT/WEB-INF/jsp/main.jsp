@@ -390,8 +390,6 @@
 
 <div class="container">
     <div class="row">
-        <div class="col"><h2 style="font-family: 'Poppins', sans-serif; font-weight: 700">Items</h2></div></div><br>
-    <div class="row">
         <div class="col">
             <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="material-symbols-outlined" style="color: #1e53ff; margin-right: 5px;">filter_alt</span>Filter</button>
         </div>
@@ -421,7 +419,6 @@
 </div>
 
 <div class="container">
-        <div class="container">
             <div class="row">
                 <div class="col">
                     <table>
@@ -521,8 +518,7 @@
                         %>
                     </table>
                 </div>
-            </div>
-        </div>
+            </div>   
 </div>
 
     <%@ include file="footer.jsp"%>

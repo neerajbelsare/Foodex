@@ -1,4 +1,14 @@
+<%@page import="java.util.Base64"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.io.ByteArrayOutputStream"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="java.sql.Blob"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.PreparedStatement"%>
 <title>Upload Image</title>
+<% int cnt10=0;%>
 
 <body>
 
