@@ -203,7 +203,6 @@
                             %>
                         </ul>
                     </div>
-
                     <%
                             }catch (Exception k) {
                                 System.out.println(k);
@@ -211,7 +210,6 @@
                         }
                     %>
                 </li>
-
             </ul>
         </div>
     </div>

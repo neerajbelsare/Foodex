@@ -31,18 +31,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
     <title>Restaurant Dashboard | Foodex</title>
     <link href="<c:url value="/resources/css/admin.css" />" rel="stylesheet">
 </head>
 <body>
-<%--<c:if test="${not empty errorMessage}">--%>
-<%--    <div class="error alert alert-danger">--%>
-<%--        <p>${errorMessage}</p>--%>
-<%--    </div>--%>
-<%--</c:if>--%>
-
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal">
         <div class="modal-content">
