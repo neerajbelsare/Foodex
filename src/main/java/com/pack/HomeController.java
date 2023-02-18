@@ -1,12 +1,13 @@
 package com.pack;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
@@ -15,7 +16,12 @@ public class HomeController {
     {
         return "Home";
     }
-    
+
+    @RequestMapping(value="/payment")
+    public String Homecontroller()
+    {
+        return "Payments";
+    }
 
     @RequestMapping(value = "/itemdelete")
     public String getItem() {

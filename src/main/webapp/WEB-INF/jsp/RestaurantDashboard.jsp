@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
@@ -36,11 +37,11 @@
     <link href="<c:url value="/resources/css/admin.css" />" rel="stylesheet">
 </head>
 <body>
-<c:if test="${not empty errorMessage}">
-    <div class="error alert alert-danger">
-        <p>${errorMessage}</p>
-    </div>
-</c:if>
+<%--<c:if test="${not empty errorMessage}">--%>
+<%--    <div class="error alert alert-danger">--%>
+<%--        <p>${errorMessage}</p>--%>
+<%--    </div>--%>
+<%--</c:if>--%>
 
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal">
@@ -82,21 +83,18 @@
 
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
 
-            PreparedStatement stmt = con.prepareStatement("SELECT COUNT(*) FROM orders where res_id=?");
-            stmt.setLong(1, (Long) session.getAttribute("res_id"));
-            ResultSet rs1 = stmt.executeQuery();
+//            PreparedStatement stmt = con.prepareStatement("SELECT COUNT(*) FROM orders where res_id=?");
+//            stmt.setLong(1, (Long) session.getAttribute("res_id"));
+//            ResultSet rs1 = stmt.executeQuery();
 
-            PreparedStatement stmt1 = con.prepareStatement("SELECT rating FROM restaurants where res_id=?");
-            stmt.setLong(1, (Long) session.getAttribute("res_id"));
+            PreparedStatement stmt1 = con.prepareStatement("SELECT * FROM restaurants where res_id=?");
+            stmt1.setLong(1, Long.parseLong((String) session.getAttribute("res_id")));
             ResultSet rs2 = stmt1.executeQuery();
 
-            PreparedStatement stmt2 = con.prepareStatement("SELECT COUNT(*) FROM reports where res_id=?");
-            stmt.setLong(1, (Long) session.getAttribute("res_id"));
-            ResultSet rs3 = stmt2.executeQuery();
+//            PreparedStatement stmt2 = con.prepareStatement("SELECT COUNT(*) FROM reports where res_id=?");
+//            stmt2.setLong(1, (Long) session.getAttribute("res_id"));
+//            ResultSet rs3 = stmt2.executeQuery();
 
-        } catch (Exception e){
-            System.out.println(e);
-        }
     %>
     <br><br>
     <div class="row">
@@ -110,18 +108,49 @@
     <div class="row">
         <div class="col">
             <div class="stat">
-                <h2 style="padding: 100px 0 100px 30px; font-weight: 600; font-size: 3em;"><br>Reports</h2>
+                <h2 style="padding: 100px 0 100px 30px; font-weight: 600; font-size: 3em;">0<br>Reports</h2>
             </div>
         </div>
 
         <div class="col">
             <div class="stat">
-                <h2 style="padding: 100px 0 100px 30px; font-weight: 600; font-size: 3em;"><br>Rating</h2>
+                <%
+                    if(rs2.next()) {
+                        if(rs2.getFloat("rating") >= 4 && rs2.getFloat("rating") <= 5) {
+
+                %>
+                <br><br><br><h6 style="background-color: #3EC70B; color: white; display: flex; justify-content: center; align-items: center; width: 20%; font-weight: 600; font-size: 2.4em; padding: 20px; margin-left: 30px">
+                    <%= rs2.getString("rating")%><span class="material-symbols-outlined">star</span>
+                </h6>
+                <%
+                    } else if(rs2.getFloat("rating") >= 3 && rs2.getFloat("rating") < 4) {
+
+                %>
+                    <br><br><br><h6 style="background-color: #f58305; color: white; display: flex; justify-content: center; align-items: center; width: 20%; font-weight: 600; font-size: 2.4em; padding: 20px; margin-left: 30px">
+                    <%= rs2.getString("rating")%><span class="material-symbols-outlined">star</span>
+                </h6>
+                        <%
+                    } else if(rs2.getFloat("rating") >= 4 && rs2.getFloat("rating") <= 5) {
+
+                %>
+                    <br><br><br><h6 style="background-color: #f50202; color: white; display: flex; justify-content: center; align-items: center; width: 20%; font-weight: 600; font-size: 2.4em; padding: 20px; margin-left: 30px">
+                    <%= rs2.getString("rating")%><span class="material-symbols-outlined">star</span>
+                </h6>
+                
+                <%
+                    }
+                %>
+
+                <h2 style="padding-bottom: 100px; padding-left: 30px; font-weight: 600; font-size: 3em;">Rating</h2>
             </div>
         </div>
     </div>
 </div>
-
+<%
+    }} catch (Exception e){
+        System.out.println(e);
+    }
+%>
 <div class="container">
     <br><br><h3 style="font-weight: 600; font-size: 2em; ">Manage your Restaurant</h3>
     <hr><br><br>

@@ -6,7 +6,6 @@ import com.razorpay.RazorpayException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
@@ -14,12 +13,12 @@ import java.util.Map;
 
 public class PaymentController
 {
-     @RequestMapping(value="/payment")
-    public String Homecontroller()
-    {
-        return "Payments";
-    }
-    
+//     @RequestMapping(value="/payment")
+//    public String Homecontroller()
+//    {
+//        return "Payments";
+//    }
+//
   @Autowired
   private RazorpayClient razorpayClient;
 

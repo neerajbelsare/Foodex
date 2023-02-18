@@ -237,13 +237,10 @@
             <button type="button" class="btn-close"></button>
         </div>
         <hr>
-        <div align="center">
-        <a href="checkout" ><button class="btn btn-primary" style="border-radius: 30px; background-color: #1e53ff">Proceed to Checkout</button></a>
-        </div>
     </div>
-    <hr>
 
     <div class="sidebar-body">
+        <form action="checkout" method="post">
         <table>
         <%
                 PreparedStatement smt = con.prepareStatement("select * from cart where username=?");
@@ -291,17 +288,17 @@
                         </p>
                     </div>
             </tr>
+        </table>
+            <input name="a" value="<%= totalPrice*100%>" hidden>
+            <div align="center">
+                <a href="payment"><button  class="btn btn-primary" style="border-radius: 30px; background-color: #1e53ff; margin-top: 40px!important;">Proceed to Checkout</button></a>
+            </div>
         <%
-            }}
-        %>
-        <%= totalPrice%>
-
-        <%
-            } catch (Exception e) {
+            }}} catch (Exception e) {
                 System.out.println(e);
             }
         %>
-        </table>
+    </form>
     </div>
 </div>
 

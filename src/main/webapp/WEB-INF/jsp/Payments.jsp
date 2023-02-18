@@ -10,12 +10,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
-<!DOCTYPE html>
-<!DOCTYPE html>
-<!DOCTYPE html>
+
 <html>
+<% String a = (String) request.getAttribute("AMT");
+%>
         <head>
-            <title>PAYMENT PAGE</title>
+            <title>Checkout | Foodex</title>
             
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -23,12 +23,8 @@
         <body>
             <form id="paymentForm">
                 <div class="form-group">
-                  <label for="email">Email address:</label>
-                  <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                  <label for="amount">Amount (in paisa):</label>
-                  <input type="number" class="form-control" id="amount" name="amount" required>
+                  <label for="amount">Total Amount:</label>
+                  <input type="number" value="<%= a%>" class="form-control" id="amount" name="amount" readonly required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Pay Now</button>
             </form>

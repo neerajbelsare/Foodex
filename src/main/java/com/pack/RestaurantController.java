@@ -22,8 +22,6 @@ public class RestaurantController extends HttpServlet {
     @RequestMapping(value = "/partner")
     public String getPartner(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
-        String currentURL = request.getRequestURI();
-        session.setAttribute("previousPage", currentURL);
 
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
         if (loggedIn == null || !loggedIn) {
@@ -45,7 +43,6 @@ public class RestaurantController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
 
-//            String type = String.join(",", y);
             String cuisine = String.join(", ", z);
 
             Class.forName("com.mysql.cj.jdbc.Driver");
