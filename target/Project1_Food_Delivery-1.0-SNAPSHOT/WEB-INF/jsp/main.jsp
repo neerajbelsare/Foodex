@@ -96,6 +96,7 @@
     </style>
 </head>
 
+<body onload="findMyCoordinates()">
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
     <div class="container-fluid">
         <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
@@ -340,7 +341,6 @@
     </div>
 </div>
 
-<body onload="findMyCoordinates()">
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
@@ -629,6 +629,5 @@
         };
     }
 </script>
-</div>
 </body>
 </html>
