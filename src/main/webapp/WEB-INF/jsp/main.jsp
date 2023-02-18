@@ -7,6 +7,7 @@
 
 <%int cnt=0;%>
 <%int cnt10=0;%>
+<%float price=0;%>
 
 <!DOCTYPE html>
 
@@ -237,8 +238,13 @@
             <button type="button" class="btn-close"></button>
         </div>
         <hr>
-        <div align="center">
-        <a href="checkout" ><button class="btn btn-primary" style="border-radius: 30px; background-color: #1e53ff">Proceed to Checkout</button></a>
+        <div align="center" style="display: inline-block;">
+            <div align="left">
+                <a href="checkout" ><button class="btn btn-primary" style="border-radius: 30px; background-color: #1e53ff">Proceed to Checkout</button></a>
+            </div>
+            <div align="right">
+                
+            </div>
         </div>
     </div>
     <hr>
@@ -295,6 +301,7 @@
             }}
         %>
         <%= totalPrice%>
+        <% price=totalPrice;%>
 
         <%
             } catch (Exception e) {
@@ -303,6 +310,10 @@
         %>
         </table>
     </div>
+        <div class="sidebar-body">
+            <%= price%>
+        </div>
+        <%@ include file="footer.jsp"%>
 </div>
 
 <div class="container-fluid" style="background: linear-gradient(48deg, rgba(23,26,41,1) 0%, rgb(20,23,37) 76%, rgb(32,37,56) 95%);">
