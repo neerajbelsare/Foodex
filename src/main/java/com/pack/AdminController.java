@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,14 +21,7 @@ public class AdminController {
 
     @RequestMapping(value = "/users")
     public String getUsers(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
-        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
-        if (loggedIn == null || !loggedIn || session.getAttribute("userName") != "admin") {
-            response.sendRedirect("login");
-            return "Login";
-        } else {
             return "Users";
-        }
     }
     
     @RequestMapping(value = "/users", method = RequestMethod.POST)

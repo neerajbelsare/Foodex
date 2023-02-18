@@ -231,6 +231,7 @@
                 cnt10 = rs3.getInt(1);
             }
     %>
+    
     <div class="sidebar-head">
         <h1 class="fs-5" style="display: inline-block; margin-top: 20px; margin-left: 20px; font-weight: 700;width: 60%; font-size: 1.7em!important;">My Cart</h1>
         <p style="background-color: #1e53ff; color: white; display: inline-block; width: 20%; margin-left: 20px; border-radius: 30px; padding: 7px; text-align: center; margin-right: 10px"><%= cnt10%> Item(s)</p>
