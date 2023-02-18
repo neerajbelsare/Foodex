@@ -290,12 +290,17 @@
                     </div>
             </tr>
         </table>
-            <input name="a" value="<%= totalPrice*100%>" hidden>
-            <div align="center">
-                <a href="payment"><button  class="btn btn-primary" style="border-radius: 30px; background-color: #1e53ff; margin-top: 40px!important;">Proceed to Checkout</button></a>
-            </div>
         <%
-            }}} catch (Exception e) {
+            }}
+                %>
+            <input name="a" value="<%= totalPrice*100%>" hidden>
+            <br><br>
+            <h4>Total Price: <%= totalPrice%></h4>
+            <div align="center">
+                <a href="payment"><button  class="btn btn-primary" style="border-radius: 30px; background-color: #1e53ff; margin-top: 10px!important; margin-bottom: 20px!important;">Proceed to Checkout</button></a>
+            </div><br><br>
+            <%
+        } catch (Exception e) {
                 System.out.println(e);
             }
         %>
