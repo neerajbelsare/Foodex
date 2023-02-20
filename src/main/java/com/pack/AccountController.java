@@ -94,4 +94,9 @@ public class AccountController {
 
         return "Account";
     }
+
+    @RequestMapping(value = "/settings")
+    public String getSettings() {
+        return "SetFinally";
+    }
 }
