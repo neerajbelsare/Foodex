@@ -11,9 +11,28 @@
   <component name="ChangeListManager">
     <list default="true" id="8ea66058-2935-48ac-ae01-af668147bce4" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Settings.jsp" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/TwoFA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/TwoFA.java" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/VerifyAccount.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/res_dashboard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pack/PasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pack/PasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Payments.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Payments.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/PasswordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/classes/com/pack/PasswordController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Payments.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Payments.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/Users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project1_Food_Delivery-1.0-SNAPSHOT/WEB-INF/jsp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pack/PasswordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pack/PasswordController.class" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +83,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/DnyanFest/Super_30_2&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -216,7 +236,12 @@
       <workItem from="1676577688937" duration="781000" />
       <workItem from="1676635637018" duration="21167000" />
       <workItem from="1676693570330" duration="742000" />
-      <workItem from="1676694339547" duration="9356000" />
+      <workItem from="1676694339547" duration="14603000" />
+      <workItem from="1676723331361" duration="2795000" />
+      <workItem from="1676780277804" duration="1392000" />
+      <workItem from="1676782586004" duration="8608000" />
+      <workItem from="1676858110671" duration="1747000" />
+      <workItem from="1676896444271" duration="3160000" />
     </task>
     <servers />
   </component>

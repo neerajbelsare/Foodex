@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <%--
   Created by IntelliJ IDEA.
   User: NEERAJ BELSARE
@@ -9,6 +10,12 @@
 <html>
 <head>
     <title>Settings </title>
+=======
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Settings | Foodex</title>
+>>>>>>> Stashed changes
 </head>
 <body>
 

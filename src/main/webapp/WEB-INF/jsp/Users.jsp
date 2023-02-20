@@ -119,25 +119,25 @@
         </div>
         
         <div class="row">
-        <div class="col">
-            <%
-                try{
-                    Class.forName("com.mysql.cj.jdbc.Driver");
+            <div class="col">
+                <%
+                    try{
+                        Class.forName("com.mysql.cj.jdbc.Driver");
 
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-                    Statement state = con.createStatement();
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+                        Statement state = con.createStatement();
 
-                    ResultSet rst = state.executeQuery("select count(*) from users");
-                    while (rst.next()) {
-                        cnt1 = rst.getInt(1);
+                        ResultSet rst = state.executeQuery("select count(*) from users");
+                        while (rst.next()) {
+                            cnt1 = rst.getInt(1);
+                        }
                     }
-                }
-                catch (Exception k){
-                    System.out.println(k.getMessage());
-                }
-            %>
-            <h6 class="res-heading"><%=cnt1%> active users</h6>
-        </div>
+                    catch (Exception k){
+                        System.out.println(k.getMessage());
+                    }
+                %>
+                <h6 class="res-heading"><%=cnt1%> active users</h6>
+            </div>
     </div>
         
         <div class="row">
@@ -166,7 +166,7 @@
                             <%
                         while (rs.next()) {
                             out.println("<tr>");
-                            for (int i = 1; i <= columnCount - 1; i++) {
+                            for (int i = 1; i <= columnCount - 3; i++) {
                                 out.println("<td>" + rs.getString(i) + "</td>");
                                 columnIndex++;
                                 if (columnIndex % 5 == 0) {
@@ -188,6 +188,7 @@
                 %>
             </div>
         </div>
+
             <div class="row">
                 <div class="col">
                     <button class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">
@@ -243,19 +244,6 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-<!--                                    <a href="#update-name">
-                                        Name
-                                    </a>
-                                    <br>
-                                    <a href="#">
-                                        Phone Number
-                                    </a><br>
-                                    <a href="#">
-                                        Email
-                                    </a><br>
-                                    <a href="#">
-                                        Address
-                                    </a>-->
                                     <form action="userupdate" method="post">
                                         <label for="username">Enter username: </label>
                                         <input type="text" id="username" name="username">
@@ -265,7 +253,6 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
-<!--                                    <button type="button" class="btn btn-warning btn-circle btn-sm">Add</button>-->
                                 </div>
                             </div>
                         </div>
@@ -299,33 +286,35 @@
                     </div>
             </div>
     </div>
-            <div class="row">
-                <div class="col">
-                    <div class="modal" id="update-name" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Enter username to update</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="userdelete" method="post">
-                                                        <label for="username">Enter username: </label>
-                                                        <input type="text" id="username" name="username">
-                                                        <br><br>
-                                                        <input class="btn btn-warning btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');" type="submit" value="Submit">
-                                                      </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
-                <!--                                    <button type="button" class="btn btn-warning btn-circle btn-sm">Add</button>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+    <div class="row">
+        <div class="col">
+            <div class="modal" id="update-name" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Enter username to update</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="userdelete" method="post">
+                                <label for="username">Enter username: </label>
+                                <input type="text" id="username" name="username">
+                                <br><br>
+                                <input class="btn btn-warning btn-circle btn-sm" onclick="return confirm('Are you sure you want to delete this item?');" type="submit" value="Submit">
+                              </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
+                        </div>
                 </div>
-            </div>
+                </div>
+        </div>
+    </div>
+    </div>
+    </div>
 </section>
+
+<%@ include file="footer.jsp" %>
 
 <script>
       var modal = document.getElementById("update-name");
@@ -370,8 +359,6 @@
         sidebar.classList.toggle("close");
     });
 </script>
-
-<%@ include file="footer.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

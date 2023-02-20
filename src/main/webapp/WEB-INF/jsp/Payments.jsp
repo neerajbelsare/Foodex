@@ -31,7 +31,7 @@
                 <div class="form-group">
                   <label for="amount">Total Amount: Rs. </label>
                   <input type="number" value="<%= a%>" class="form-control" id="amount" name="amount" readonly required>
-                </div>
+                </div><br>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Pay Now</button>
             </form>
         </div>
