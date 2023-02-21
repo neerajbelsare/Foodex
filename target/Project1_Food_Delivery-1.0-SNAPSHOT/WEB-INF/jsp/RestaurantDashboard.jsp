@@ -53,6 +53,7 @@
                                 <div class="details-col col">
                                 <br><input type="text" id="item-name" class="form-control form-input" placeholder="Item Name" name="a"/><br>
                                 <input type="text" id="item-price" class="form-control form-input" placeholder="Price" name="b"/><br>
+                                <input type="text" id="rating" class="form-control form-input" placeholder="Existing Rating" name="r"/><br>
                                 <input id="res-id" value="<%=session.getAttribute("res_id")%>" class="form-control form-input" name="c" readonly="readonly"><br>
                                 <input type="text" id="item-id" class="form-control form-input" placeholder="Item Id" name="d"/><br>
                                 <input type="text" id="desc" class="form-control form-input" placeholder="Item Description" name="e"/>

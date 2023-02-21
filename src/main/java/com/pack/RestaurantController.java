@@ -38,7 +38,7 @@ public class RestaurantController extends HttpServlet {
     public String submitresForm(HttpServletRequest request, HttpServletResponse response, @RequestParam("l") Long r, @RequestParam("a") String s,
                                 @RequestParam("b") String t, @RequestParam("c") Long u, @RequestParam("d") String v
             , @RequestParam("e") String w, @RequestParam("f") Long x, @RequestParam("g") String y, @RequestParam("h") String [] z
-            , @RequestParam("i") String m, @RequestParam("j") String n, @RequestParam("k") CommonsMultipartFile file) {
+            , @RequestParam("i") String m, @RequestParam("j") String n, @RequestParam("rt") Float rt, @RequestParam("k") CommonsMultipartFile file) {
 
         try {
             HttpSession session = request.getSession();
@@ -48,7 +48,7 @@ public class RestaurantController extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-            PreparedStatement stmt = con.prepareStatement("insert into restaurants (res_name, address, res_phone, manager, email, phone, type, cuisine, timing_open, timing_close, username, res_id) values(?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement stmt = con.prepareStatement("insert into restaurants (res_name, address, res_phone, manager, email, phone, type, cuisine, timing_open, timing_close, username, res_id, rating) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
             stmt.setString(1, s);
             stmt.setString(2, t);
@@ -62,6 +62,7 @@ public class RestaurantController extends HttpServlet {
             stmt.setString(10, n);
             stmt.setString(11, (String) session.getAttribute("userName"));
             stmt.setLong(12, r);
+            stmt.setFloat(13, rt);
 
             InputStream inputStream = null;
 
@@ -103,19 +104,29 @@ public class RestaurantController extends HttpServlet {
 
     @RequestMapping(value = "/itemform", method = RequestMethod.POST)
     public String setImage(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String m, @RequestParam("b") Float n,
-                           @RequestParam("c") Long o, @RequestParam("d") Long p, @RequestParam("e") String q, @RequestParam("f") CommonsMultipartFile file, Model model) {
+                           @RequestParam("c") Long o, @RequestParam("d") Long p, @RequestParam("e") String q, @RequestParam("r") Float rt, @RequestParam("f") CommonsMultipartFile file, Model model) {
 
         try {
             HttpSession session = request.getSession();
+            
+            String id =(String) session.getAttribute("res_id");
+            
+            long num = Long.parseLong(id);
+            long lastSixDigits = num % 1000000;
+            
+            String combinedString = String.valueOf(lastSixDigits) + String.valueOf(p);
+            
+            long z = Long.parseLong(combinedString);
 
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-            PreparedStatement stmt = con.prepareStatement("insert into items (item_name, price, res_id, item_id, description) values(?,?,?,?,?)");
+            PreparedStatement stmt = con.prepareStatement("insert into items (item_name, price, res_id, item_id, description, rating) values(?,?,?,?,?,?)");
 
             stmt.setString(1, m);
             stmt.setFloat(2, n);
             stmt.setLong(3, o);
-            stmt.setLong(4, p);
+            stmt.setLong(4, z);
             stmt.setString(5, q);
+            stmt.setFloat(6, rt);
 
             InputStream inputStream = null;
 
@@ -132,7 +143,7 @@ public class RestaurantController extends HttpServlet {
                 ResultSet rs1 = stmt1.executeQuery();
 
                 PreparedStatement statement = con.prepareStatement("INSERT INTO item_images (item_id, data) values (?, ?)");
-                statement.setLong(1, p);
+                statement.setLong(1, z);
 
                 if (inputStream != null) {
                     statement.setBlob(2, inputStream);

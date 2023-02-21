@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>x
+<%@page import="java.util.ArrayList"%>
 <%@page import="javax.script.ScriptEngine"%>
 <%@page import="javax.script.ScriptEngineManager"%>
 <%@page import="org.springframework.ui.Model"%>
@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
@@ -106,7 +107,7 @@
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
     <div class="container-fluid">
         <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
-        <input type="text" value="<%= session.getAttribute("currentLocation")%>" class="location-input">
+        <input type="text" placeholder="Enter your Location" value="<%= session.getAttribute("currentLocation")%>" class="location-input">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -371,17 +372,31 @@
                 %>
                 <td>
                     <% String m=rs.getString("res_name");%>
-                    <div class="card space" style="width: 14rem;">
-                        <img class="card-img-top" alt="..." src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
+                    <div align="center" class="card space" style="width: 14rem;">
+                        <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
                         <h4 class="card-title"><%=m%></h4>
                         <p class="card-text"><%= rs.getString("type") %><br>
-                        <p class="card-text res-id"><%= rs.getLong("res_id")%><br>
-                        <div class="text-desc"><%= rs.getString("cuisine") %></div>
-                        <div class="text-container">
-                            <div class="truncate"><%= rs.getString("address") %></div>
-                                <div class="text-desc"><%= rs.getString("address") %></div>
-                        </div>
-                        <%= rs.getString("res_phone") %>
+<!--                        <p class="card-text res-id"><%= rs.getLong("res_id")%><br>-->
+                        <%float rate = rs.getFloat("rating");
+                                        int x = (int) rate;
+                                        for (int i=0; i<x; i++)
+                                        {%>
+                                            <span class="material-symbols-rounded" style="color: #3EC70B;">
+                                                star
+                                            </span>
+                                        <%}
+                                        if (rate%1!=0)
+                                        {%>
+                                            <span class="material-symbols-rounded" style="color: #3EC70B;">
+                                                star_half
+                                            </span>
+                                        <%}
+                                        %>
+                        <br><%= rs.getString("cuisine") %>
+                        <br>Loc: <a href="https://www.google.com/maps/search/?api=1&query=<%= rs.getString("address") %>" target="_blank"><%= rs.getString("address") %></a>
+                        <%--<%= rs.getString("address") %>--%>
+                        <br>Phone: <span itemprop="telephone"><a href="tel:+91<%= rs.getLong("res_phone") %>"><%= rs.getString("res_phone") %></a></span>
+                        <%--<%= rs.getString("res_phone") %>--%>
                         <br><%= rs.getString("timing_open") %> - <%= rs.getString("timing_close") %>
 <!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
                             Details
