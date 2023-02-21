@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Random;
 
 /**
  *
@@ -33,16 +34,15 @@ public class PasswordController {
     @RequestMapping(value = "/forgot", method = RequestMethod.POST)
     public String checkPass(@RequestParam("a") String x, @RequestParam("b") String y, Model obj1)
     {      
-        obj1.addAttribute("msg","Checking");
+//        obj1.addAttribute("msg","Checking");
         try 
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
 
-            PreparedStatement stmt=con.prepareStatement("SELECT * FROM USERS WHERE EMAIL=? AND USERNAME=?");
+            PreparedStatement stmt=con.prepareStatement("SELECT * FROM USERS WHERE USERNAME=?");
             
-            stmt.setString(1, x);
-            stmt.setString(2, y);
+            stmt.setString(1, y);
             
             ResultSet rs=stmt.executeQuery();
 
@@ -52,7 +52,12 @@ public class PasswordController {
                 {
                     obj1.addAttribute("EM",rs.getString("EMAIL"));
                     usernm=rs.getString("USERNAME");
-                    System.out.println(rs.getString("USERNAME"));
+
+                    Random rand = new Random();
+                    int code = rand.nextInt(900000) + 100000;
+
+                    System.out.println(code);
+
                     return "Forward";
                 }
             }

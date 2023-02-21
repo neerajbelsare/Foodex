@@ -131,6 +131,8 @@
                     num/=100;%>
                     <h4><label for="amount">Total Amount to be paid: Rs. <%= num%></label></h4>
                   <input type="number" value="<%= a%>" class="form-control" id="amount" name="amount" readonly hidden required>
+                  <label for="amount">Total Amount: Rs. </label>
+                  <input type="number" value="<%= a%>" class="form-control" id="amount" name="amount" readonly required>
                 </div><br>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Pay Now</button>
             </form>
