@@ -20,8 +20,8 @@
                 frustrating. To reset your password, please fill your details. You will receive a link on your email if your account exists.</p><br><br>
 
             <form action="forgot" method="post" class="forgot-pass-form" id="form">
-                <input type="text" name="a" class="form-input" placeholder="Email" id="email"><br>
-                <input type="text" name="b" class="form-input" placeholder="Username" id="username"><br><br>
+                <input type="email" name="a" class="form-input" placeholder="Email" id="email" required><br>
+                <input type="text" name="b" class="form-input" placeholder="Username" id="username" required><br><br>
                 <input type="submit" value="   Submit   " class="btn-primary btn"><br><br><br>
             </form>
         </div>
