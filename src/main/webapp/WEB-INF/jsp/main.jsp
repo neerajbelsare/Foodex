@@ -6,7 +6,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%int cnt=0;%>
-<%int cnt10=0;%>
 
 <!DOCTYPE html>
 
@@ -27,7 +26,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
@@ -100,7 +99,7 @@
 <nav class="navbar navbar-expand-lg nav-main navbar-light" id="nav-main">
     <div class="container-fluid">
         <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
-        <input type="text" placeholder="Enter your Location" class="location-input">
+        <input type="text" placeholder="Enter your Location" value="<%= session.getAttribute("currentLocation")%>" class="location-input">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -108,7 +107,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto" style="display: flex; align-items: center">
                 <li class="nav-item">
-                    <a class="nav-link nav-reg" href="login"><span class="material-symbols-outlined nav-icons">search</span>Search</a>
+                    <a class="nav-link nav-reg" href="#"><span class="material-symbols-outlined nav-icons">search</span>Search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-reg" href="offers"><span class="material-symbols-outlined nav-icons">loyalty</span>Offers</a>
@@ -207,107 +206,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <button id="openSidebarBtn" class="nav-link nav-reg"><span class="material-symbols-outlined nav-icons">shopping_cart</span>Cart</button>
+                    <button onclick="openSidebar()" class="nav-link nav-reg"><span class="material-symbols-outlined nav-icons">shopping_cart</span>Cart</button>
                 </li>
 
             </ul>
         </div>
     </div>
 </nav>
-
-<div id="sidebar">
-    <%
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-
-            PreparedStatement smt2 = con.prepareStatement("select count(*) from cart where username=?");
-            smt2.setString(1, (String) session.getAttribute("userName"));
-
-            ResultSet rs3 = smt2.executeQuery();
-
-            while (rs3.next()) {
-                cnt10 = rs3.getInt(1);
-            }
-    %>
-
-    <div class="sidebar-head">
-        <h1 class="fs-5" style="display: inline-block; margin-top: 20px; margin-left: 20px; font-weight: 700;width: 60%; font-size: 1.7em!important;">My Cart</h1>
-        <p style="background-color: #1e53ff; color: white; display: inline-block; width: 20%; margin-left: 20px; border-radius: 30px; padding: 7px; text-align: center; margin-right: 10px"><%= cnt10%> Item(s)</p>
-        <div style="text-align: right;display: inline-block">
-            <button type="button" class="btn-close"></button>
-        </div>
-        <hr>
-    </div>
-
-    <div class="sidebar-body">
-        <form action="checkout" method="post">
-        <table>
-        <%
-                PreparedStatement smt = con.prepareStatement("select * from cart where username=?");
-                smt.setString(1, (String) session.getAttribute("userName"));
-
-                ResultSet rst = smt.executeQuery();
-
-                float totalPrice= 0;
-                int quantity_final = 0;
-
-
-                while(rst.next()) {
-                    long id = rst.getLong("item_id");
-                    PreparedStatement smt1 = con.prepareStatement("select * from items, item_images where items.item_id = item_images.item_id and items.item_id=?");
-                    smt1.setLong(1, id);
-
-                    ResultSet rs = smt1.executeQuery();
-
-                    if(rs.next()) {
-                        Blob imageBlob = rs.getBlob("data");
-                        InputStream imageStream = imageBlob.getBinaryStream();
-                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                        byte[] buffer = new byte[4096];
-                        int n = 0;
-                        while (-1 != (n = imageStream.read(buffer))) {
-                            outputStream.write(buffer, 0, n);
-                        }
-                        byte[] imageBytes = outputStream.toByteArray();
-
-                        int qty = rst.getInt("quantity");
-        %>
-            <tr class="item-td">
-                    <div align="center" class="card item-card" style="width: 100%;">
-                        <div align="center">
-                            <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/></div>
-                        <h4 class="card-title"><%= rs.getString("item_name")%></h4>
-                        <p class="card-text">
-                            <%
-                                float prc = rs.getFloat("price");
-                                float prc_fin = prc*qty;
-                                totalPrice += prc_fin;
-                                quantity_final += qty;
-                            %>
-                            <%= prc_fin%>
-                        </p>
-                    </div>
-            </tr>
-        </table>
-        <%
-            }}
-                %>
-            <input name="a" value="<%= totalPrice*100%>" hidden>
-            <br><br>
-            <h4>Total Price: <%= totalPrice%></h4>
-            <div align="center">
-                <a href="payment"><button  class="btn btn-primary" style="border-radius: 30px; background-color: #1e53ff; margin-top: 10px!important; margin-bottom: 20px!important;">Proceed to Checkout</button></a>
-            </div><br><br>
-            <%
-        } catch (Exception e) {
-                System.out.println(e);
-            }
-        %>
-    </form>
-    </div>
-</div>
 
 <div class="container-fluid" style="background: linear-gradient(48deg, rgba(23,26,41,1) 0%, rgb(20,23,37) 76%, rgb(32,37,56) 95%);">
     <div class="row">
@@ -347,7 +252,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -355,7 +260,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="grid">
+<!--                <div class="grid">-->
                     <div class="col-1">
                         <div class="ele" id="ele1">
                             <p class="filter not-selectable">Sort By</p>
@@ -454,7 +359,7 @@
                                 byte[] imageBytes = outputStream.toByteArray();
                         %>
                         <td class="item-td">
-                            <div class="card item-card" style="width: 14rem;">
+                            <div class="card item-card" align="center" style="width: 14rem;">
                                     <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
                                     <h4 class="card-title"><%= rs.getString("item_name")%></h4>
                                     <p class="card-text">
@@ -478,15 +383,8 @@
                                         <%}
                                         %>
                                         <br>
-
-                                        <div class="inline-div grid1" style="margin-bottom: 15px; margin-top: 0">
-                                            <div class="text-container">
-<%--                                                <div class="truncate"><%= rs.getString("description") %></div>--%>
-<%--                                                <div align="left" class="text-desc"><%= rs.getString("description") %></div>--%>
-                                            </div>
-<%--                                            <div align="left" style="font-size: 0.7em"><%= rs.getString("description") %></div>--%>
-                                            <div class="price" align="right">Rs. <%= rs.getFloat("price") %></div>
-                                        </div>
+                                        <div align="left" style="color: #494949;"><%= rs.getString("description") %></div>
+                                        <div class="price" align="left">Rs. <%= rs.getFloat("price") %></div>
 
                                         <div align="center" style="display: inline-block; margin-top: 1px; margin-bottom: 15px">
                                             <form action="cart" method="post">
@@ -522,6 +420,8 @@
 </div>
 
     <%@ include file="footer.jsp"%>
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
@@ -581,22 +481,24 @@
 
     displayPicture.addEventListener("click", function() {
         card.classList.toggle("hidden")})
+    
+    function openSidebar() {
+  window.open('sidebar', '_blank');
+}
+//    document.getElementById('cart-btn').addEventListener("click", function () {
+//        <%--
 
-
-    document.getElementById('cart-btn').addEventListener("click", function () {
-        <%
-
-        %>
-    })
-
-    const openSidebarBtn = document.getElementById("openSidebarBtn");
-    const closeSidebarBtn = document.getElementById("closeSidebarBtn");
-    const sidebar = document.getElementById("sidebar");
-
-    openSidebarBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-        sidebar.style.display = "block";
-    });
+        --%>//
+//    })
+//
+//    const openSidebarBtn = document.getElementById("openSidebarBtn");
+//    const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+//    const sidebar = document.getElementById("sidebar");
+//
+//    openSidebarBtn.addEventListener("click", () => {
+//        sidebar.classList.toggle("open");
+//        sidebar.style.display = "block";
+//    });
 
     document.querySelector(".btn-close").addEventListener("click", () => {
         sidebar.style.display = "none";

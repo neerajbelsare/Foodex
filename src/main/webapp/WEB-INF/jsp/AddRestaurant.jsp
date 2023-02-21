@@ -31,10 +31,12 @@
                                 <br><br><br><div class="details-col col">
                                 <br><h4 style="font-weight: 700; margin-left: 20px">1. Restaurant Details</h4>
                                 <p style="color: grey; margin-left: 40px; font-size: 0.9em">Name and Address</p>
-                                <br><input type="text" id="name" class="form-control form-input" placeholder="Restaurant Name" name="a"/><br>
+                                <br><input type="text" id="name" class="form-control form-input" placeholder="Restaurant Name*" name="a"/><br>
                                 <input type="text" id="address" class="form-control form-input" placeholder="Restaurant Address" name="b"/><br>
-                                <input type="text" id="license-number" class="form-control form-input" placeholder="FSSAI License Number (14 Digit)" name="l"/>
-                                <br><br>
+                                <input type="text" id="license-number" class="form-control form-input" placeholder="FSSAI License Number (14 Digit)*" name="l"/><br>
+                                <input type="text" id="rating" class="form-control form-input" placeholder="Current Rating of your Restaurant*" name="rt"/><br>
+                                <p style="color: grey; margin-left: 40px; font-size: 0.9em">*enter valid details, before accepting, details would be checked online</p>
+                                <br>
                             </div>
                             </div>
                         </div>
