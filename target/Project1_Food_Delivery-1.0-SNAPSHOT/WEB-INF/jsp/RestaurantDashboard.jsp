@@ -124,7 +124,7 @@
                     <br><br><br><h6 style="background-color: #f58305; color: white; display: flex; justify-content: center; align-items: center; width: 20%; font-weight: 600; font-size: 2.4em; padding: 20px; margin-left: 30px">
                     <%= rs2.getString("rating")%><span class="material-symbols-outlined">star</span>
                 </h6>
-                        <%
+                <%
                     } else if(rs2.getFloat("rating") >= 4 && rs2.getFloat("rating") <= 5) {
 
                 %>
