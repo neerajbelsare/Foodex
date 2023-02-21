@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Controller
 
-public class mainController
+public class mainController 
 {
     @RequestMapping (value="/browse")
     public String homePage()

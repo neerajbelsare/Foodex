@@ -3,6 +3,7 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 
+
 <nav class="navbar navbar-expand-lg nav-main navbar-dark" id="nav-main">
   <div class="container-fluid">
     <img src="<c:url value="/resources/img/logo-exp.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
@@ -21,8 +22,19 @@
         <li class="nav-item">
           <a class="nav-link" href="contact">Contact and Support</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="browse">Browse Items</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="restaurants">Browse Restaurants</a>
+        </li>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
+          <%
+                    boolean flag = false;
+                    Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+                    if (loggedIn == null || !loggedIn) {
+                %>
         <li class="nav-item">
           <a class="nav-link nav-reg" href="login">Log In</a>
         </li>
@@ -30,7 +42,18 @@
         <li class="nav-item">
           <a class="nav-link nav-reg" href="register">Sign Up</a>
         </li>
+        <%
+                } else {
+                    
+} %>
       </ul>
     </div>
   </div>
 </nav>
+      <script>
+          let card = document.querySelector(".card");
+    let displayPicture = document.querySelector(".display-picture");
+
+    displayPicture.addEventListener("click", function() {
+        card.classList.toggle("hidden")})
+      </script>
