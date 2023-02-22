@@ -36,6 +36,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
     <title>Restaurant Dashboard | Foodex</title>
     <link href="<c:url value="/resources/css/admin.css" />" rel="stylesheet">
+    <style>
+        .control-item{
+/*            border-radius: 100%;
+            width: 10px;
+            height: 200px;
+            width: 200px;
+            text-align: center;*/
+        }
+    </style>
 </head>
 <body>
 <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -60,6 +69,36 @@
                                 <br>
                                 <input id="images" type="file" style="margin-left: 40px; padding: 10px;" accept="image/png, image/jpeg" name="f" required/><br>
                                 <input class="form-control form-input submit-btn" type="submit" name="submit-button" id="submit-btn" value="   Add Item   "/><br>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+                                
+<div class="modal fade" id="staticBackdrop1" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add an Offer</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="offerform" method="post" style="font-family: 'Poppins', sans-serif;" id="form">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <div class="details-col col">
+                                <br><input type="text" id="offer-name" class="form-control form-input" placeholder="Offer Name" name="b"/><br>
+                                <input type="text" id="offer-value" class="form-control form-input" placeholder="Value (in %)" name="c"/><br>
+                                <input type="text" id="offer-id" class="form-control form-input" placeholder="Offer Id" name="a"/><br>
+                                <input id="res-id" value="<%=session.getAttribute("res_id")%>" class="form-control form-input" name="d" readonly="readonly"><br>
+                                <input type="text" id="desc" class="form-control form-input" placeholder="Offer Description" name="e"/><br>
+                                <input type="text" id="desc" class="form-control form-input" placeholder="Offer Code name" name="f"/><br>
+                                <input class="form-control form-input submit-btn" type="submit" name="submit-button" id="submit-btn" value="   Add Offer   "/><br>
                             </div>
                             </div>
                         </div>
@@ -171,6 +210,23 @@
         <div class="col">
             <button class="control-item">View Reports</button>
         </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col c1">
+            <button class="filter-icon control-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" type="button">Add offers</button>
+        </div>
+        <div class="col">
+<!--            <p>-->
+                <% String myData1 = request.getParameter("res_id"); %>
+                <a href="addedit_offers" class="text-reset">
+                    <button class="control-item" type="submit">Edit Offers</button>
+                </a>
+<!--            </p>-->
+        </div>
+<!--        <div class="col">
+            <button class="control-item">Offers</button>
+        </div>-->
     </div>
 
 </div>

@@ -167,9 +167,138 @@ public class RestaurantController extends HttpServlet {
         return "RestaurantDashboard";
     }
     
+    @RequestMapping(value = "/offerform", method = RequestMethod.POST)
+    public String addOffers(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") Long m, @RequestParam("b") String n,
+                           @RequestParam("c") Float o, @RequestParam("d") Long p, @RequestParam("e") String q, @RequestParam("f") String r, Model model) {
+
+        try {
+            HttpSession session = request.getSession();
+            
+            String id =(String) session.getAttribute("res_id");
+            
+            long num = Long.parseLong(id);
+            long lastSevenDigits = num % 10000000;
+            
+            String combinedString = String.valueOf(lastSevenDigits) + String.valueOf(m);
+            
+            long z = Long.parseLong(combinedString);
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+            PreparedStatement stmt = con.prepareStatement("insert into offers (offer_id, offer_name, offer_value, res_id, description, offer_code) values(?,?,?,?,?,?)");
+
+            stmt.setLong(1, z);
+            stmt.setString(2, n);
+            stmt.setFloat(3, o);
+            stmt.setLong(4, p);
+            stmt.setString(5, q);
+            stmt.setString(6, r);
+            
+            stmt.executeUpdate();
+            
+
+        } catch (Exception k) {
+            System.out.println(k.getMessage());
+        }
+
+        return "RestaurantDashboard";
+    }
+    
+    @RequestMapping(value = "/offerdelete", method = RequestMethod.POST)
+    public String deleteOffer(@RequestParam("a") Long id)
+    {
+        try 
+         {
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+             PreparedStatement stmt=con.prepareStatement("delete from offers where offer_id=?");
+             stmt.setLong(1, id);
+             stmt.executeUpdate();
+         }
+         catch(Exception k1)
+         {
+             System.out.println(k1.getMessage());
+         }
+         return "addedit_offers";
+    }
+    
+    @RequestMapping(value = "/offercheck", method = RequestMethod.POST)
+    public String checkOffer(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String code)
+    {
+        String flse="0";
+        try 
+         {
+             HttpSession session = request.getSession();
+             
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+             PreparedStatement stmt=con.prepareStatement("select * from offers");
+             
+            ResultSet rst = stmt.executeQuery();
+
+            while (rst.next()) {
+                if (rst.getString("offer_code").equals(code))
+                {
+                    session.setAttribute("Available", code);
+                    return "sidebar";
+                }
+                else
+                {
+                    session.setAttribute("Available", flse);
+                    return "sidebar";
+                }
+            }
+         }
+         catch(Exception k1)
+         {
+             System.out.println(k1.getMessage());
+         }
+         return "sidebar";
+    }
+    
+    @RequestMapping(value = "/offerdel", method = RequestMethod.POST)
+    public String delOffer(HttpServletRequest request, HttpServletResponse response)
+    {
+        HttpSession session = request.getSession();
+        session.removeAttribute("Available");
+        return "sidebar";
+    }
+    
+    @RequestMapping(value = "/newaddress", method = RequestMethod.POST)
+    public String newAdd(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String address)
+    {
+        try 
+         {
+             HttpSession session = request.getSession();
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+             PreparedStatement stmt=con.prepareStatement("insert into deliver_address (username, address) values (?,?)");
+             stmt.setString(1, (String) session.getAttribute("userName"));
+             stmt.setString(2, address);
+             stmt.executeUpdate();
+         }
+         catch(Exception k1)
+         {
+             System.out.println(k1.getMessage());
+         }
+        
+        return "sidebar";
+    }
+    
     @RequestMapping(value = "/addedit_items", method = RequestMethod.GET)
     public String itemPageview()
     {
         return "addedit_items";
+    }
+    
+    @RequestMapping(value = "/addedit_offers", method = RequestMethod.GET)
+    public String offerPageview()
+    {
+        return "addedit_offers";
+    }
+    
+    @RequestMapping(value = "/trials", method = RequestMethod.GET)
+    public String Trials()
+    {
+        return "trial";
     }
 }
