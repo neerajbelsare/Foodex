@@ -1,0 +1,38 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-container1 {
+    height: 100vh;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+.forgot-pass-div {
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    width: 35%;
+    text-align: center;
+}
+
+.form-input {
+    width: 70%!important;
+    border: none;
+    border-bottom: 1px solid #949494;
+    border-radius: 0;
+    display: block;
+    margin: 0 auto;
+    outline: none;
+    transition: 0.2s all;
+}
+
+.form-input:focus {
+    border-bottom: 2px solid #1e53ff;
+    transition: 0.2s all;
+}
+
+.btn {
+    background-color: #1e53ff;
+    border-radius: 30px;
+    padding: 10px;
+}

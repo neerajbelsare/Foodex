@@ -1,0 +1,241 @@
+body {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-main{
+    font-family: 'Poppins', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+}
+
+.nav-reg{
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.26);
+    padding: 10px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.nav-reg:hover {
+    color: #1e53ff;
+}
+
+.nav-icons {
+    margin-right: 5px;
+}
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.col {
+    display: flex;
+    align-items: center;
+}
+
+.col h5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+.filter-icon {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #494949;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.btn-prim {
+    background-color: #1e53ff;
+    border-radius: 30px;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.btn-second {
+    border-radius: 30px;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+    padding: 10px 20px;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.filter {
+    padding-left: 20px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.col-1 {
+    width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.selection {
+    color: #1e53ff;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    font-size: 0.8em;
+    visibility: hidden;
+}
+
+.not-selectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.res-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    padding-top: 30px;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.display-picture{
+    margin-left: auto;
+}
+.display-picture img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border:2px solid #fff;
+}
+.display-picture img:hover{
+    border:2px solid #1e53ff;
+}
+.card{
+    transition: 0.5s ease;
+    z-index: 3;
+}
+
+.card ul{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background: #ffffff;
+    position: absolute;
+    top: 1rem;
+    right:0;
+    border-radius: 10px;
+    padding: 10px 50px 10px 20px;
+}
+.card ul li{
+
+    padding: 5px 0;
+    color: #FFF;
+    font-size: 14px;
+}
+.hidden{
+    display: none;
+}
+a{
+    text-decoration: none;
+}
+
+.grid1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-img-top {
+    width: 200px;
+    height: 200px;
+}
+
+.location-input {
+    border: none;
+    border-bottom: #949494 solid 1px;
+    outline: none;
+    transition: 0.2s all;
+    margin-left: 30px;
+    width: 20%;
+}
+
+.location-input:hover {
+    border-bottom: #1e53ff 2px solid;
+    transition: 0.2s all;
+}
+
+.item-card {
+    display: block;
+}
+
+.item-card:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+.sidebar-body {
+    height: 90%;
+    overflow: scroll;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 500px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    transition: right 0.5s ease-in-out;
+    z-index: 9999;
+    display: block;
+}
+
+#sidebar.open {
+    right: 0;
+}
+

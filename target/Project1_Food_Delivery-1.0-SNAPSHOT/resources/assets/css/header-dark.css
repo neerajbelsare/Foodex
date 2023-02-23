@@ -1,0 +1,82 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-main{
+    font-family: 'Poppins', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.nav-reg{
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.26);
+    padding: 10px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    /*font-weight: 600;*/
+    cursor: pointer;
+    border: none;
+}
+
+.nav-reg:hover {
+    color: #1e53ff;
+}
+
+.nav-icons {
+    margin-right: 5px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.display-picture{
+    margin-left: auto;
+}
+.display-picture img{
+    width: 50px;
+    border-radius: 50%;
+}
+.display-picture img:hover{
+    border:2px solid #1e53ff;
+}
+
+.card{
+    transition: 0.5s ease;
+    position: relative;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+}
+
+.card ul{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background: #ffffff;
+    position: absolute;
+    top: 1rem;
+    right:0rem;
+    border-radius: 10px;
+    padding: 10px 50px 10px 20px;
+}
+.card ul li{
+
+    padding: 5px 0;
+    color: #FFF;
+    font-size: 14px;
+}
+.hidden{
+    display: none;
+}
+a{
+    text-decoration: none;
+}
+
+.nav-link {
+    color: white!important;
+}
