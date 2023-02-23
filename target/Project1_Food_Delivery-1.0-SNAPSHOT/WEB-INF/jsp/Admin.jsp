@@ -1,22 +1,22 @@
         <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="org.json.JSONObject" %>
-<%@ page import="org.json.JSONArray" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.ArrayList" %>
-        <%@ page import="java.util.Date" %>
-        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
     ArrayList<Integer> counts = null;
     ArrayList<String> dates = null;
+
+    ArrayList<Integer> counts1 = null;
+    ArrayList<String> dates1 = null;
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
 
-        PreparedStatement stmt = con.prepareStatement("SELECT COUNT(*) as count, DATE(created_at) as date FROM users GROUP BY DATE(created_at)");
+        PreparedStatement stmt = con.prepareStatement("SELECT COUNT(*) as count, DATE(created_at) as date FROM users GROUP BY DATE(created_at) order by created_at");
 
         ResultSet rs = stmt.executeQuery();
 
@@ -28,7 +28,43 @@
             dates.add(rs.getString("date"));
         }
 
-        System.out.println(dates);
+        PreparedStatement stmt1 = con.prepareStatement("SELECT COUNT(*) as count from restaurants where rating >= 4 and rating < 5");
+
+        ResultSet rs1 = stmt1.executeQuery();
+        counts1 = new ArrayList<Integer>();
+        dates1 = new ArrayList<String>();
+
+        while (rs1.next()) {
+            counts1.add(rs1.getInt("count"));
+            dates1.add("4-5");
+        }
+
+        PreparedStatement stmt2 = con.prepareStatement("SELECT COUNT(*) as count from restaurants where rating >= 3 and rating < 4");
+
+        ResultSet rs2 = stmt2.executeQuery();
+
+        while (rs2.next()) {
+            counts1.add(rs2.getInt("count"));
+            dates1.add("3-4");
+        }
+
+        PreparedStatement stmt3 = con.prepareStatement("SELECT COUNT(*) as count from restaurants where rating >= 2 and rating < 3");
+
+        ResultSet rs3 = stmt3.executeQuery();
+
+        while (rs3.next()) {
+            counts1.add(rs3.getInt("count"));
+            dates1.add("2-3");
+        }
+
+        PreparedStatement stmt4 = con.prepareStatement("SELECT COUNT(*) as count from restaurants where rating >= 0 and rating < 2");
+
+        ResultSet rs4 = stmt4.executeQuery();
+
+        while (rs4.next()) {
+            counts1.add(rs4.getInt("count"));
+            dates1.add("0-2");
+        }
     } catch (Exception e) {
         System.out.println(e);
     }
@@ -112,15 +148,13 @@
             </div>
         </div><br><br>
         <div class="row">
-            <div class="col">
+            <div class="col" style="width: 50%!important;">
                 <h4>Restaurant Analytics</h4>
-                <canvas id="myChart" width="400" height="150"></canvas>
+                <canvas id="myChart1" width="50" height="10"></canvas>
             </div>
         </div>
     </div>
 </section>
-
-<%@ include file="footer.jsp"%>
 
 <script>
     var data = {
@@ -142,6 +176,43 @@
     var chart = new Chart(ctx, {
         type: 'line',
         data: data
+    });
+
+    var ctx1 = document.getElementById('myChart1').getContext('2d');
+    var myChart1 = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: <%= dates1%>,
+            datasets: [{
+                label: 'Restaurant Rating Distribution',
+                data: <%= counts1%>,
+                backgroundColor: [
+                    'rgba(99,255,112,0.2)',
+                    'rgba(235,157,54,0.2)',
+                    'rgba(255,232,86,0.2)',
+                    'rgba(255,86,86,0.2)'
+                ],
+                borderColor: [
+                    'rgb(138,255,99)',
+                    'rgb(255,131,8)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgb(255,0,0)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Restaurant Rating Distribution'
+                }
+            }
+        }
     });
 </script>
 

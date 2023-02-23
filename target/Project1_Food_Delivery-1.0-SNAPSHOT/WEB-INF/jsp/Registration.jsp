@@ -51,12 +51,12 @@
                     <p id="error-msg6" class="error-msg">Unknown Error</p>
                     <button class="input-register1 button-continue" id="continue-button" type="button" onclick="onContClick()">Continue</button><br>
                     <input type="submit" value="Register" class="register-submit" id="register-submit" onclick="onRegClick()" disabled /><br>
-                    <p style="color: #bbbbbb; width: 100%; text-align: center; margin-top: 20px; font-size: 1.1em;">Or</p>
-                    <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>
-                    <img id="myImg"><br>
-                    <p id="name"></p>
-                    <div id="status">
-                    </div>
+<%--                    <p style="color: #bbbbbb; width: 100%; text-align: center; margin-top: 20px; font-size: 1.1em;">Or</p>--%>
+<%--                    <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>--%>
+<%--                    <img id="myImg"><br>--%>
+<%--                    <p id="name"></p>--%>
+<%--                    <div id="status">--%>
+<%--                    </div>--%>
 <%--                    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--%>
                 </form>
             </div>

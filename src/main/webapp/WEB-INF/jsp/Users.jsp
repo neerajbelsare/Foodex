@@ -94,15 +94,6 @@
                 <li><a href="#">User Feedback</a></li>
             </ul>
         </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-line-chart' ></i>
-                <span class="link_name">Analytics</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Analytics</a></li>
-            </ul>
-        </li>
     </ul>
 </div>
 <section class="home-section">

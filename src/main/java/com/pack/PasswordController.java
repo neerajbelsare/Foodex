@@ -11,6 +11,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -35,11 +36,10 @@ public class PasswordController {
     
     @RequestMapping(value = "/forgot", method = RequestMethod.POST)
     public String checkPass(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String x, @RequestParam("b") String y, Model obj1)
-    {      
-//        obj1.addAttribute("msg","Checking");
-//        HttpSession session = request.getSession();
+    {
         try 
         {
+            HttpSession session1 = request.getSession();
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
 
@@ -59,19 +59,20 @@ public class PasswordController {
                     Random rand = new Random();
                     int code = rand.nextInt(900000) + 100000;
 
-                    System.out.println(code);
+                    session1.setAttribute("emailCode", x);
 
                     String recipient = x;
 
                     Properties props = new Properties();
-                    props.put("mail.smtp.host", "smtp.example.com");
+                    props.put("mail.smtp.host", "smtp.gmail.com");
                     props.put("mail.smtp.port", "587");
                     props.put("mail.smtp.auth", "true");
+                    props.put("mail.smtp.ssl.protocols", "TLSv1.2");
                     props.put("mail.smtp.starttls.enable", "true");
 
                     Authenticator auth = new Authenticator() {
                         public PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication("username", "password");
+                            return new PasswordAuthentication("belsareneeraj@gmail.com", "scwmjhfrfhbtahgr");
                         }
                     };
                     
@@ -337,7 +338,7 @@ public class PasswordController {
                             "      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:40px 40px 30px;font-family:'Lato',sans-serif;\" align=\"left\">\n" +
                             "        \n" +
                             "  <div style=\"line-height: 140%; text-align: left; word-wrap: break-word;\">\n" +
-                            "    <p style=\"font-size: 14px; line-height: 140%;\"><span style=\"font-size: 18px; line-height: 25.2px; color: #666666;\">Hello,</span></p>\n" +
+                            "    <p style=\"font-size: 14px; line-height: 140%;\"><span style=\"font-size: 18px; line-height: 25.2px; color: #666666;\">Hello, + " + y + "</span></p>\n" +
                             "<p style=\"font-size: 14px; line-height: 140%;\"> </p>\n" +
                             "<p style=\"font-size: 14px; line-height: 140%;\"><span style=\"font-size: 18px; line-height: 25.2px; color: #666666;\">We have sent you this email in response to your request to reset your password on Foodex. Your 6-digit code for verification is: </span></p>\n" +
                             "  </div>\n" +
@@ -356,7 +357,7 @@ public class PasswordController {
                             "<div align=\"center\">\n" +
                             "  <!--[if mso]><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" href=\"\" style=\"height:58px; v-text-anchor:middle; width:240px;\" arcsize=\"1.5%\"  stroke=\"f\" fillcolor=\"#18163a\"><w:anchorlock/><center style=\"color:#FFFFFF;font-family:'Lato',sans-serif;\"><![endif]-->  \n" +
                             "    <a href=\"\" target=\"_blank\" class=\"v-button\" style=\"box-sizing: border-box;display: inline-block;font-family:'Lato',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #18163a; border-radius: 1px;-webkit-border-radius: 1px; -moz-border-radius: 1px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 23px;\">\n" +
-                            "      <span style=\"display:block;padding:15px 40px;line-height:120%;\"><span style=\"line-height: 16.8px;\">Reset Password</span></span>\n" +
+                            "      <span style=\"display:block;padding:15px 40px;line-height:120%;\"><span style=\"line-height: 16.8px;\">" + code + "</span></span>\n" +
                             "    </a>\n" +
                             "  <!--[if mso]></center></v:roundrect><![endif]-->\n" +
                             "</div>\n" +
@@ -561,23 +562,28 @@ public class PasswordController {
     }
     
     @RequestMapping(value="/create", method = RequestMethod.POST)
-    public String NewPass(@RequestParam("a") String x,Model obj1)
+    public String NewPass(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String x,Model obj1)
     {
-        obj1.addAttribute("msg","Password Updated Successfully");
-         try 
-         {
-             Class.forName("com.mysql.cj.jdbc.Driver");
+        HttpSession session = request.getSession();
+        String email = (String) session.getAttribute("emailCode");
 
-             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-             PreparedStatement stmt=con.prepareStatement("UPDATE USERS SET PASSWORD=? WHERE USERNAME=?");
-             stmt.setString(1, x);
-             stmt.setString(2, usernm);
-             stmt.executeUpdate();
-         }
-         catch(Exception k1)
-         {
-             System.out.println(k1.getMessage());
-         }
+        if(email.equals(x)) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+                PreparedStatement stmt = con.prepareStatement("UPDATE USERS SET PASSWORD=? WHERE USERNAME=?");
+                stmt.setString(1, x);
+                stmt.setString(2, usernm);
+                stmt.executeUpdate();
+            } catch (Exception k1) {
+                System.out.println(k1.getMessage());
+            }
+        }
+        else {
+            obj1.addAttribute("msg", "The code you entered was invalid!");
+            return "Forward";
+        }
          return "SetFinally";
     }
 }

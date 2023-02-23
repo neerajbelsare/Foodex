@@ -12,15 +12,21 @@
         <title>Set New Password | Foodex</title>
     </head>
     <body>
-        <div align="center">
-            <h1>Enter New Password</h1>
-        <form action="create" method="post">
-            Enter new password <input type="text" name="a">
-            <br><br>
-            Re-enter new password <input type="text">
-            <br><br>
-                <input type="submit" value="click">
-        </form>
+    <%@ include file="header-bg-dark.jsp"%>
+    <div class="main-container1">
+        <div class="forgot-pass-div" style="border-radius: 10px;">
+            <div align="center">
+                <br><br><h3 style="font-weight: 700">Enter New Password</h3><br>
+                <form action="create" method="post">
+                    <input class="form-input" type="text" name="a" placeholder="Enter new password">
+                    <br>
+                    <input class="form-input" type="text" placeholder="Re-enter new password">
+                    <br>
+                        <input type="submit" value="Submit" class="btn-primary btn"><br><br>
+                </form>
+            </div>
         </div>
+    </div>
+    <%@ include file="footer.jsp"%>
     </body>
 </html>

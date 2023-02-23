@@ -99,4 +99,10 @@ public class AccountController {
     public String getSettings() {
         return "Settings";
     }
+
+    @RequestMapping(value = "/settingsform")
+    public String set2fa(@RequestParam("a") String x) {
+
+        return "Settings";
+    }
 }

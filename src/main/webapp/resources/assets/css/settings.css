@@ -1,0 +1,13 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.settings-row {
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+}
+
+.desc {
+    color: #949494;
+    font-size: 0.9em;
+}
