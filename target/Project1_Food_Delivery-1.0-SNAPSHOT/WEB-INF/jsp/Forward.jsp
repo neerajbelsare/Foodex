@@ -14,13 +14,13 @@
     <body>
     <div class="main-container1">
         <div class="forgot-pass-div" style="border-radius: 10px;">
-            <% String m=(String) request.getAttribute("EM");
+            <% String m=(String) session.getAttribute("resetEmail");
             %>
             <div align="center">
                 <br><h3 style="font-weight: 700; padding-left: 50px; padding-right: 50px">Enter the Code Sent to your Email ID</h3>
                 <br><p style="color: grey; padding-left: 30px; padding-right: 30px">We have sent a code to <%=m%>.
                 Kindly enter the same below to proceed and reset your password.</p><br>
-                <form action="create" method="get" id="form">
+                <form action="code" method="post" id="form">
                     Code <br><input type="text" name="a" class="form-control" style="width: 80%" id="code" maxlength="6">
                     <br><br>
                     <input type="submit" value="   Submit   " class="btn-primary btn"><br><br><br>

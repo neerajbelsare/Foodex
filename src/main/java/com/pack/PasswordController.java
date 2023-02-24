@@ -40,6 +40,8 @@ public class PasswordController {
         try 
         {
             HttpSession session1 = request.getSession();
+            session1.setAttribute("resetEmail", x);
+            session1.setAttribute("resetusnm", y);
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
 
@@ -59,7 +61,7 @@ public class PasswordController {
                     Random rand = new Random();
                     int code = rand.nextInt(900000) + 100000;
 
-                    session1.setAttribute("emailCode", x);
+                    session1.setAttribute("emailCode", code);
 
                     String recipient = x;
 
@@ -338,7 +340,7 @@ public class PasswordController {
                             "      <td style=\"overflow-wrap:break-word;word-break:break-word;padding:40px 40px 30px;font-family:'Lato',sans-serif;\" align=\"left\">\n" +
                             "        \n" +
                             "  <div style=\"line-height: 140%; text-align: left; word-wrap: break-word;\">\n" +
-                            "    <p style=\"font-size: 14px; line-height: 140%;\"><span style=\"font-size: 18px; line-height: 25.2px; color: #666666;\">Hello, + " + y + "</span></p>\n" +
+                            "    <p style=\"font-size: 14px; line-height: 140%;\"><span style=\"font-size: 18px; line-height: 25.2px; color: #666666;\">Hello, " + y + "</span></p>\n" +
                             "<p style=\"font-size: 14px; line-height: 140%;\"> </p>\n" +
                             "<p style=\"font-size: 14px; line-height: 140%;\"><span style=\"font-size: 18px; line-height: 25.2px; color: #666666;\">We have sent you this email in response to your request to reset your password on Foodex. Your 6-digit code for verification is: </span></p>\n" +
                             "  </div>\n" +
@@ -554,36 +556,32 @@ public class PasswordController {
         
         return "Forgot";
     }
-    
-    @RequestMapping(value="/create")
-    public String enterNewPass()
-    {
-        return "CreateNew";
+
+    @RequestMapping(value = "/code", method = RequestMethod.POST)
+    public String verifyCode(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") Integer x, Model obj1) {
+        HttpSession session = request.getSession();
+        Integer emailCode = (Integer) session.getAttribute("emailCode");
+        if(x.equals(emailCode)) {
+            return "CreateNew";
+        }
+        return "Forward";
     }
     
     @RequestMapping(value="/create", method = RequestMethod.POST)
     public String NewPass(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String x,Model obj1)
     {
         HttpSession session = request.getSession();
-        String email = (String) session.getAttribute("emailCode");
-
-        if(email.equals(x)) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
                 PreparedStatement stmt = con.prepareStatement("UPDATE USERS SET PASSWORD=? WHERE USERNAME=?");
                 stmt.setString(1, x);
-                stmt.setString(2, usernm);
+                stmt.setString(2, (String) session.getAttribute("resetusnm"));
                 stmt.executeUpdate();
             } catch (Exception k1) {
                 System.out.println(k1.getMessage());
             }
-        }
-        else {
-            obj1.addAttribute("msg", "The code you entered was invalid!");
-            return "Forward";
-        }
          return "SetFinally";
     }
 }
