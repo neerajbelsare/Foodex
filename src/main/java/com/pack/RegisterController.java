@@ -1,5 +1,8 @@
 package com.pack;
 
+import de.taimos.totp.TOTP;
+import org.apache.commons.codec.binary.Base32;
+import org.apache.commons.codec.binary.Hex;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,8 @@ import java.sql.ResultSet;
 public class RegisterController {
 
     String usnm = "";
+    String pwd = "";
+    String email = "";
     
     @RequestMapping(value = "/register")
     public String viewRegistration() {
@@ -79,20 +84,30 @@ public class RegisterController {
 
             while (rs.next()) {
                 if (rs.getString("username").equals(x) && rs.getString("password").equals(y)) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("userName", x);
-                    session.setAttribute("password", y);
-
-                    session.setMaxInactiveInterval(30 * 24 * 30 * 60);
-                    session.setAttribute("loggedIn", true);
-
-                    while (rst.next()){
-                        session.setAttribute("res_id", rst.getString("res_id"));
+                    if(rs.getString("twofa").equals("YES")) {
+                        usnm = x;
+                        pwd = y;
+                        email = rs.getString("email");
+                        return "TwoFA";
                     }
 
-                    usnm=rs.getString("username");
-                    object2.addAttribute("NA", rs.getString("username"));
-                    object2.addAttribute("EM", rs.getString("email"));
+                    else if(rs.getString("twofa").equals("NO")) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("userName", x);
+                        session.setAttribute("password", y);
+                        session.setAttribute("email", rs.getString("email"));
+
+                        session.setMaxInactiveInterval(30 * 24 * 30 * 60);
+                        session.setAttribute("loggedIn", true);
+
+                        while (rst.next()){
+                            session.setAttribute("res_id", rst.getString("res_id"));
+                        }
+
+                        usnm=rs.getString("username");
+                        object2.addAttribute("NA", rs.getString("username"));
+                        object2.addAttribute("EM", rs.getString("email"));
+                    }
                 }
                 else {
                     String errorMessage = "Invalid username/password";
@@ -107,44 +122,67 @@ public class RegisterController {
 
         return "Home";
     }
-    
-//    @RequestMapping(value = "/profile",method = RequestMethod.POST)
-//    public String viewProfile(Model obj)
-//    {
-//        try
-//        {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//
-//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-//            PreparedStatement stmt=con.prepareStatement("select * from users where username=?");
-//            stmt.setString(1, usnm);
-//
-//            ResultSet rs=stmt.executeQuery();
-//
-//            while(rs.next())
-//            {
-//                obj.addAttribute("NM",rs.getString("name"));
-//                obj.addAttribute("PHN",rs.getString("phone"));
-//                obj.addAttribute("USNM",rs.getString("username"));
-//                obj.addAttribute("EM",rs.getString("email"));
-//                obj.addAttribute("ADD",rs.getString("address"));
-//            }
-//
-//            stmt.executeUpdate();
-//        }
-//
-//        catch(Exception k)
-//        {
-//            System.out.println(k.getMessage());
-//        }
-//
-//        return "DisplayProfile";
-//    }
 
     @RequestMapping(value = "/setlocation",method = RequestMethod.POST)
     public String getLocation(HttpServletRequest request, HttpServletResponse response, @RequestParam("location") String x) {
         HttpSession session = request.getSession();
         session.setAttribute("currentLocation", x);
         return "main";
+    }
+
+    @RequestMapping(value = "/twofa", method = RequestMethod.POST)
+    public String getTwoFA(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String x, Model object2) {
+        HttpSession session = request.getSession();
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
+            PreparedStatement stmt = con.prepareStatement("select * from users where username=? and password=?");
+
+            stmt.setString(1, usnm);
+            stmt.setString(2, pwd);
+
+            ResultSet rs = stmt.executeQuery();
+
+            PreparedStatement stmt1 = con.prepareStatement("select * from restaurants where username=?");
+            stmt1.setString(1, x);
+
+            ResultSet rst = stmt1.executeQuery();
+
+            while(rs.next()) {
+                if (x.equals(getTOTPCode(rs.getString("secretcode")))) {
+                    session.setAttribute("userName", usnm);
+                    session.setAttribute("password", pwd);
+                    session.setAttribute("email", email);
+
+                    session.setMaxInactiveInterval(30 * 24 * 30 * 60);
+                    session.setAttribute("loggedIn", true);
+
+                    while (rst.next()){
+                        session.setAttribute("res_id", rst.getString("res_id"));
+                    }
+
+                    usnm=rs.getString("username");
+                    object2.addAttribute("NA", rs.getString("username"));
+                    object2.addAttribute("EM", rs.getString("email"));
+                    return "Home";
+                } else {
+                    session.invalidate();
+                    String errorMessage = "The code is incorrect. Please try again!";
+                    object2.addAttribute("errorMessage", errorMessage);
+                    return "TwoFA";
+                }
+            }
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+
+        return "Home";
+    }
+
+    public static String getTOTPCode(String secretKey) {
+        Base32 base32 = new Base32();
+        byte[] bytes = base32.decode(secretKey);
+        String hexKey = Hex.encodeHexString(bytes);
+        return TOTP.getOTP(hexKey);
     }
 }

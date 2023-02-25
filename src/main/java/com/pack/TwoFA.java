@@ -23,7 +23,7 @@ public class TwoFA {
         String email = "test@gmail.com";
         String companyName = "Foodex";
         String barCodeUrl = getGoogleAuthenticatorBarCode(secretKey, email, companyName);
-        createQRCode(barCodeUrl,  "src/main/webapp/resources/assets/img/qrcode.png", 64, 64);
+        createQRCode(barCodeUrl,  "src/main/webapp/resources/assets/img/qrcode.png", 1024, 1024);
 
         Scanner scanner = new Scanner(System.in);
         String code = scanner.nextLine();

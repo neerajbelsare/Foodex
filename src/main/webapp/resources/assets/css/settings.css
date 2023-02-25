@@ -11,3 +11,8 @@
     color: #949494;
     font-size: 0.9em;
 }
+
+.twofa-input {
+    display: block;
+    margin: 0 auto;
+}

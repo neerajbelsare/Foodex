@@ -74,7 +74,7 @@
                     if (rst.getBlob("data") == null) {
 
               %>
-              <a href="#" class="display-picture"><img class="img-account-profile rounded-circle mb-2" src="<c:url value="/resources/img/user-icon-default.svg" />" alt="user-icon"></a>
+              <a href="#" class="display-picture"><img class="img-account-profile rounded-circle mb-2" src="<c:url value="/resources/img/user-icon-default-white.svg" />" alt="user-icon"></a>
               <%
               } else {
                 Blob imageBlob = rst.getBlob("data");
