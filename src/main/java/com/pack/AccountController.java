@@ -96,8 +96,14 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/settings")
-    public String getSettings() {
-        return "Settings";
+    public String getSettings(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+        if (loggedIn == null || !loggedIn) {
+            return "Login";
+        } else {
+            return "Settings";
+        }
     }
 
     @RequestMapping(value = "/settingsform")

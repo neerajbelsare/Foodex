@@ -17,10 +17,10 @@
         <div class="forgot-pass-div" style="border-radius: 10px;">
             <div align="center">
                 <br><br><h3 style="font-weight: 700">Enter New Password</h3><br>
-                <form action="create" method="post">
-                    <input class="form-input" type="text" name="a" placeholder="Enter new password">
+                <form action="create" method="post" id="form">
+                    <input class="form-input" type="password" name="a" placeholder="Enter new password" id="pwd">
                     <br>
-                    <input class="form-input" type="text" placeholder="Re-enter new password">
+                    <input class="form-input" type="password" placeholder="Re-enter new password" id="cpwd">
                     <br>
                         <input type="submit" value="Submit" class="btn-primary btn"><br><br>
                 </form>
@@ -28,5 +28,18 @@
         </div>
     </div>
     <%@ include file="footer.jsp"%>
+
+    <script>
+        const form = document.getElementById("form");
+        form.addEventListener("submit", function(event) {
+            const a = document.getElementById("pwd");
+            const b = document.getElementById("cpwd");
+
+            if (a.value !== b.value) {
+                alert("The passwords don't match");
+                event.preventDefault();
+            }
+        });
+    </script>
     </body>
 </html>
