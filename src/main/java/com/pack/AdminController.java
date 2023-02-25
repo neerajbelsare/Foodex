@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminController {
@@ -52,28 +53,35 @@ public class AdminController {
     }
     
     @RequestMapping(value = "/userdelete", method = RequestMethod.POST)
-    public String deleteUsers(String username)
+    public String deleteUsers(@RequestParam("username")String username)
     {
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-            PreparedStatement stmt=con.prepareStatement("select * from users where username=?");
-
-            stmt.setString(1, username);
-            ResultSet rs=stmt.executeQuery();
-                    
-            while (rs.next())
-            {
-                if((rs.getString("username").equals(username)))
-                {
-                    PreparedStatement stmt1=con.prepareStatement("delete from users where username=?");
-                    stmt1.setString(1, username);
-                    stmt1.executeUpdate();
-                }
-            }
-            stmt.executeUpdate();
+//            PreparedStatement stmt=con.prepareStatement("delete from user_images where username=?");
+//            stmt.setString(1, username);
+//            stmt.executeUpdate();
+            
+            PreparedStatement stmt1=con.prepareStatement("delete from users where username=?");
+            stmt1.setString(1, username);
+            stmt1.executeUpdate();
+//            PreparedStatement stmt=con.prepareStatement("select * from users where username=?");
+//
+//            stmt.setString(1, username);
+//            ResultSet rs=stmt.executeQuery();
+//                    
+//            while (rs.next())
+//            {
+//                if((rs.getString("username").equals(username)))
+//                {
+//                    PreparedStatement stmt1=con.prepareStatement("delete from users where username=?");
+//                    stmt1.setString(1, username);
+//                    stmt1.executeUpdate();
+//                }
+//            }
+//            stmt.executeUpdate();
         }
         
         catch (Exception k)
@@ -121,35 +129,41 @@ public class AdminController {
     
     @RequestMapping(value = "/Restaurantsdash")
     public String getRes() {
-        return "Restaurantsdash";
+        return "Restaurants";
     }
     
     @RequestMapping(value = "/restrodelete", method = RequestMethod.POST)
-    public String deleteRestro(String res_id)
+    public String deleteRestro(@RequestParam("res_id") Long res_id)
     {
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
+            //update cascade delete cascade
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8","root","root");
-            PreparedStatement stmt=con.prepareStatement("select * from restaurants where res_id=?");
-
-            stmt.setString(1, res_id);
-            ResultSet rs=stmt.executeQuery();
-                    
-            while (rs.next())
-            {
-                if((rs.getString("res_id").equals(res_id)))
-                {
-//                    PreparedStatement stmt2=con.prepareStatement("delete from res_images where res_id=?");
-//                    stmt2.setString(1, res_id);
-                    PreparedStatement stmt1=con.prepareStatement("delete from restaurants where res_id=?");
-                    stmt1.setString(1, res_id);
-                    stmt1.executeUpdate();
-//                    stmt2.executeUpdate();
-                }
-            }
+            PreparedStatement stmt=con.prepareStatement("delete from res_images where res_id=?");
+            stmt.setLong(1, res_id);
             stmt.executeUpdate();
+            
+            PreparedStatement stmt1=con.prepareStatement("delete from restaurants where res_id=?");
+            stmt1.setLong(1, res_id);
+            stmt1.executeUpdate();
+                    
+//            ResultSet rs=stmt.executeQuery();
+//                    
+//            while (rs.next())
+//            {
+//                if((rs.getLong("res_id").equals(res_id)))
+//                {
+////                    PreparedStatement stmt2=con.prepareStatement("delete from res_images where res_id=?");
+////                    stmt2.setString(1, res_id);
+//                    PreparedStatement stmt1=con.prepareStatement("delete from restaurants where res_id=?");
+//                    stmt1.setLong(1, res_id);
+//                    stmt1.executeUpdate();
+////                    stmt2.executeUpdate();
+//                }
+//            }
+//            stmt.executeUpdate();
         }
         
         catch (Exception k)
@@ -157,6 +171,6 @@ public class AdminController {
             System.out.println(k);
         }
         
-        return "Restaurantsdash";
+        return "Restaurants";
     }
 }

@@ -80,6 +80,7 @@ boolean clicked=false;%>
             .col-1 {
                 align-items: center;
                 width: 60%;
+                height: 100%;
                 box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
                 border-radius: 5px;
             }
@@ -286,12 +287,14 @@ boolean clicked=false;%>
                         ResultSet rs = state.executeQuery();%>
                         <table class="table table-striped table-hover users-table">
                             <tr>
+                                <th>Name</th>
                                 <th>Address(es)</th>
                             </tr>
                         <%
                         while (rs.next())
                         {
                             out.println("<tr>");%>
+                            <td><%= rs.getString("name")%></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=<%= rs.getString("address") %>" target="_blank" style="text-decoration: none; color: black;"><%= rs.getString("address") %></a></td>
                             <%out.println("</tr>");
                         }%>
@@ -305,6 +308,7 @@ boolean clicked=false;%>
                 <h7 style="font-family: 'Poppins', sans-serif;">or</h7>
                 <form action="newaddress" method="post" style="font-family: 'Poppins', sans-serif;" id="form">
                     <input type="text" id="address" class="form-control form-input" placeholder="Enter another address" name="a"/><br>
+                    <input type="text" id="name" class="form-control form-input" placeholder="Person's name" name="b"/><br>
                     <input class="form-control form-input submit-btn" type="submit" name="submit-button" value="   Add   "/><br>
                 </form>
             </div>

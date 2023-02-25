@@ -19,6 +19,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,7 +81,7 @@
                 <li><a class="link_name" href="#">Restaurants</a></li>
             </ul>
         </li>
-        <li>
+<!--        <li>
             <div class="iocn-link">
                 <a href="#">
                     <i class='bx bx-book-alt' ></i>
@@ -93,7 +95,7 @@
                 <li><a href="#">Restaurant Reports</a></li>
                 <li><a href="#">User Feedback</a></li>
             </ul>
-        </li>
+        </li>-->
     </ul>
 </div>
 <section class="home-section">
@@ -142,8 +144,8 @@
 
                         ResultSet rs = stmt.executeQuery();
 
-                        int columnCount = rs.getMetaData().getColumnCount();
-                        int columnIndex = 0;
+//                        int columnCount = rs.getMetaData().getColumnCount();
+//                        int columnIndex = 0;
                 %>
 
                         <table class="table table-striped table-hover users-table">
@@ -153,17 +155,25 @@
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>Address</th>
+                                <th>Delete</th>
                             </tr>
                             <%
                         while (rs.next()) {
                             out.println("<tr>");
-                            for (int i = 1; i <= columnCount - 3; i++) {
-                                out.println("<td>" + rs.getString(i) + "</td>");
-                                columnIndex++;
-                                if (columnIndex % 5 == 0) {
-                                    out.println("</tr><tr>");
-                                }
-                            }
+                            %>
+                            <td><%= rs.getString("username")%></td>
+                            <td><%= rs.getString("name")%></td>
+                            <td><%= rs.getString("phone")%></td>
+                            <td><%= rs.getString("email")%></td>
+                            <td><%= rs.getString("address")%></td>
+                            <td><form action="userdelete" method="post">
+                                    <button type="submit" style="border: none;">
+                                            <span class="material-symbols-rounded">delete</span>
+                                    </button><br>
+                                    <input name="username" value="<%= rs.getString("username")%>" hidden>
+                                </form>
+                            </td>
+                            <%
                             out.println("</tr>");
                         }%>
                         </table>
@@ -223,7 +233,7 @@
                         </div>
                     </div>
                     
-                    <button class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" type="button">
+<!--                    <button class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" type="button">
                         Update user info
                     </button>
                     
@@ -247,13 +257,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     
-                    <button class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" type="button">
+<!--                    <button class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" type="button">
                         Delete a user
-                    </button>
+                    </button>-->
                     
-                    <div class="modal fade" id="staticBackdrop2" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!--                    <div class="modal fade" id="staticBackdrop2" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -270,11 +280,11 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
-<!--                                    <button type="button" class="btn btn-warning btn-circle btn-sm">Add</button>-->
+                                    <button type="button" class="btn btn-warning btn-circle btn-sm">Add</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
             </div>
     </div>
     <div class="row">
