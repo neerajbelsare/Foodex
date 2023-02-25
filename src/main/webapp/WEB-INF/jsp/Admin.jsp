@@ -119,7 +119,7 @@
                 <li><a class="link_name" href="#">Restaurants</a></li>
             </ul>
         </li>
-        <li>
+<!--        <li>
             <div class="iocn-link">
                 <a href="#">
                     <i class='bx bx-book-alt' ></i>
@@ -133,7 +133,7 @@
                 <li><a href="#">Restaurant Reports</a></li>
                 <li><a href="#">User Feedback</a></li>
             </ul>
-        </li>
+        </li>-->
     </ul>
 </div>
 <section class="home-section">

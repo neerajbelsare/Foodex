@@ -264,16 +264,17 @@ public class RestaurantController extends HttpServlet {
     }
     
     @RequestMapping(value = "/newaddress", method = RequestMethod.POST)
-    public String newAdd(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String address)
+    public String newAdd(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String address, @RequestParam("b") String name)
     {
         try 
          {
              HttpSession session = request.getSession();
              Class.forName("com.mysql.cj.jdbc.Driver");
              Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-             PreparedStatement stmt=con.prepareStatement("insert into deliver_address (username, address) values (?,?)");
+             PreparedStatement stmt=con.prepareStatement("insert into deliver_address (username, name, address) values (?,?,?)");
              stmt.setString(1, (String) session.getAttribute("userName"));
-             stmt.setString(2, address);
+             stmt.setString(2, name);
+             stmt.setString(3, address);
              stmt.executeUpdate();
          }
          catch(Exception k1)
