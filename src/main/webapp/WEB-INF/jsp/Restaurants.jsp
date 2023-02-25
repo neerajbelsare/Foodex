@@ -19,6 +19,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,7 +85,7 @@
                 <li><a class="link_name" href="#">Restaurants</a></li>
             </ul>
         </li>
-        <li>
+<!--        <li>
             <div class="iocn-link">
                 <a href="#">
                     <i class='bx bx-book-alt' ></i>
@@ -106,7 +108,7 @@
             <ul class="sub-menu blank">
                 <li><a class="link_name" href="#">Analytics</a></li>
             </ul>
-        </li>
+        </li>-->
     </ul>
 </div>
 <section class="home-section">
@@ -169,6 +171,7 @@
                                 <th>Timing Open</th>
                                 <th>Timing Close</th>
                                 <th>Type</th>
+                                <th>Delete</th>
                             </tr>
                             <%
                         while (rs.next()) {
@@ -185,6 +188,13 @@
                             <td><%= rs.getString("timing_open")%></td>
                             <td><%= rs.getString("timing_close")%></td>
                             <td><%= rs.getString("type")%></td>
+                            <td><form action="restrodelete" method="post">
+                                    <button type="submit" style="border: none;">
+                                            <span class="material-symbols-rounded">delete</span>
+                                    </button><br>
+                                    <input name="res_id" value="<%= rs.getLong("res_id")%>" hidden>
+                                </form>
+                            </td>
                             <%
                             out.println("</tr>");
                         }%>
@@ -207,7 +217,7 @@
                         <a href="partner">Add a restaurant</a>
                     </button>
                     
-                    <button class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" type="button">
+<!--                    <button class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" type="button">
                         Delete a restaurant
                     </button>
                     
@@ -228,11 +238,11 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-dismiss="modal">Clear All</button>
-<!--                                    <button type="button" class="btn btn-warning btn-circle btn-sm">Add</button>-->
+                                    <button type="button" class="btn btn-warning btn-circle btn-sm">Add</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
             </div>
     </div>
 </section>

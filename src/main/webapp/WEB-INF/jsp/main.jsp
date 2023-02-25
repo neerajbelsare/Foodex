@@ -92,6 +92,20 @@
         .text-container:hover .text-desc {
             display: block;
         }
+        
+        .stars {
+  font-size: 36px;
+  margin-top: 20px;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.star:hover,
+.star:focus {
+  color: gold;
+}
     </style>
 </head>
 
@@ -252,7 +266,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+<!--<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -260,7 +274,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-<!--                <div class="grid">-->
+                <div class="grid">
                     <div class="col-1">
                         <div class="ele" id="ele1">
                             <p class="filter not-selectable">Sort By</p>
@@ -290,14 +304,14 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <br>
 
 <div class="container">
     <div class="row">
-        <div class="col">
+<!--        <div class="col">
             <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="material-symbols-outlined" style="color: #1e53ff; margin-right: 5px;">filter_alt</span>Filter</button>
-        </div>
+        </div>-->
     </div>
     <div class="row">
         <div class="col">
@@ -400,6 +414,11 @@
                                                 </select>
                                             </form>
                                         </div>
+                                        <button id="rate-btn">Rate Us</button>
+<!--                                        <form action="rate_item" method="post">
+                                            <button>
+                                            <input type="submit" name="su" id="check" value="Clear offer"/><br><br>
+                                        </form>-->
                                     </p>
                             </div>
                         </td>
@@ -418,6 +437,60 @@
                 </div>
             </div>   
 </div>
+ 
+                    <div id="rate-modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Please rate our service:</p>
+    <div class="stars">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+  </div>
+</div>
+                    
+<!--<div class="modal fade" id="myModal" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Rate this product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="stars">
+                        <span class="star" onclick="rateProduct(1)">★</span>
+                        <span class="star" onclick="rateProduct(2)">★</span>
+                        <span class="star" onclick="rateProduct(3)">★</span>
+                        <span class="star" onclick="rateProduct(4)">★</span>
+                        <span class="star" onclick="rateProduct(5)">★</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>
+                <button type="button" class="btn-prim">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+                    
+<!--                    <div id="myModal" class="modal">
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <h3>Rate this product</h3>
+                      <p>Please click on the number of stars to rate this product:</p>
+                      <div class="stars">
+                        <span class="star" onclick="rateProduct(1)">★</span>
+                        <span class="star" onclick="rateProduct(2)">★</span>
+                        <span class="star" onclick="rateProduct(3)">★</span>
+                        <span class="star" onclick="rateProduct(4)">★</span>
+                        <span class="star" onclick="rateProduct(5)">★</span>
+                      </div>
+                    </div>
+                  </div>-->
 
     <%@ include file="footer.jsp"%>
     
@@ -532,6 +605,60 @@
             }
         };
     }
+    
+//    function openModal() {
+//  var modal = document.getElementById("myModal");
+//  modal.style.display = "block";
+//}
+//
+//function rateProduct(numStars) {
+//  // Your code to record the user's rating goes here
+//  console.log("User rated the product " + numStars + " stars");
+//  
+//  var modal = document.getElementById("myModal");
+//  modal.style.display = "none";
+//}
+//
+//var closeBtn = document.getElementsByClassName("close")[0];
+//closeBtn.onclick = function() {
+//  var modal = document.getElementById("myModal");
+//  modal.style.display = "none";
+//}
+var modal = document.getElementById("rate-modal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("rate-btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// When the user clicks on a star, set the rating value and close the modal
+var stars = document.getElementsByClassName("star");
+for (var i = 0; i < stars.length; i++) {
+  stars[i].onclick = function() {
+    var rating = this.getAttribute("data-value");
+    // Do something with the rating value, such as send it to a server
+    console.log("Rating: " + rating);
+    modal.style.display = "none";
+  }
+}
 </script>
 </body>
 </html>

@@ -256,7 +256,7 @@
 
 <body onload="findMyCoordinates()">
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!--<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -294,9 +294,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -304,24 +304,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-<!--                <form id="myForm">
+                <form id="myForm">
                     <input type="text" id="id" name="id" value="">
                 </form> 
-                <div id="details">Loading...</div>-->
+                <div id="details">Loading...</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn-second" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
-<br><br><br>
+<br>
+<!--<br><br>-->
 <div class="container">
     <div class="row">
-        <div class="col">
+<!--        <div class="col">
             <button class="filter-icon" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"><span class="material-symbols-outlined" style="color: #1e53ff; margin-right: 5px;">filter_alt</span>Filter</button>
-        </div>
+        </div>-->
     </div>
     <div class="row">
         <div class="col">
@@ -343,6 +344,7 @@
             %>
             <h4 class="res-heading"><%=cnt%> Restaurants</h4>
         </div>
+        <hr style="width: 100%; color: grey">   
     </div>
 </div>
 
@@ -370,9 +372,9 @@
                             }
                             byte[] imageBytes = outputStream.toByteArray();
                 %>
-                <td>
+                <td class="item-td">
                     <% String m=rs.getString("res_name");%>
-                    <div align="center" class="card space" style="width: 14rem;">
+                    <div align="center" class="card item-card" style="width: 14rem;">
                         <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
                         <h4 class="card-title"><%=m%></h4>
                         <p class="card-text"><%= rs.getString("type") %><br>
@@ -423,9 +425,9 @@
 <!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" type="button">
     Details
 </button>-->
-                        <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<%= rs.getLong("res_id")%>">
+<!--                        <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<%= rs.getLong("res_id")%>">
   Open Modal
-</button>
+</button>-->
 
 
                     </div>
