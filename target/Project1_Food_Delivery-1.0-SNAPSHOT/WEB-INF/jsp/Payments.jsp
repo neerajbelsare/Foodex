@@ -118,9 +118,20 @@
                     } catch (ClassNotFoundException e) {
                         out.println("Class Not Found Error: " + e.getMessage());
                     }
-                %>
+            %>
             </div>
         </div>
+            
+            <div class="row">
+                <div class="col" style="display: flex;">
+                    <h5 class="res-heading">Your ordered would be delivered at <%= session.getAttribute("DeliveryAddress")%></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="display: flex;">
+                    <h5 class="res-heading">Under the name <%= session.getAttribute("DeliveryName")%></h5>
+                </div>
+            </div><hr>
         
         </div>
         <div style="display: flex; justify-content: center; align-items: center">
