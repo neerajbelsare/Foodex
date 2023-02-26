@@ -92,20 +92,154 @@
         .text-container:hover .text-desc {
             display: block;
         }
-        
-        .stars {
-  font-size: 36px;
-  margin-top: 20px;
-}
 
-.star {
-  cursor: pointer;
-}
+/*        #slider {
+            margin: 20px 0;
+          position: relative;
+          width: 100%;
+          height: 20px;
+          margin: 10px 0;
+        }
 
-.star:hover,
-.star:focus {
-  color: gold;
-}
+        #slider-track {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #ccc;
+          transform: translateY(-50%);
+        }
+
+        #slider-handle {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: #0080ff;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+
+        .slider-label {
+          position: absolute;
+          top: 410px;
+          margin-left: 40px;
+          transform: translateX(-30%);
+          font-size: 14px;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .slider-label:first-child {
+          left: 0;
+        }
+
+        .slider-label:last-child {
+          left: 0;
+        }
+
+        .slider-label:nth-child(2) {
+          left: 16%;
+        }
+
+        .slider-label:nth-child(3) {
+          left: 32%;
+        }
+
+        .slider-label:nth-child(4) {
+          left: 48%;
+        }
+
+        .slider-label:nth-child(5) {
+          left: 64%;
+        }
+
+        button[type="submit"] {
+          margin-top: 20px;
+        }*/
+
+        #slider-container {
+            margin: 10px 0;
+            margin-left: 0px;
+            width: 100%;
+            position: relative;
+          }
+
+          #slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 20px;
+            border-radius: 50px;
+            background: #ddd;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          #slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50px;
+            background: blue;
+            cursor: pointer;
+          }
+
+          #slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50px;
+            background: blue;
+            cursor: pointer;
+          }
+
+          #slider-labels {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 3px;
+            left: 0;
+          }
+
+          .slider-label {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            width: 20px;
+          }
+
+          #slider-value {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+          }
+
+          button[type="submit"] {
+            margin-top: 20px;
+            width: 100%;
+          }
+          
+          .rating-button {
+            padding: 5px 10px;
+            background-color: lightblue;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+
     </style>
 </head>
 
@@ -265,46 +399,6 @@
         </div>
     </div>
 </div>
-
-<!--<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="grid">
-                    <div class="col-1">
-                        <div class="ele" id="ele1">
-                            <p class="filter not-selectable">Sort By</p>
-                            <p class="selection">Selected</p>
-                        </div>
-                        <div class="ele" id="ele2">
-                            <p class="filter not-selectable">Cuisine</p>
-                            <p class="selection">Selected</p>
-                        </div>
-                        <div class="ele" id="ele3">
-                            <p class="filter not-selectable">Rating</p>
-                            <p class="selection">Selected</p>
-                        </div>
-                        <div class="ele" id="ele4">
-                            <p class="filter not-selectable">Cost</p>
-                            <p class="selection">Selected</p>
-                        </div>
-                    </div>
-                    <div class="col-1">
-
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>
-                <button type="button" class="btn-prim">Apply</button>
-            </div>
-        </div>
-    </div>
-</div>-->
 <br>
 
 <div class="container">
@@ -377,10 +471,6 @@
                                     <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
                                     <h4 class="card-title"><%= rs.getString("item_name")%></h4>
                                     <p class="card-text">
-                                        <a href="#">
-                                            <%=l%><br>
-                                        </a>
-                                        
                                         <%float rate = rs.getFloat("rating");
                                         int x = (int) rate;
                                         for (int i=0; i<x; i++)
@@ -413,12 +503,23 @@
                                                     <option value="4">4 </option>
                                                 </select>
                                             </form>
-                                        </div>
-                                        <button id="rate-btn">Rate Us</button>
-<!--                                        <form action="rate_item" method="post">
-                                            <button>
-                                            <input type="submit" name="su" id="check" value="Clear offer"/><br><br>
-                                        </form>-->
+                                            <form action="submititemrate" method="post">
+                                                <div align="left" id="slider-container">
+                                                    <input type="range" min="1" max="5" value="3" class="slider" id="slider" name="rating">
+                                                    <div id="slider-labels">
+                                                        <span class="slider-label">1</span>
+                                                        <span class="slider-label">2</span>
+                                                        <span class="slider-label">3</span>
+                                                        <span class="slider-label">4</span>
+                                                        <span class="slider-label">5</span>
+                                                    </div><br>
+                                                </div>
+                                                <input type="hidden" name="rating" value="0">
+                                                <input type="hidden" name="username" value="<%= session.getAttribute("userName")%>">
+                                                <input type="hidden" name="item_id" value="<%= rs.getLong("item_id") %>">
+                                                <input type="submit" value="Submit Rating" class="rating-button">
+                                            </form>
+                                        </div>                                                
                                     </p>
                             </div>
                         </td>
@@ -437,62 +538,25 @@
                 </div>
             </div>   
 </div>
- 
-                    <div id="rate-modal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Please rate our service:</p>
-    <div class="stars">
-      <span class="star" data-value="1">&#9733;</span>
-      <span class="star" data-value="2">&#9733;</span>
-      <span class="star" data-value="3">&#9733;</span>
-      <span class="star" data-value="4">&#9733;</span>
-      <span class="star" data-value="5">&#9733;</span>
-    </div>
-  </div>
-</div>
-                    
-<!--<div class="modal fade" id="myModal" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Rate this product</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="stars">
-                        <span class="star" onclick="rateProduct(1)">★</span>
-                        <span class="star" onclick="rateProduct(2)">★</span>
-                        <span class="star" onclick="rateProduct(3)">★</span>
-                        <span class="star" onclick="rateProduct(4)">★</span>
-                        <span class="star" onclick="rateProduct(5)">★</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>
-                <button type="button" class="btn-prim">Apply</button>
-            </div>
-        </div>
-    </div>
-</div>-->
-                    
-<!--                    <div id="myModal" class="modal">
-                    <div class="modal-content">
-                      <span class="close">&times;</span>
-                      <h3>Rate this product</h3>
-                      <p>Please click on the number of stars to rate this product:</p>
-                      <div class="stars">
-                        <span class="star" onclick="rateProduct(1)">★</span>
-                        <span class="star" onclick="rateProduct(2)">★</span>
-                        <span class="star" onclick="rateProduct(3)">★</span>
-                        <span class="star" onclick="rateProduct(4)">★</span>
-                        <span class="star" onclick="rateProduct(5)">★</span>
-                      </div>
-                    </div>
-                  </div>-->
 
     <%@ include file="footer.jsp"%>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet" />
+    
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet" />
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"></script>
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -606,6 +670,92 @@
         };
     }
     
+   
+//$(document).ready(function() {
+//  $('.star-rating').rating({
+//    filledStar: '<i class="fas fa-star"></i>',
+//    emptyStar: '<i class="far fa-star"></i>',
+//    onSelect: function(value, text) {
+//      $('#star-rating').val(value);
+//    }
+//  });
+//});
+
+var stars = document.querySelectorAll(".star");
+var ratingInput = document.querySelector("input[name=rating]");
+
+stars.forEach(function(star) {
+  star.addEventListener("click", function() {
+    var value = this.getAttribute("data-value");
+    ratingInput.value = value;
+    stars.forEach(function(s) {
+      if (s.getAttribute("data-value") <= value) {
+        s.classList.add("selected");
+      } else {
+        s.classList.remove("selected");
+      }
+    });
+  });
+});
+
+//$(function() {
+//    $('.star').on('click', function() {
+//      $('#star-rating').val($(this).val());
+//    });
+//  });
+
+//$(function() {
+//    $('.rating label').hover(function() {
+//      $(this).prevAll().addBack().css('color', '#ffc107');
+//    }, function() {
+//      $(this).prevAll().addBack().css('color', '#ddd');
+//    });
+//    
+//    $('.rating input[type="radio"]').change(function() {
+//      $('#star-rating').val($(this).val());
+//    });
+//  });
+
+//$(function() {
+//  $('.rating i').hover(function() {
+//    $(this).prevAll().addBack().addClass('fas').removeClass('far');
+//    $(this).nextAll().addClass('far').removeClass('fas');
+//  }, function() {
+//    $(this).prevAll().addBack().removeClass('fas').addClass('far');
+//  });
+//  
+//  $('.rating i').click(function() {
+//    $('#star-rating').val($(this).data('value'));
+//  });
+//});
+
+//$(function() {
+//  $('.star-rating').rating({
+//    min: 1,
+//    max: 5,
+//    step: 1,
+//    stars: 5,
+//    showClear: false,
+//    showCaption: false,
+//    size: 'xs',
+//    containerClass: 'is-star'
+//  });
+//  
+//  $('.star-rating').on('rating:change', function(event, value, caption) {
+//    $('#star-rating').val(value);
+//  });
+//});
+
+//$(document).ready(function() {
+//  $('.star-rating').rating({
+//    filledStar: '<i class="fas fa-star"></i>',
+//    emptyStar: '<i class="far fa-star"></i>',
+//    onSelect: function(value, text) {
+//      $('#star-rating').val(value);
+//    }
+//  });
+//});
+    
 //    function openModal() {
 //  var modal = document.getElementById("myModal");
 //  modal.style.display = "block";
@@ -650,15 +800,157 @@ window.onclick = function(event) {
 }
 
 // When the user clicks on a star, set the rating value and close the modal
-var stars = document.getElementsByClassName("star");
-for (var i = 0; i < stars.length; i++) {
-  stars[i].onclick = function() {
-    var rating = this.getAttribute("data-value");
-    // Do something with the rating value, such as send it to a server
-    console.log("Rating: " + rating);
-    modal.style.display = "none";
-  }
+//var stars = document.getElementsByClassName("star");
+//for (var i = 0; i < stars.length; i++) {
+//  stars[i].onclick = function() {
+//    var rating = this.getAttribute("data-value");
+//    // Do something with the rating value, such as send it to a server
+//    console.log("Rating: " + rating);
+//    modal.style.display = "none";
+//  }
+//}
+
+</script>
+
+<!--<script>
+//    var slider = document.getElementById("slider");
+//var track = document.getElementById("slider-track");
+//var handle = document.getElementById("slider-handle");
+//var ratingInput = document.querySelector("input[name=rating]");
+//
+//var min = 1;
+//var max = 5;
+//var range = max - min;
+//
+//function getPosition(value) {
+//  var position = (value - min) / range;
+//  return position * (slider.offsetWidth - handle.offsetWidth);
+//}
+//
+//function getValue(position) {
+//  var value = (position / (slider.offsetWidth - handle.offsetWidth)) * range + min;
+//  return Math.round(value * 10) / 10;
+//}
+//
+//function setHandle(position) {
+//  if (position < 0) {
+//    position = 0;
+//  } else if (position > slider.offsetWidth - handle.offsetWidth) {
+//    position = slider.offsetWidth - handle.offsetWidth;
+//  }
+//  handle.style.left = position + "px";
+//}
+//
+//function setRating(value) {
+//  ratingInput.value = value;
+//}
+//
+//handle.addEventListener("mousedown", function(event) {
+//  event.preventDefault();
+//  var startX = event.clientX;
+//  var handleX = handle.offsetLeft;
+//
+//  function handleMouseMove(event) {
+//    var dx = event.clientX - startX;
+//    var newPosition = handleX + dx;
+//    var newValue = getValue(newPosition);
+//    setHandle(newPosition);
+//    setRating(newValue);
+//  }
+//
+//  function handleMouseUp(event) {
+//    document.removeEventListener("mousemove", handleMouseMove);
+//    document.removeEventListener("mouseup", handleMouseUp);
+//  }
+//
+//  document.addEventListener("mousemove", handleMouseMove);
+//  document.addEventListener("mouseup", handleMouseUp);
+//});
+//
+//slider.addEventListener("click", function(event) {
+//  var position = event.clientX - slider.getBoundingClientRect().left - handle.offsetWidth / 2;
+//  var value = getValue(position);
+//  setHandle(getPosition(value));
+//  setRating(value);
+//});
+//
+//setHandle(getPosition(min));
+//setRating(min);
+
+var slider = document.getElementById("slider");
+var track = document.getElementById("slider-track");
+var handle = document.getElementById("slider-handle");
+var ratingInput = document.querySelector("input[name=rating]");
+
+var min = 1;
+var max = 5;
+var range = max - min;
+
+function getPosition(value) {
+  var position = (value - min) / range;
+  return position * (slider.offsetWidth - handle.offsetWidth);
 }
+
+function getValue(position) {
+  var value = (position / (slider.offsetWidth - handle.offsetWidth)) * range + min;
+  return Math.round(value * 10) / 10;
+}
+
+function setHandle(position) {
+  if (position < 0) {
+    position = 0;
+  } else if (position > slider.offsetWidth - handle.offsetWidth) {
+    position = slider.offsetWidth - handle.offsetWidth;
+  }
+  handle.style.left = position + "px";
+}
+
+function setRating(value) {
+  ratingInput.value = value;
+}
+
+handle.addEventListener("mousedown", function(event) {
+  event.preventDefault();
+  var startX = event.clientX;
+  var handleX = handle.offsetLeft;
+
+  function handleMouseMove(event) {
+    var dx = event.clientX - startX;
+    var newPosition = handleX + dx;
+    var newValue = getValue(newPosition);
+    setHandle(newPosition);
+    setRating(newValue);
+  }
+
+  function handleMouseUp(event) {
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
+  }
+
+  document.addEventListener("mousemove", handleMouseMove);
+  document.addEventListener("mouseup", handleMouseUp);
+});
+
+slider.addEventListener("click", function(event) {
+  var position = event.clientX - slider.getBoundingClientRect().left - handle.offsetWidth / 2;
+  var value = getValue(position);
+  setHandle(getPosition(value));
+  setRating(value);
+});
+
+setHandle(getPosition(min));
+setRating(min);
+</script>-->
+<script>
+    const slider = document.getElementById("slider");
+const sliderValue = document.getElementById("slider-value");
+
+const updateSliderValue = (event) => {
+  sliderValue.innerText = event.target.value;
+};
+
+slider.addEventListener("input", updateSliderValue);
+
 </script>
 </body>
 </html>

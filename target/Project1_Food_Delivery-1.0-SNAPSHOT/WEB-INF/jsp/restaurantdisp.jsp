@@ -400,6 +400,12 @@
                         <br>Phone: <span itemprop="telephone"><a href="tel:+91<%= rs.getLong("res_phone") %>"><%= rs.getString("res_phone") %></a></span>
                         <%--<%= rs.getString("res_phone") %>--%>
                         <br><%= rs.getString("timing_open") %> - <%= rs.getString("timing_close") %>
+                        <br>
+                        <form action="restro" method="GET">
+                            <input type="hidden" name="var" value="<%= rs.getLong("res_id")%>" />
+                            <button class="btn btn-warning btn-circle btn-sm" type="submit">Details</button>
+                        </form>
+<!--                        <br><button class="btn btn-warning btn-circle btn-sm" onclick="openPage()">Click me</button>-->
 <!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
                             Details
                         </button>-->
