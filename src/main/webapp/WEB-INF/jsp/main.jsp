@@ -275,6 +275,7 @@
                 </li>
 
                 <li class="nav-item">
+                    
                     <a class="nav-link nav-reg" href="login"><span class="material-symbols-outlined nav-icons">login</span>Login</a>
                 </li>
 
