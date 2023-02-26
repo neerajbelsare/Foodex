@@ -296,102 +296,123 @@ public class RestaurantController extends HttpServlet {
     }
     
     @RequestMapping(value="/submitresrate", method = RequestMethod.POST)
-    public String resRate(HttpServletRequest request, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("res_id") String id, @RequestParam("rating") Float rating)
+    public String resRate(HttpServletRequest request, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("res_id") String id, @RequestParam("rating") Float rating) throws IOException
     {
-        float rates=0;
-        float temp=0;
-        float rat=0;
-        long res_id=Long.parseLong(id);
-        try 
-         {
-             Class.forName("com.mysql.cj.jdbc.Driver");
-             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-             PreparedStatement stmt=con.prepareStatement("insert into res_rate (username, res_id, ratings) values (?,?,?)");
-             stmt.setString(1, username);
-             stmt.setLong(2, res_id);
-             stmt.setFloat(3, rating);
-             stmt.executeUpdate();
-             
-             PreparedStatement state=con.prepareStatement("select avg(ratings) from res_rate where res_id=?");
-             state.setLong(1, res_id);
-             
-             ResultSet rst = state.executeQuery();
-             while (rst.next()) {
-                rates=rst.getFloat("avg(ratings)");
-             }
-             
-             
-            PreparedStatement stmt1=con.prepareStatement("select * from restaurants where res_id=?");
-            stmt1.setLong(1, res_id);
+        HttpSession session = request.getSession();
+
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+        if (loggedIn == null || !loggedIn) {
+            response.sendRedirect("login");
+            return "Login";
+        } 
+        else 
+        {
             
-            ResultSet rst1 = stmt1.executeQuery();
-             while (rst1.next()) {
-                temp=rst1.getFloat("rating");
+            float rates=0;
+            float temp=0;
+            float rat=0;
+            long res_id=Long.parseLong(id);
+            try 
+             {
+                 Class.forName("com.mysql.cj.jdbc.Driver");
+                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+                 PreparedStatement stmt=con.prepareStatement("insert into res_rate (username, res_id, ratings) values (?,?,?)");
+                 stmt.setString(1, username);
+                 stmt.setLong(2, res_id);
+                 stmt.setFloat(3, rating);
+                 stmt.executeUpdate();
+
+                 PreparedStatement state=con.prepareStatement("select avg(ratings) from res_rate where res_id=?");
+                 state.setLong(1, res_id);
+
+                 ResultSet rst = state.executeQuery();
+                 while (rst.next()) {
+                    rates=rst.getFloat("avg(ratings)");
+                 }
+
+
+                PreparedStatement stmt1=con.prepareStatement("select * from restaurants where res_id=?");
+                stmt1.setLong(1, res_id);
+
+                ResultSet rst1 = stmt1.executeQuery();
+                 while (rst1.next()) {
+                    temp=rst1.getFloat("rating");
+                 }
+
+                rat=(rates+temp)/2;
+
+                PreparedStatement stmt2=con.prepareStatement("update restaurants set rating=? where res_id=?");
+                stmt2.setFloat(1,rat);
+                stmt2.setLong(2, res_id);
+                stmt2.executeUpdate();
              }
-             
-            rat=(rates+temp)/2;
-            
-            PreparedStatement stmt2=con.prepareStatement("update restaurants set rating=? where res_id=?");
-            stmt2.setFloat(1,rat);
-            stmt2.setLong(2, res_id);
-            stmt2.executeUpdate();
-         }
-         catch(Exception k1)
-         {
-             System.out.println(k1.getMessage());
-         }
-        
-        return "restaurantdisp";
+             catch(Exception k1)
+             {
+                 System.out.println(k1.getMessage());
+             }
+
+            return "restaurantdisp";
+        }
     }
     
     @RequestMapping(value="/submititemrate", method = RequestMethod.POST)
-    public String itemRate(HttpServletRequest request, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("item_id") String id, @RequestParam("rating") Float rating)
+    public String itemRate(HttpServletRequest request, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("item_id") String id, @RequestParam("rating") Float rating) throws IOException
     {
-        float rates=0;
-        float temp=0;
-        float rat=0;
-        long item_id=Long.parseLong(id);
-        try 
-         {
-             Class.forName("com.mysql.cj.jdbc.Driver");
-             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-             PreparedStatement stmt=con.prepareStatement("insert into item_rate (username, item_id, ratings) values (?,?,?)");
-             stmt.setString(1, username);
-             stmt.setLong(2, item_id);
-             stmt.setFloat(3, rating);
-             stmt.executeUpdate();
-             
-             PreparedStatement state=con.prepareStatement("select avg(ratings) from item_rate where item_id=?");
-             state.setLong(1, item_id);
-             
-             ResultSet rst = state.executeQuery();
-             while (rst.next()) {
-                rates=rst.getFloat("avg(ratings)");
+        HttpSession session = request.getSession();
+
+        Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
+        if (loggedIn == null || !loggedIn) {
+            response.sendRedirect("login");
+            return "Login";
+        } 
+        else 
+        {
+            float rates=0;
+            float temp=0;
+            float rat=0;
+            long item_id=Long.parseLong(id);
+            try 
+             {
+                 Class.forName("com.mysql.cj.jdbc.Driver");
+                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
+                 PreparedStatement stmt=con.prepareStatement("insert into item_rate (username, item_id, ratings) values (?,?,?)");
+                 stmt.setString(1, username);
+                 stmt.setLong(2, item_id);
+                 stmt.setFloat(3, rating);
+                 stmt.executeUpdate();
+
+                 PreparedStatement state=con.prepareStatement("select avg(ratings) from item_rate where item_id=?");
+                 state.setLong(1, item_id);
+
+                 ResultSet rst = state.executeQuery();
+                 while (rst.next()) {
+                    rates=rst.getFloat("avg(ratings)");
+                 }
+
+
+                PreparedStatement stmt1=con.prepareStatement("select * from items where item_id=?");
+                stmt1.setLong(1, item_id);
+
+                ResultSet rst1 = stmt1.executeQuery();
+                 while (rst1.next()) {
+                    temp=rst1.getFloat("rating");
+                 }
+
+                rat=(rates+temp)/2;
+
+                PreparedStatement stmt2=con.prepareStatement("update items set rating=? where item_id=?");
+                stmt2.setFloat(1,rat);
+                stmt2.setLong(2, item_id);
+                stmt2.executeUpdate();
+
              }
-             
-             
-            PreparedStatement stmt1=con.prepareStatement("select * from items where item_id=?");
-            stmt1.setLong(1, item_id);
-            
-            ResultSet rst1 = stmt1.executeQuery();
-             while (rst1.next()) {
-                temp=rst1.getFloat("rating");
+             catch(Exception k1)
+             {
+                 System.out.println(k1.getMessage());
              }
-             
-            rat=(rates+temp)/2;
-            
-            PreparedStatement stmt2=con.prepareStatement("update items set rating=? where item_id=?");
-            stmt2.setFloat(1,rat);
-            stmt2.setLong(2, item_id);
-            stmt2.executeUpdate();
-            
-         }
-         catch(Exception k1)
-         {
-             System.out.println(k1.getMessage());
-         }
         
-        return "main";
+            return "main";
+        }
     }    
     
     @RequestMapping(value = "/newaddress", method = RequestMethod.POST)

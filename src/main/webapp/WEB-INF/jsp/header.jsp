@@ -23,11 +23,26 @@
           <a class="nav-link" href="contact">Contact and Support</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="browse">Browse Items</a>
+          <% String location = (String) session.getAttribute("currentLocation");
+            if (location != null && location != "") { %>
+            <a class="nav-link" href="browse">Browse Items</a>
+          <% } else { %>
+            <a class="nav-link" href="#" onclick="alert('Please set location')">Browse Items</a>
+          <% } %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="restaurants">Browse Restaurants</a>
+          <% if (location != null && location != "") { %>
+            <a class="nav-link" href="restaurants">Browse Restaurants</a>
+          <% } else { %>
+            <a class="nav-link" href="#" onclick="alert('Please set location')">Browse Restaurants</a>
+          <% } %>
         </li>
+<!--        <li class="nav-item">
+          <a class="nav-link" href="browse" id="browse-items-btn">Browse Items</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="restaurants" id="browse-restaurants-btn">Browse Restaurants</a>
+        </li>-->
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
           <%
@@ -43,9 +58,7 @@
           <a class="nav-link nav-reg" href="register">Sign Up</a>
         </li>
         <%
-                } else {
-                    
-} %>
+                } else {} %>
       </ul>
     </div>
   </div>
