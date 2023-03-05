@@ -108,6 +108,16 @@
     <div class="container-fluid">
         <img src="<c:url value="/resources/img/logo-exp-light.png" />" alt="Foodex Logo" width="120px" style="margin-left: 40px;" />
         <input type="text" placeholder="Enter your Location" value="<%= session.getAttribute("currentLocation")%>" class="location-input">
+<!--        
+        <form>
+            <div class="form-group">
+              <label for="restaurantName">Restaurant Name:</label>
+              <input type="text" class="form-control" id="restaurantName" placeholder="Enter restaurant name">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div id="restaurantList"></div>-->
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -256,68 +266,8 @@
 
 <body onload="findMyCoordinates()">
 <!-- Modal -->
-<!--<div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter Options</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="grid">
-                    <div class="col-1">
-                        <div class="ele" id="ele1">
-                            <p class="filter not-selectable">Sort By</p>
-                            <p class="selection">Selected</p>
-                        </div>
-                        <div class="ele" id="ele2">
-                            <p class="filter not-selectable">Cuisine</p>
-                            <p class="selection">Selected</p>
-                        </div>
-                        <div class="ele" id="ele3">
-                            <p class="filter not-selectable">Rating</p>
-                            <p class="selection">Selected</p>
-                        </div>
-                        <div class="ele" id="ele4">
-                            <p class="filter not-selectable">Cost</p>
-                            <p class="selection">Selected</p>
-                        </div>
-                    </div>
-                    <div class="col-1">
-
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-second" data-bs-dismiss="modal">Clear All</button>
-                <button type="button" class="btn-prim">Apply</button>
-            </div>
-        </div>
-    </div>
-</div>-->
-
-<!--<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="myModalLabel">Info</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="myForm">
-                    <input type="text" id="id" name="id" value="">
-                </form> 
-                <div id="details">Loading...</div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-second" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>-->
-
 <br>
-<!--<br><br>-->
+
 <div class="container">
     <div class="row">
 <!--        <div class="col">
@@ -377,8 +327,7 @@
                     <div align="center" class="card item-card" style="width: 14rem;">
                         <img class="card-img-top" alt="..." align="center" src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(imageBytes) %>"/>
                         <h4 class="card-title"><%=m%></h4>
-                        <p class="card-text"><%= rs.getString("type") %><br>
-<!--                        <p class="card-text res-id"><%= rs.getLong("res_id")%><br>-->
+                        <p class="card-text">
                         <%float rate = rs.getFloat("rating");
                                         int x = (int) rate;
                                         for (int i=0; i<x; i++)
@@ -394,42 +343,16 @@
                                             </span>
                                         <%}
                                         %>
-                        <br><%= rs.getString("cuisine") %>
                         <br>Loc: <a href="https://www.google.com/maps/search/?api=1&query=<%= rs.getString("address") %>" target="_blank"><%= rs.getString("address") %></a>
                         <%--<%= rs.getString("address") %>--%>
                         <br>Phone: <span itemprop="telephone"><a href="tel:+91<%= rs.getLong("res_phone") %>"><%= rs.getString("res_phone") %></a></span>
                         <%--<%= rs.getString("res_phone") %>--%>
                         <br><%= rs.getString("timing_open") %> - <%= rs.getString("timing_close") %>
-<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
-                            Details
-                        </button>-->
-<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
-                            Details
-                        </button>-->
-<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
-                            Details
-                        </button>-->
-<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">
-                            Details
-                        </button>-->
-                        
-<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" data-bs-toggle="modal" data-bs-target="#myModal" type="button">Details</button>-->
-<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" type="button">
-    Details
-</button>-->
-                        
-<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" type="button" onclick="fetchDetails(this)">
-    Details
-</button>-->
-                        
-<!--                        <button class="btn btn-warning btn-circle btn-sm" data-res-id="<%= rs.getLong("res_id") %>" type="button">
-    Details
-</button>-->
-<!--                        <button type="button" class="btn btn-warning btn-circle btn-sm" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<%= rs.getLong("res_id")%>">
-  Open Modal
-</button>-->
-
-
+                        <br>
+                        <form action="restro" method="GET">
+                            <input type="hidden" name="var" value="<%= rs.getLong("res_id")%>" />
+                            <button class="btn btn-warning btn-circle btn-sm" type="submit">Details</button>
+                        </form><br>
                     </div>
                 </td>
                 <%colind++;%>
@@ -457,402 +380,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
-
-<!--<script>
-    var splide = new Splide('.splide', {
-        type: 'loop',
-        perPage: 4,
-        rewind: true,
-        autoplay: true,
-    });
-
-    splide.mount();
-</script>        -->
-
-<!--<script>
-function fetchData() {
-  var id = $("#myModal").data('id');  
-  
-  
-}
-</script>-->
-
-<!--<script>
-        $(document).ready(function() {
-            $('button').click(function() {
-                var res_id = $(this).val(); // retrieve the res_id value from the button
-                $.ajax({
-                    type: 'POST',
-                    url: '<--%= request.getContextPath()%>/getDetails.jsp', // URL of the script that will fetch the data based on the res_id value
-                    data: {
-                        res_id: 'res_id'    
-                    },
-                    datatype: HTML
-                    success: function(data) {
-                        $('.modal-body').html(data); // update the modal body with the fetched data
-                    }
-                });
-            });
-        });
-    </script>-->
-
-<!--<script>
-    $(document).ready(function() {
-  $('#myModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget);
-    var resId = button.val();
-    var modal = $(this);
-    modal.find('.modal-body').load('getDetails.jsp?res_id=' + resId);
-  });
-});
-In this example, the show.bs.modal event is triggered when the modal is shown. The event.relatedTarget property is used to retrieve the button that triggered the modal. The value of the button is then retrieved using the .val() method, and an AJAX request is made to get_data.php with the res_id parameter set to the value of the button. Finally, the content of the modal body is updated with the data returned by the server using the .load() method.
-
-
-
-
-
-</script>-->
-
-        <script>
-            
-//            $(document).on('click', '.btn-warning', function() {
-//    var resId = $(this).data('res-id');
-//    $.ajax({
-//        url: '/getDetails.jsp',
-//        type: 'POST',
-//        data: {resId: resId},
-//        success: function(response) {
-//            $('#myModal .modal-body').html(response);
-//            $('#myModal').modal('show');
-//        },
-//        error: function(error) {
-//            console.log('Error fetching details: ', error);
-//        }
-//    });
-//});
-            
-//    function fetchDetails(button) {
-//        // Get the value of the "data-res-id" attribute for the clicked button
-//        var resId = button.getAttribute('data-res-id');
-//        // Set up an AJAX request to fetch details using the resId value
-//        var xhr = new XMLHttpRequest();
-//        xhr.open('POST', '/getDetails.jsp');
-//        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-//        xhr.onload = function() {
-//            if (xhr.status === 200) {
-//                // Update the contents of the "details" div with the response data
-//                document.getElementById('details').innerHTML = xhr.responseText;
-//            } else {
-//                // Handle any errors
-//                console.log('Error fetching details: ', xhr.statusText);
-//            }
-//        };
-//        xhr.send('resId=' + resId);
-//    }
-</script>
-
-<!--        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-  var buttons = document.querySelectorAll('.btn-warning');
-  var modalBody = document.getElementById('details');
-  var xhr = new XMLHttpRequest();
-  
-  // Event listener for each "Details" button
-  buttons.forEach(function(button) {
-    button.addEventListener('click', function() {
-      var resId = this.dataset.resId;
-      xhr.open('GET', '/get_data.jsp?resId=' + resId, true);
-      xhr.onload = function() {
-        modalBody.innerHTML = xhr.responseText;
-      };
-      xhr.send();
-    });
-  });
-});
-
-        </script>-->
-        
-<!--        <script>
-$(document).ready(function() {
-  // Get the button and set up a click event listener
-  var button = $('.btn-warning');
-  button.click(function() {
-    // Get the value of the "data-res-id" attribute for the clicked button
-    var resId = $(this).data('res-id');
-    // Set up an AJAX request to fetch details using the resId value
-    $.ajax({
-      url: '/get_data.jsp',
-      type: 'POST',
-      data: {
-        resId: resId
-      },
-      success: function(response) {
-        // Update the contents of the "details-body" div with the response data
-        $('#details-body').html(response);
-      },
-      error: function(error) {
-        // Handle any errors
-        console.log('Error fetching details: ', error);
-      }
-    });
-  });
-});
-</script>-->
-        
-<!--        <script>
-$(document).ready(function() {
-    // Get the button and set up a click event listener
-    $('.btn-warning').click(function() {
-        // Get the value of the "data-res-id" attribute for the clicked button
-        var resId = $(this).data('res-id');
-        // Set up an AJAX request to fetch details using the resId value
-        $.ajax({
-            url: 'get_data.jsp',
-            type: 'POST',
-            data: {
-                resId: resId
-            },
-            success: function(response) {
-                // Update the contents of the "details" div with the response data
-                $('#details').html(response);
-            },
-            error: function(error) {
-                // Handle any errors
-                console.log('Error fetching details: ', error);
-            }
-        });
-    });
-});
-</script>-->
-        
-<!--        <script>
-    $(document).ready(function() {
-        // Get the button and set up a click event listener
-        var button = $('.btn-warning');
-        button.click(function() {
-            // Get the value of the "data-res-id" attribute for the clicked button
-            var resId = $(this).data('res-id');
-            // Set up an AJAX request to fetch details using the resId value
-            $.ajax({
-                url: '/getDetails.jsp',
-                type: 'POST',
-                data: {
-                    resId: resId
-                },
-                success: function(response) {
-                    // Update the contents of the "details" div with the response data
-                    $('#details').html(response);
-                },
-                error: function(error) {
-                    // Handle any errors
-                    console.log('Error fetching details: ', error);
-                }
-            });
-        });
-    });
-</script>-->
-        
-<!--        <script>
-  $(document).ready(function() {
-    // Get the button and set up a click event listener
-    $('.btn-warning').click(function() {
-      // Get the value of the "data-res-id" attribute for the clicked button
-      var resId = $(this).data('res-id');
-      // Set up an AJAX request to fetch details using the resId value
-      $.ajax({
-        url: '/get_data.jsp',
-        type: 'POST',
-        data: {
-          resId: resId
-        },
-        success: function(response) {
-          // Update the contents of the "details" div with the response data
-          $('#details').html(response);
-        },
-        error: function(error) {
-          // Handle any errors
-          console.log('Error fetching details: ', error);
-        }
-      });
-    });
-  });
-</script>-->
-        
-<!--data-bs-keyboard="false"-->
-        
-<!--<script>
-  $(document).ready(function() {
-    // Get the button and set up a click event listener
-    var button = $('.btn-warning');
-    button.click(function() {
-      // Get the value of the "data-res-id" attribute
-      var resId = button.attr('data-res-id');
-      // Set up an AJAX request to fetch details using the resId value
-      $.ajax({
-        url: '/get_data.jsp',
-        type: 'POST',
-        data: {
-          resId: resId
-        },
-        success: function(response) {
-          // Update the contents of the "details" div with the response data
-          $('#details').html(response);
-        },
-        error: function(error) {
-          // Handle any errors
-          console.log('Error fetching details: ', error);
-        }
-      });
-    });
-  });
-</script>-->
-
-<!--        <script>
-            $(document).on('click', '[data-bs-target="#myModal"]', function(){
-                var value = $(this).val();
-                $.ajax({
-                  url: 'get_data.jsp',
-                  data: { value: value },
-                  success: function(data){
-                    $('#modal-content-placeholder').html(data);
-                    console.log(data);
-                  }
-                });
-            });
-        </script>-->
-        
-<!--        <script>
-            $(document).ready(function() {
-            $('#myModal').on('show.bs.modal', function(event) {
-              var button = $(event.relatedTarget); // Button that triggered the modal
-              var resId = button.data('res-id'); // Extract info from data-* attributes
-              $.ajax({
-                url: 'get_data.jsp',
-                data: {res_id: id},
-                success: function(response) {
-                  $('#modalContent').html(response);
-                }
-              });
-            });
-          });
-        </script>-->
-        
-<!--        <script src="--https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        
-        <script>
-            $(document).ready(function() {
-              // Make an AJAX request to the Java servlet
-              $.ajax({
-                url: "GetDataServlet",
-                dataType: "json",
-                success: function(data) {
-                  // Update the modal-body with the data
-                  $(".modal-body").html(data);
-                }
-              });
-            });
-        </script>-->
-        
-<!--        <script>
-            var buttons = document.querySelectorAll('.btn');
-            buttons.forEach(function(button) {
-              button.addEventListener('click', function() {
-                var value = button.getAttribute('data-value');
-                var input = document.getElementById('myInput');
-                input.value = value;
-                $('#staticBackdrop5').modal('show');
-              });
-            });
-        </script>
-        
-        <%-- Use JavaScript to create and show the modal, and to populate it with the HTML markup generated in step 4 --%>
-<script>
-    // code to create and show modal
-    var modal = document.getElementById("myModal");
-    modal.style.display = "block";
-    // code to populate modal with HTML markup generated in step 4
-    var modalContent = document.getElementById("modal-content");
-    modalContent.innerHTML = "<--% out.print(data); %>";
-</script>-->
-        
-<!--        <script>-->
-<!--//            var id = document.getElementById("myInput").value;
-//            localStorage.setItem("id", id);
-//            var id = localStorage.getItem("id");
-//            alert(id);
-//            var myValueField = document.getElementsByName("myValue")[0];
-//            myInput.addEventListener("input", function() {
-//              myValueField.value = id.value;
-//            });
-//            function doSomethingWithValue(value) {
-//                 ScriptEngineManager factory = new ScriptEngineManager();
-//                    // create a new JavaScript engine
-//                    ScriptEngine engine = factory.getEngineByName("JavaScript");
-//                    // evaluate the JavaScript code and store the result in a variable
-//                    engine.eval("var id = document.getElementById('myInput').value;");
-//                    Object id = engine.get("id");-->
-<!--            }-->
-            
-<!--        </script>-->
-
-<!--        <script>
-            // Store the value in a variable and populate the modal field
-            function openModal() {
-              var myValue = document.getElementById("myInput").value;
-              document.getElementById("myModalInput").value = myValue;
-              document.getElementById("myModal").style.display = "block";
-            }
-
-            // Use the value in an alert
-            var myValue = document.getElementById("myModalInput").value;
-            alert(myValue);
-
-            // Use the value in a function
-            function doSomethingWithValue(value) {
-              // Do something with the value
-            }
-
-            doSomethingWithValue(myValue);
-
-            // Close the modal when the user clicks on the close button
-            document.getElementsByClassName("close")[0].onclick = function() {
-              document.getElementById("myModal").style.display = "none";
-            }
-        </script>-->
-
-<!--        <script>
-            // Get the button and modal elements
-            var button = document.getElementById("openModal");
-            var modal = document.getElementById("staticBackdrop5");
-              var modalValue = document.getElementById("modalValue");
-
-            // Get the value of the data attribute when the button is clicked
-            button.addEventListener("click", function() {
-              var value = this.getAttribute("data-value");
-
-              // Set the value in the modal
-//              var modalValue = modal.querySelector("#modalValue");
-              modalValue.innerHTML = "The value passed from the button is: " + value;
-
-              // Display the modal
-              modal.style.display = "block";
-            });
-
-            // Hide the modal when the user clicks outside of it
-            window.addEventListener("click", function(event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
-                modalContent.textContent = "";
-              }
-            });
-        </script>-->
-        
-<!--        <script>
-            let modb = document.querySelector("#openModal")
-            modb.addEventListener("click", function (){
-                document.querySelector("#modal-res").innerHTML = document.querySelector(".res-id").innerHTML
-            })
-        </script>-->
 
 <script>
     var splide = new Splide('.splide', {
@@ -947,5 +474,24 @@ $(document).ready(function() {
         };
     }
 </script>
+
+<!--<script>
+$(document).ready(function() {
+  $('#restaurantName').keyup(function() {
+    var query = $(this).val();
+    if (query.length > 2) {
+      $.ajax({
+        url: 'getRestaurants.jsp',
+        type: 'GET',
+        data: {query: query},
+        success: function(response) {
+          $('#restaurantList').html(response);
+        }
+      });
+    }
+  });
+});
+</script>-->
+
 </body>
 </html>

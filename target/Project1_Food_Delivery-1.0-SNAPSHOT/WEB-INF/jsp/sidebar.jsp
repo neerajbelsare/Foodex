@@ -42,6 +42,7 @@ boolean clicked=false;%>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -273,15 +274,15 @@ boolean clicked=false;%>
                 </form>
                 <br><hr>
                 <h4 style="font-family: 'Poppins', sans-serif; text-align: center;">Choose Delivery address</h4>
-                <input type="text" align="center" placeholder="Enter your Location" value="<%= session.getAttribute("currentLocation")%>" class="location-input"><br><br>
-                <h7 style="font-family: 'Poppins', sans-serif;">or</h7>
+<!--                <input type="text" align="center" placeholder="Enter your Location" value="<%= session.getAttribute("currentLocation")%>" class="location-input"><br><br>
+                <h7 style="font-family: 'Poppins', sans-serif;">or</h7>-->
                 <h6 style="font-family: 'Poppins', sans-serif;">Select from below registered addresses under you</h6>
                 <%
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
 
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddelivery?characterEncoding=utf8", "root", "root");
-                        PreparedStatement state = con.prepareStatement("select * from users where username=?");
+                        PreparedStatement state = con.prepareStatement("select * from deliver_address where username=?");
                         state.setString(1, (String) session.getAttribute("userName"));
                         
                         ResultSet rs = state.executeQuery();%>
@@ -289,6 +290,7 @@ boolean clicked=false;%>
                             <tr>
                                 <th>Name</th>
                                 <th>Address(es)</th>
+                                <th>Select  </th>
                             </tr>
                         <%
                         while (rs.next())
@@ -296,6 +298,13 @@ boolean clicked=false;%>
                             out.println("<tr>");%>
                             <td><%= rs.getString("name")%></td>
                             <td><a href="https://www.google.com/maps/search/?api=1&query=<%= rs.getString("address") %>" target="_blank" style="text-decoration: none; color: black;"><%= rs.getString("address") %></a></td>
+                            <td style="width: 10px;"><form action="selectaddress" method="post">
+                                    <button type="submit" style="border: none;">
+                                            <span class="material-symbols-outlined" style="color: blue;">where_to_vote</span>
+                                    </button><br>
+                                    <input name="a" value="<%= rs.getLong("del_id")%>" hidden>
+                                </form>
+                            </td>
                             <%out.println("</tr>");
                         }%>
                         </table>

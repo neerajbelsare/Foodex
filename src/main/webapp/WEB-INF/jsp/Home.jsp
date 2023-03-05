@@ -119,6 +119,8 @@
     function findMyCoordinates() {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition((position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
                     const bdcApi = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
                     getApi(bdcApi);
                 },

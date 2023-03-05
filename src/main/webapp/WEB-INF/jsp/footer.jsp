@@ -21,6 +21,9 @@
             About Foodex
           </h6>
           <p>
+            <a href="home" class="text-reset">Home</a>
+          </p>
+          <p>
             <a href="#!" class="text-reset">Who We Are</a>
           </p>
           <p>

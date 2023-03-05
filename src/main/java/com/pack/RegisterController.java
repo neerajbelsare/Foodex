@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class RegisterController {
@@ -47,6 +48,11 @@ public class RegisterController {
             stmt.setString(5, y);
             stmt.setString(6, z);
             stmt.executeUpdate();
+            
+            PreparedStatement stmt2 = con.prepareStatement("insert into deliver_address (name, username, address) values (?,?,?)");
+            stmt2.setString(1, v);
+            stmt2.setString(2, u);
+            stmt2.setString(3, y);
 
             PreparedStatement stmt1 = con.prepareStatement("insert into user_images(username) values(?)");
             stmt1.setString(1, u);
@@ -61,11 +67,13 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/login")
-    public String viewLogin() {
+    public String viewLogin(HttpServletRequest request) {
+        String referrer = request.getHeader("Referer");
+        request.getSession().setAttribute("previousUrl", referrer);
         return "Login";
     }
     @RequestMapping(value = "/loginform", method = RequestMethod.POST)
-    public String processLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String x, @RequestParam("b") String y, Model object2) {
+    public String processLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam("a") String x, @RequestParam("b") String y, RedirectAttributes redirectAttributes) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -105,29 +113,30 @@ public class RegisterController {
                         }
 
                         usnm=rs.getString("username");
-                        object2.addAttribute("NA", rs.getString("username"));
-                        object2.addAttribute("EM", rs.getString("email"));
+                        redirectAttributes.addFlashAttribute("NA", rs.getString("username"));
+                        redirectAttributes.addFlashAttribute("EM", rs.getString("email"));
                     }
                 }
                 else {
                     String errorMessage = "Invalid username/password";
-                    object2.addAttribute("errorMessage", errorMessage);
+                    redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
                 }
             }
         } catch (Exception k) {
             String errorMessage = "There was an unknown error! Please try again";
-            object2.addAttribute("errorMessage", errorMessage);
+            redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
             return "Login";
         }
 
-        return "Home";
+        String previousUrl = (String) request.getSession().getAttribute("previousUrl");
+        return "redirect:" + previousUrl;
     }
 
     @RequestMapping(value = "/setlocation",method = RequestMethod.POST)
     public String getLocation(HttpServletRequest request, HttpServletResponse response, @RequestParam("location") String x) {
         HttpSession session = request.getSession();
         session.setAttribute("currentLocation", x);
-        return "main";
+        return "Home";
     }
 
     @RequestMapping(value = "/twofa", method = RequestMethod.POST)
