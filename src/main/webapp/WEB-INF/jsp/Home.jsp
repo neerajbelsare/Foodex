@@ -56,7 +56,6 @@
         <div class="row">
             <div class="col col-card">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Fast and reliable delivery service</h5>
                     </div>
@@ -65,7 +64,6 @@
 
             <div class="col col-card">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Real-time tracking</h5>
                     </div>
@@ -74,7 +72,6 @@
 
             <div class="col col-card">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Wide variety of food options</h5>
                     </div>
@@ -84,7 +81,6 @@
         <div class="row row-2-cards">
             <div class="col col-card">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Customizable options</h5>
                     </div>
@@ -93,7 +89,6 @@
 
             <div class="col col-card">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Discounts and deals</h5>
                     </div>
@@ -102,7 +97,6 @@
 
             <div class="col col-card">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Contactless delivery options</h5>
                     </div>

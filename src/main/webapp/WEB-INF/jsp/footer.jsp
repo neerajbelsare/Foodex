@@ -5,7 +5,7 @@
     <div class="container-fluid text-center text-md-start mt-5">
       <div class="row mt-3">
         <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">
-          <img src="<c:url value="/resources/img/logo-exp.png" />" alt="Foodex Logo" style="width: 200px; margin-top: 50px"/>
+            <img src="<c:url value="/resources/img/logo-exp.png" />" alt="Foodex Logo" style="width: 200px; margin-top: 50px"/>
         </div>
         <div class="col-md-2 col-lg-2 mx-auto col-xl-2 mb-4">
         </div>
